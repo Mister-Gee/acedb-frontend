@@ -7,7 +7,7 @@ const StudentLogin = () => {
     return (
         <>
             <Helmet>
-                <title>Student Login | iEduCare</title>
+                <title> Login | Adeyemi College of Education</title>
             </Helmet>
             <StudentLoginForm />
         </>

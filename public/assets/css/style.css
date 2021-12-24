@@ -13,6 +13,12 @@
             background: #F0F1F3;
         }
         /*----------- Container --------------*/
+        .logo-txt{
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Poppins;
+        }
         /* .container {
             margin-right: 0px !important;
             margin-left: 0px !important;
@@ -38,17 +44,6 @@
             height: 50px;
         }
         
-        #root>div>div>div>div.login>section>form>div>div:nth-child(1)>div>div>div,
-        #root>div>div>div>div.login>section>form>div>div:nth-child(2)>div>div>div,
-        #root>div>div>div>div>div:nth-child(2)>div>div.admin-login>section>form>div>div:nth-child(1)>div>div>div,
-        #root>div>div>div>div>div:nth-child(2)>div>div.admin-login>section>form>div>div:nth-child(2)>div>div>div,
-        #root>div>div>div>div>div:nth-child(1)>div>div.admin-login>section>form>div>div:nth-child(1)>div>div>div,
-        #root>div>div>div>div>div:nth-child(1)>div>div.admin-login>section>form>div>div:nth-child(2)>div>div>div {
-            height: 40px;
-            width: 346px;
-            height: 40px;
-            background: #FFFFFF;
-        }
         /*--------- Dashboard Frame ----------*/
         
         .wrapper {
@@ -166,7 +161,7 @@
         
         .top-menu .user-group .user-dropdown .iconify {
             font-size: 8px;
-            color: #03045E;
+            color: #16BC5D;
             margin-left: -25px;
         }
         /*---------- Side Menu ------------*/
@@ -179,7 +174,7 @@
             height: 100vh;
             width: 250px;
             margin-left: 0px;
-            background: #03045E;
+            background: #16BC5D;
         }
         
         .side-menu .logo-section {
@@ -207,7 +202,7 @@
             font-weight: bold;
             font-size: 13px;
             line-height: 18px;
-            color: #03045E;
+            color: #16BC5D;
             position: relative;
             top: -10px;
             left: -20px;
@@ -454,7 +449,7 @@
             font-weight: normal;
             font-size: 12px;
             line-height: 18px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .table-section table tbody .module {
@@ -499,7 +494,7 @@
             font-weight: normal;
             font-size: 24px;
             line-height: 36px;
-            color: #03045E;
+            color: #16BC5D;
             text-align: center;
             position: relative;
             top: 200px;
@@ -547,8 +542,8 @@
         }
         
         .login-section .login .login-btn {
-            background: #03045E;
-            border: 1px solid #03045E;
+            background: #16BC5D;
+            border: 1px solid #16BC5D;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
             border-radius: 40px;
             width: 161px;
@@ -570,8 +565,8 @@
         
         .login-section .login .login-btn:hover {
             background: transparent;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
         }
         
         .login-section .login .login-btn:hover .iconify {
@@ -589,8 +584,8 @@
         }
         
         .login-section .login .forgot-pwd-btn {
-            background: #03045E;
-            border: 1px solid #03045E;
+            background: #16BC5D;
+            border: 1px solid #16BC5D;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
             border-radius: 40px;
             width: 161px;
@@ -612,8 +607,8 @@
         
         .login-section .login .forgot-pwd-btn:hover {
             background: transparent;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
         }
         /*----------- Admin Login -----------*/
         
@@ -637,12 +632,12 @@
             font-weight: normal;
             font-size: 24px;
             line-height: 36px;
-            color: #03045E;
+            color: #16BC5D;
             margin-top: 192px;
             margin-bottom: 28px;
         }
         /* .admin-login section input {
-        border: 1px solid #03045E;
+        border: 1px solid #16BC5D;
         box-sizing: border-box;
         margin-bottom: 30px;
     } */
@@ -674,8 +669,8 @@
         }
         
         .admin-login section .login-btn {
-            background: #03045E;
-            border: 1px solid #03045E;
+            background: #16BC5D;
+            border: 1px solid #16BC5D;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
             border-radius: 40px;
             width: 161px;
@@ -699,8 +694,8 @@
         
         .admin-login section .login-btn:hover {
             background: transparent;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
         }
         
         .admin-login section .login-btn:hover .iconify {
@@ -713,7 +708,7 @@
         
         .uni-landing .uni-logo-section {
             height: 50vh;
-            background: #03045E;
+            background: #16BC5D;
         }
         
         .uni-landing .uni-logo-section img {
@@ -760,7 +755,7 @@
         
         .student-landing .student-logo-section {
             height: 50vh;
-            background: #03045E;
+            background: #16BC5D;
         }
         
         .student-landing .student-logo-section .logo {
@@ -834,7 +829,7 @@
             position: relative;
             top: 172px;
             left: 150px;
-            color: #03045E;
+            color: #16BC5D;
             background: transparent;
         }
         /*-------------- Institution Page --------------*/
@@ -855,7 +850,7 @@
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
             margin: 25px 0px 21px 7px;
             border-radius: 3px;
             -webkit-border-radius: 3px;
@@ -1132,7 +1127,7 @@
         
         .image-item {
             background: #E0E0E0;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             box-sizing: border-box;
             border-radius: 3px;
             width: 89px;
@@ -1222,7 +1217,7 @@
         /*------------- New Institution Modal --------------*/
         
         .add-new-modal .modal-header {
-            background: #03045E;
+            background: #16BC5D;
             color: white;
         }
         
@@ -1305,8 +1300,8 @@
         }
         
         .add-new-modal .modal-footer .submit-btn {
-            background: #03045E;
-            border: 1px solid #03045E;
+            background: #16BC5D;
+            border: 1px solid #16BC5D;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
             border-radius: 40px;
             width: 161px;
@@ -1329,8 +1324,8 @@
         
         .add-new-modal .modal-footer .submit-btn:hover {
             background: transparent;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
         }
         
         .add-new-modal .modal-footer .submit-btn:hover .iconify {
@@ -1382,9 +1377,13 @@
             line-height: 18px;
             color: #000000;
         }
-        
+
+        .login-input.Mui-focused{
+            border: 1px solid #16BC5D;
+        }
+
         .generate-btn {
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             box-sizing: border-box;
             border-radius: 3px;
             background: transparent;
@@ -1396,16 +1395,20 @@
             font-size: 10px;
             line-height: 15px;
             color: #000000;
-        }
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+}
         
         .generate-btn:hover {
-            border: 1px solid #03045E;
-            background: #03045E;
+            border: 1px solid #16BC5D;
+            background: #16BC5D;
             color: #FFFFFF;
         }
         
         .link-select-section .link-select select {
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             box-sizing: border-box;
             width: 460px;
             height: 40px;
@@ -1416,7 +1419,7 @@
             background: transparent;
             width: 67px;
             height: 40px;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             box-sizing: border-box;
             border-radius: 3px;
             font-family: Poppins;
@@ -1429,7 +1432,7 @@
         }
         
         .link-select-section .link-select .add-btn:hover {
-            background: #03045E;
+            background: #16BC5D;
             color: #FFFFFF;
             border: 1px solid #FFFFFF;
         }
@@ -1440,7 +1443,7 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
             margin-left: 10px;
         }
         
@@ -1542,7 +1545,7 @@
         .buttons .generate-btn {
             width: 91px;
             height: 25px;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             box-sizing: border-box;
             border-radius: 3px;
             font-family: Poppins;
@@ -1562,7 +1565,7 @@
         .buttons .generate-btn:hover {
             color: #FFFFFF;
             border: 1px solid #FFFFFF;
-            background: #03045E;
+            background: #16BC5D;
             border-radius: 3px;
             -webkit-border-radius: 3px;
             -moz-border-radius: 3px;
@@ -1615,7 +1618,7 @@
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
             text-align: left;
         }
         
@@ -1820,7 +1823,7 @@
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .ProgressBarWrapper {
@@ -1858,7 +1861,7 @@
         }
         
         .Uncompleted {
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .Satisfied {
@@ -1921,7 +1924,7 @@
         }
         
         .table-wrapper-scroll-y .TableContentColor {
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .menu-btnFlex {
@@ -2001,7 +2004,7 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .detailsLabel {
@@ -2035,7 +2038,7 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .NewstudentProfileWrapper ul div {
@@ -2148,7 +2151,7 @@
             line-height: 50px;
             margin-left: 37px;
             margin-bottom: 10px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .RegisterRequireUL li {
@@ -2170,7 +2173,7 @@
             font-size: 16px;
             line-height: 24px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
         }
         /*............. EduObjective subContainer ..........*/
         
@@ -2260,7 +2263,7 @@
         }
         
         .EdutableBodyTitle span {
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .EdutableWrapper span {
@@ -2379,7 +2382,7 @@
             justify-content: space-between;
             flex-wrap: nowrap;
             color: #FFFFFF;
-            background: #03045E;
+            background: #16BC5D;
             padding: 15px;
             font-family: Poppins;
             font-style: normal;
@@ -2424,7 +2427,7 @@
             font-weight: 600;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
             margin-bottom: 20px;
         }
         
@@ -2461,14 +2464,14 @@
             font-weight: 500;
             line-height: 21px;
             color: #FFFFFF;
-            background: #03045E;
+            background: #16BC5D;
             border-radius: 25px;
         }
         
         .AcademicsModaRegisterButton:hover {
             cursor: pointer;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
             background: #FFFFFF;
         }
         
@@ -2541,7 +2544,7 @@
                 display: none;
             }
             .user-group .notification .Bellnotification {
-                color: #03045E !important;
+                color: #16BC5D !important;
                 margin-right: 3px;
                 font-size: 23px !important;
             }
@@ -2554,7 +2557,7 @@
             display: none;
         } */
             .top-menu .Hambuger {
-                color: #03045E !important;
+                color: #16BC5D !important;
             }
             .TopMenuInput {
                 width: 350px;
@@ -2604,7 +2607,7 @@
                 height: 250vh;
                 width: 250px;
                 margin-left: 0px;
-                background: #03045E;
+                background: #16BC5D;
                 transition: all .5s ease;
             }
             .side-menuOpen {
@@ -2615,7 +2618,7 @@
                 height: 250vh;
                 width: 250px;
                 margin-left: 0px;
-                background: #03045E;
+                background: #16BC5D;
                 transition: all .5s ease;
                 -webkit-transition: all .5s ease;
                 -moz-transition: all .5s ease;
@@ -2802,7 +2805,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: left;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .finance-title span {
@@ -2810,11 +2813,11 @@
         }
         
         .payment-name {
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .action-icon {
-            color: #03045E;
+            color: #16BC5D;
             font-size: 18px;
             margin-right: 5px;
             cursor: pointer;
@@ -2832,10 +2835,10 @@
         .pay-now-btn {
             width: 79px;
             height: 23px;
-            background: #03045E;
+            background: #16BC5D;
             box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.15);
             border-radius: 15px;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             font-family: Poppins;
             font-style: normal;
             font-weight: 500;
@@ -2847,9 +2850,9 @@
         
         .pay-now-btn:hover {
             background: #FFFFFF;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             font-family: Poppins;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .history-header {
@@ -2908,7 +2911,7 @@
         }
         
         .action span {
-            color: #03045E;
+            color: #16BC5D;
             font-size: 28px;
             margin-right: 16px;
             cursor: pointer;
@@ -2949,14 +2952,14 @@
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .result-history-section .history-header .search-btn {
             margin-top: 15px;
-            background: #03045E;
+            background: #16BC5D;
             border-radius: 25px;
-            border: 1px solid #03045E;
+            border: 1px solid #16BC5D;
             font-family: Poppins;
             font-style: normal;
             font-weight: normal;
@@ -2969,8 +2972,8 @@
         
         .result-history-section .history-header .search-btn:hover {
             background: transparent;
-            border: 1px solid #03045E;
-            color: #03045E;
+            border: 1px solid #16BC5D;
+            color: #16BC5D;
         }
         
         .session-section {
@@ -3253,7 +3256,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             border-radius: 25px;
             border: 1px solid #FDC600;
             height: 40px;
@@ -3303,7 +3306,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             -webkit-border-radius: 25px;
             -moz-border-radius: 25px;
             -ms-border-radius: 25px;
@@ -3344,7 +3347,7 @@
         }
         
         .btns .edit-icons {
-            color: #03045E;
+            color: #16BC5D;
         }
         
         .btns .del-icon {
@@ -3374,7 +3377,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             margin-left: 17px;
             -webkit-border-radius: 25px;
             -moz-border-radius: 25px;
@@ -3399,7 +3402,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             border: none;
         }
         
@@ -3415,7 +3418,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             margin-right: 23px;
         }
         
@@ -3446,7 +3449,7 @@
             font-weight: 500;
             font-size: 16px;
             line-height: 24px;
-            color: #03045E;
+            color: #16BC5D;
             border-bottom: 3px solid #FDC600;
         }
         
@@ -3478,7 +3481,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #03045E;
+            color: #16BC5D;
             margin-left: 30px;
             margin-top: 5px;
         }

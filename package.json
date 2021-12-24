@@ -1,11 +1,17 @@
 {
-    "name": "ieducare",
+    "name": "acedb",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
         "@createnl/grouped-checkboxes": "^1.1.2",
+        "@emotion/react": "^11.7.1",
+        "@emotion/styled": "^11.6.0",
+        "@hookstate/core": "^3.0.13",
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
+        "@mui/icons-material": "^5.2.5",
+        "@mui/material": "^5.2.5",
+        "@mui/styles": "^5.2.3",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
@@ -46,7 +52,6 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "proxy": "https://dev-ieducareapi.turontechnologies.com",
     "eslintConfig": {
         "extends": [
             "react-app",

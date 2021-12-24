@@ -1,6 +1,9 @@
 export const predefinedUserRole = {
-    superAdmin: "Super Admin",
-    admin: "Admin",
-    user: "User",
-    student: "Student"
+    staff: "Staff",
+    mis: "MIS",
+    health: "Health",
+    student: "Student",
+    security: "Security",
+    er: "Exams&Records",
+    cafe: "Cafe",
 }

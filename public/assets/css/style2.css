@@ -25,7 +25,7 @@
         font-weight: normal;
         font-size: 24px;
         line-height: 36px;
-        color: #03045E;
+        color: #16BC5D;
         text-align: center;
     }
     
@@ -36,13 +36,13 @@
         font-weight: normal;
         font-size: 24px;
         line-height: 36px;
-        color: #03045E;
+        color: #16BC5D;
         text-align: center;
     }
     
     .submit-forgotten-password {
-        background: #03045E;
-        border: 1px solid #03045E;
+        background: #16BC5D;
+        border: 1px solid #16BC5D;
         box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
         border-radius: 40px;
         width: 161px;
@@ -57,7 +57,7 @@
     
     .submit-forgotten-password:hover {
         background: #fff;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .form-control2 {
@@ -205,7 +205,7 @@
     
     .top-menu .user-group .user-dropdown .iconify {
         font-size: 8px;
-        color: #03045E;
+        color: #16BC5D;
         margin-left: -25px;
     }
     /*---------- Side Menu ------------*/
@@ -218,7 +218,7 @@
         height: 100vh;
         width: 250px;
         margin-left: 0px;
-        background: #03045E;
+        background: #16BC5D;
     }
     
     .side-menu .logo-section {
@@ -247,7 +247,7 @@
         font-weight: bold;
         font-size: 13px;
         line-height: 18px;
-        color: #03045E;
+        color: #16BC5D;
         position: relative;
         top: -10px;
         left: -20px;
@@ -490,7 +490,7 @@
         font-weight: normal;
         font-size: 12px;
         line-height: 18px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .table-section table tbody .module {
@@ -544,7 +544,7 @@
     }
     
     .StudentLoginForm-Welcome-wrapper {
-        background: #03045E;
+        background: #16BC5D;
         padding: 40px;
         height: 50vh;
         color: #FFFFFF;
@@ -624,13 +624,13 @@
     
     .StudentLoginForm-Form-icon {
         font-size: 45px;
-        color: #03045E;
+        color: #16BC5D;
         margin: 10px 0;
     }
     
     .StudentLoginForm-Form-icon-text {
         font-size: 25px;
-        color: #03045E
+        color: #16BC5D
     }
     
     #StudentLoginForm-Login-Form-input-container>section>form>div>div:nth-child(1)>div>div {
@@ -658,8 +658,8 @@
     }
     
     .login-btn {
-        background: #03045E;
-        border: 1px solid #03045E;
+        background: #16BC5D;
+        border: 1px solid #16BC5D;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
         border-radius: 40px;
         width: 161px;
@@ -679,8 +679,8 @@
     
     .login-btn:hover {
         background: transparent;
-        border: 1px solid #03045E;
-        color: #03045E;
+        border: 1px solid #16BC5D;
+        color: #16BC5D;
     }
     
     .login-btn:hover .iconify {
@@ -719,7 +719,7 @@
     
     .uni-landing .uni-logo-section {
         height: 50vh;
-        background: #03045E;
+        background: #16BC5D;
     }
     
     .uni-landing .uni-logo-section img {
@@ -762,7 +762,7 @@
     
     .student-landing .student-logo-section {
         height: 50vh;
-        background: #03045E;
+        background: #16BC5D;
     }
     
     .student-landing .student-logo-section .logo {
@@ -836,7 +836,7 @@
         position: relative;
         top: 172px;
         left: 150px;
-        color: #03045E;
+        color: #16BC5D;
         background: transparent;
     }
     /*-------------- Institution Page --------------*/
@@ -857,7 +857,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
         margin: 25px 0px 21px 7px;
         border-radius: 3px;
         -webkit-border-radius: 3px;
@@ -1056,7 +1056,7 @@
     /*------------- New Institution Modal --------------*/
     
     .add-new-modal .modal-header {
-        background: #03045E;
+        background: #16BC5D;
         color: white;
     }
     
@@ -1133,8 +1133,8 @@
     }
     
     .add-new-modal .modal-footer .submit-btn {
-        background: #03045E;
-        border: 1px solid #03045E;
+        background: #16BC5D;
+        border: 1px solid #16BC5D;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
         border-radius: 40px;
         width: 161px;
@@ -1157,8 +1157,8 @@
     
     .add-new-modal .modal-footer .submit-btn:hover {
         background: transparent;
-        border: 1px solid #03045E;
-        color: #03045E;
+        border: 1px solid #16BC5D;
+        color: #16BC5D;
     }
     
     .add-new-modal .modal-footer .submit-btn:hover .iconify {
@@ -1175,7 +1175,7 @@
     }
     
     .generate-btn {
-        border: 1px solid #03045E;
+        border: 1px solid #16BC5D;
         box-sizing: border-box;
         border-radius: 3px;
         background: transparent;
@@ -1190,13 +1190,13 @@
     }
     
     .generate-btn:hover {
-        border: 1px solid #03045E;
-        background: #03045E;
+        border: 1px solid #16BC5D;
+        background: #16BC5D;
         color: #FFFFFF;
     }
     
     .link-select-section .link-select select {
-        border: 1px solid #03045E;
+        border: 1px solid #16BC5D;
         box-sizing: border-box;
         width: 460px;
         height: 40px;
@@ -1207,7 +1207,7 @@
         background: transparent;
         width: 67px;
         height: 40px;
-        border: 1px solid #03045E;
+        border: 1px solid #16BC5D;
         box-sizing: border-box;
         border-radius: 3px;
         font-family: Poppins;
@@ -1220,7 +1220,7 @@
     }
     
     .link-select-section .link-select .add-btn:hover {
-        background: #03045E;
+        background: #16BC5D;
         color: #FFFFFF;
         border: 1px solid #FFFFFF;
     }
@@ -1231,7 +1231,7 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .selected-school-section .selected-btn {
@@ -1290,7 +1290,7 @@
     .buttons .generate-btn {
         width: 91px;
         height: 25px;
-        border: 1px solid #03045E;
+        border: 1px solid #16BC5D;
         box-sizing: border-box;
         border-radius: 3px;
         font-family: Poppins;
@@ -1306,7 +1306,7 @@
     .buttons .generate-btn:hover {
         color: #FFFFFF;
         border: 1px solid #FFFFFF;
-        background: #03045E;
+        background: #16BC5D;
         border-radius: 3px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -1361,7 +1361,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
         text-align: left;
     }
     
@@ -1566,7 +1566,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .ProgressBarWrapper {
@@ -1604,7 +1604,7 @@
     }
     
     .Uncompleted {
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .Satisfied {
@@ -1667,7 +1667,7 @@
     }
     
     .table-wrapper-scroll-y .TableContentColor {
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .menu-btnFlex {
@@ -1747,7 +1747,7 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .detailsLabel {
@@ -1786,7 +1786,7 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .NewstudentProfileWrapper ul div {
@@ -1907,7 +1907,7 @@
         line-height: 50px;
         margin-left: 37px;
         margin-bottom: 10px;
-        color: #03045E;
+        color: #16BC5D;
     }
     
     .RegisterRequireUL li {
@@ -1929,7 +1929,7 @@
         font-size: 16px;
         line-height: 24px;
         text-align: center;
-        color: #03045E;
+        color: #16BC5D;
     }
     /*............. EduObjective subContainer ..........*/
     
@@ -2137,7 +2137,7 @@
         justify-content: space-between;
         flex-wrap: nowrap;
         color: #FFFFFF;
-        background: #03045E;
+        background: #16BC5D;
         padding: 15px;
         font-family: Poppins;
         font-style: normal;
@@ -2182,7 +2182,7 @@
         font-weight: 600;
         font-size: 14px;
         line-height: 21px;
-        color: #03045E;
+        color: #16BC5D;
         margin-bottom: 20px;
     }
     
@@ -2219,14 +2219,14 @@
         font-weight: 500;
         line-height: 21px;
         color: #FFFFFF;
-        background: #03045E;
+        background: #16BC5D;
         border-radius: 25px;
     }
     
     .AcademicsModaRegisterButton:hover {
         cursor: pointer;
-        border: 1px solid #03045E;
-        color: #03045E;
+        border: 1px solid #16BC5D;
+        color: #16BC5D;
         background: #FFFFFF;
     }
     
@@ -2345,7 +2345,7 @@
             display: none;
         }
         .user-group .notification .Bellnotification {
-            color: #03045E !important;
+            color: #16BC5D !important;
             margin-right: 3px;
             font-size: 23px !important;
         }
@@ -2358,7 +2358,7 @@
             display: none;
         } */
         .top-menu .Hambuger {
-            color: #03045E !important;
+            color: #16BC5D !important;
         }
         .TopMenuInput {
             width: 210px;
@@ -2413,7 +2413,7 @@
             height: 250vh;
             width: 250px;
             margin-left: 0px;
-            background: #03045E;
+            background: #16BC5D;
             transition: all .5s ease;
         }
         .side-menuOpen {
@@ -2424,7 +2424,7 @@
             height: 250vh;
             width: 250px;
             margin-left: 0px;
-            background: #03045E;
+            background: #16BC5D;
             transition: all .5s ease;
         }
         .HambugerButton {
@@ -2589,7 +2589,7 @@
             height: 30px !important;
         }
         .FINANCEStable-wrapper-scroll-y .FINANCESTableContentColor {
-            color: #03045E;
+            color: #16BC5D;
         }
     }
     

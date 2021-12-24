@@ -43,9 +43,8 @@ export const dateConverter = (format) => {
 
 export const getUserFromLocalStorage = (token) => {
     try {
-        const token = localStorage.getItem("token");
         const decoded = jwt_decode(token);
-        const user = decoded.sub
+        const user = decoded
         return user
     } catch (err) {
         console.log(err)
@@ -69,8 +68,7 @@ export const tableIndex = (index, realIndex) => {
     return result
 }
 
-export const getUserRole = () => {
-    const token = localStorage.getItem("token")
+export const getUserRole = (token) => {
     const decodedToken = jwt_decode(token)
     const userRole = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
     return userRole
@@ -100,4 +98,13 @@ export const dateToInputDate = (format) => {
     let day = dayRaw.toString().padStart(2, "0")
 
     return `${year}-${month}-${day}`
+}
+
+export const getTokenFromLocalStorage = () => {
+    try {
+        const token = localStorage.getItem("token");
+        return token;
+    } catch (err) {
+        console.log(err)
+    }
 }

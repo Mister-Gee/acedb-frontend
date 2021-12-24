@@ -3,9 +3,31 @@ import { useFormik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import { Loading, SubmitBtn } from './LoginBtns';
+import { withStyles } from '@mui/styles';
 
+const StyledTextField = withStyles({
+    root: {
+      '& label.Mui-focused': {
+        color: '#16BC5D',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#16BC5D',
+      },
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#333333',
+        },
+        '&:hover fieldset': {
+          borderColor: '#16BC5D',
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: '#16BC5D',
+        },
+      },
+    },
+  })(TextField);
 
-const LoginForm = ({ initialValues, onSubmit, validationSchema, btnState, inputID }) => {
+const LoginForm = ({ initialValues, onSubmit, validationSchema, btnState }) => {
 
 
     const formik = useFormik({
@@ -20,37 +42,36 @@ const LoginForm = ({ initialValues, onSubmit, validationSchema, btnState, inputI
                 <Container>
                     <div>
                         <Row>
-                            <Col lg={12} id={inputID}>
-
-                                <TextField
-                                    label="Email"
+                            <Col lg={12}>
+                                <StyledTextField
+                                    label="UserID"
                                     type="email"
-                                    name="email"
-                                    id="email"
+                                    name="userId"
+                                    id="userId"
                                     margin="normal"
+                                    fullWidth 
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
                                     variant="outlined"
                                     placeholder="Email"
-                                    value={formik.values.email}
+                                    value={formik.values.userId}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.email && Boolean(formik.errors.email)}
-                                    helperText={formik.touched.email && formik.errors.email}
+                                    error={formik.touched.userId && Boolean(formik.errors.userId)}
+                                    helperText={formik.touched.userId && formik.errors.userId}
+                                    className="login-input"
                                 />
-
                             </Col>
                         </Row>
                     </div>
-
                     <div>
                         <Row>
-                            <Col lg={12} id={inputID}>
-
-                                <TextField
+                            <Col lg={12} >
+                                <StyledTextField
                                     label="Password"
                                     type="password"
                                     name="password"
+                                    fullWidth 
                                     id="password"
                                     placeholder="Password"
                                     margin="normal"
