@@ -1,11 +1,14 @@
-import { getUserFromLocalStorage } from '../../utils/Functions';
-import React, { useMemo, useState } from 'react';
-import Hambuger from '../Student/subcomponents/Hambuger'
+import React from 'react';
+import Hambuger from '../Student/subcomponents/Hambuger';
+import store from '../../store/store';
+import { useState } from '@hookstate/core';
 
 const TopMenu = ({ open, openMenu, token }) => {
 
-    const [inputClose, setInputClose] = useState(true)
-    let user = useMemo(() => getUserFromLocalStorage(token), [token])
+    const [inputClose, setInputClose] = React.useState(true)
+
+    const {firstName} = useState(store)
+    const {lastName} = useState(store)
     return (
         <div className="top-menu">
             <div className="menu-btn menu-btnFlex">
@@ -13,7 +16,7 @@ const TopMenu = ({ open, openMenu, token }) => {
                     <Hambuger />
                 </button>
                 {inputClose ? <><div><span className="iconify" data-icon="whh:student" data-inline="false"></span></div>
-                    <div><span className="user-name"><strong>Welcome,</strong> {user ? user : "Turon"}</span></div>
+                    <div><span className="user-name"><strong>Welcome,</strong> {lastName.get() + " " + firstName.get()}</span></div>
 
                 </> : ""}
 
@@ -28,7 +31,7 @@ const TopMenu = ({ open, openMenu, token }) => {
                     </div>
                 </div>
                 {inputClose ? <div className="notification2">
-                    <span onClick={() => setInputClose(false)}><span class="iconify Bellnotification" data-icon="bx:bx-search" data-inline="false"></span></span>
+                    <span onClick={() => setInputClose(false)}><span className="iconify Bellnotification" data-icon="bx:bx-search" data-inline="false"></span></span>
                 </div> : ""}
 
                 <div className="notification">
@@ -36,12 +39,12 @@ const TopMenu = ({ open, openMenu, token }) => {
                 </div>
                 <div className="user-dp">
                     <span>
-                        SO
+                        {lastName.get().charAt(0).toUpperCase()}{firstName.get().charAt(0).toUpperCase()}
                     </span>
                 </div>
-                <div className="user-dropdown">
+                {/* <div className="user-dropdown">
                     <span className="iconify" data-icon="bx:bxs-down-arrow" data-inline="false"></span>
-                </div>
+                </div> */}
             </div>
         </div>
     )

@@ -1,20 +1,19 @@
 import { Card } from "react-bootstrap"
 import { AllStudent } from "./BiodataForm/Data"
 
-function studentInfo() {
+function studentInfo({data}) {
     return (
         <Card style={{ marginBottom: "20px" }} className="StudentInfoCard">
             <Card.Body className="StudentInfoWrapper">
                 <Card.Text>
                     <div className="StudentInfoTitle">Student Information</div>
-                    {AllStudent.map((student) => (
                         <div>
                             <div className="StudentInfoBody">
                                 <div className="StudentInfoBodyTile">
-                                    Mat No:
+                                    Matric No:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.matriculationNo}
+                                    {data.matricNumber ? data.matricNumber : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
@@ -22,7 +21,7 @@ function studentInfo() {
                                     Program:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.program}
+                                    {data.programme ? data.programme : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
@@ -30,43 +29,42 @@ function studentInfo() {
                                     Level:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.currentLevel}
+                                    {data.currentLevel ? data.currentLevel : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
                                 <div className="StudentInfoBodyTile">
-                                    Type of Education:
+                                    School:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.typeOfEducation}
+                                    {data.school ? data.school : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
                                 <div className="StudentInfoBodyTile">
-                                    No of Courses:
+                                    Department:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.noOfCourses}
+                                    {data.department ? data.department : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
                                 <div className="StudentInfoBodyTile">
-                                    Session:
+                                    Gender:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.session}
+                                    {data.gender ? data.gender : "-"}
                                 </div>
                             </div>
                             <div className="StudentInfoBody">
                                 <div className="StudentInfoBodyTile">
-                                    Semester:
+                                    Jamb Reg No.:
                             </div>
                                 <div className="StudentInfoBodyTileAns">
-                                    {student.semester}
+                                    {data.jambRegNumber ? data.jambRegNumber : "-"}
                                 </div>
                             </div>
                         </div>
-                    ))}
                 </Card.Text>
             </Card.Body>
         </Card>

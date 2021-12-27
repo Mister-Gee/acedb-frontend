@@ -4,7 +4,7 @@ const ContentLoader = () => {
     return (
         <div className="loader">
             <PropagateLoader 
-                color="#FDC600"
+                color="#16BC5D"
                 size={15}
             />
         </div>

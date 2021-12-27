@@ -87,7 +87,7 @@ function StudentProfile() {
             <div className="StudentProfileDetailsCard">
                 <div className="StudentProfileBody">
                     <StudentProfileData />
-                    <div className="StdentProfileFormContainer">
+                    {/* <div className="StdentProfileFormContainer">
                         <div className="StdentProfileFormWrapper">
                             <div className="StdentProfileButtonContainer">
                                 <div onClick={() => (setBiodataPage(true))}>
@@ -101,7 +101,7 @@ function StudentProfile() {
                                 {BiodataPage ? <div className="" ><Biodata initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} /></div> : <div className="StudentFormContainer"><OthersPage initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} /></div>}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </DashboardFrame>

@@ -14,7 +14,7 @@ const Breadcrumb = ({title, subTitle}) => {
             </div>
             <div className="last-login-section">
                 <div className="last-login-detail">
-                    <div className="last-login">
+                    {/* <div className="last-login">
                         <span className="iconify" data-icon="typcn:time" data-inline="false"></span>
                           Last Login: 01-March-2021
                     </div>
@@ -22,7 +22,7 @@ const Breadcrumb = ({title, subTitle}) => {
                     <div className="today-date">
                         <span className="iconify" data-icon="bx:bx-calendar" data-inline="false"></span>
                            Today's Date: {`${date}-${monthArray[month]}-${year}`}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

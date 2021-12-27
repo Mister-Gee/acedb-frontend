@@ -1,77 +1,73 @@
 import React, { useState, useEffect } from 'react'
-import { getStudentProfile } from '../../../../services/StudentServices'
-import { AllStudent } from './Data';
-
+import {userDetails} from '../../../../services/userServices';
+import ContentLoader from '../../../components/ContentLoader';
 
 
 function StudentProfileData() {
     const [studentProfile, setStudentProfile] = useState([])
-
-    //GET STUDENT DATA FROM THE LOCAL-STORAGE
-    // const StudenProfile = localStorage.getItem('StudenProfile') === 'true';
-    // const user = StudenProfile ? localStorage.getItem('user') : '';
-    // setStudentProfile({ user, StudenProfile });
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const fetchStudentProfileData = async (id) => {
+            setIsLoading(true)
             try {
-                // const res = await getStudentProfile()
-                // setStudentProfile(res.data)
-                // let data = res.data
-                // let result = data.reverse().slice(0, 5)
-                // setRecentInstitution(result)
-                // setIsLoading(false)
+                const res = await userDetails()
+                setStudentProfile(res.data)
+                
             }
             catch (err) {
                 console.log(err.message)
             }
+            setIsLoading(false)
         }
         fetchStudentProfileData()
-
     }, [])
 
 
     return (
+        isLoading ?
+        <ContentLoader />
+        :
         <div className="NewstudentProfileContainer">
-            {AllStudent.map((student) => (
                 <div className="NewstudentProfileWrapper">
                     <div className="StudentProfileContainer StudentMargin">
-                        <img src="./assets/images/passportPhoto.jpeg" alt="Login Logo" />
+                        
+                        <img src={studentProfile.userImageURL ? studentProfile.userImageURL : "./assets/images/passportPhoto.png"} alt="Login Logo" />
+                        
                     </div>
                     <div>
                         <ul>
                             <div>Full Name</div>
-                            <li>{student.firstName} {student.lastName}</li>
+                            <li>{studentProfile.lastName} {studentProfile.firstName}</li>
                             <div>Email Address</div>
-                            <li>{student.email}</li>
+                            <li>{studentProfile.email}</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
                             <div>Gender</div>
-                            <li>{student.gender}</li>
-                            <div>Faculty</div>
-                            <li>{student.faculty}</li>
+                            <li>{studentProfile.gender ? studentProfile.gender : "-"}</li>
+                            <div>School</div>
+                            <li>{studentProfile.school ? studentProfile.school : "-"}</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
                             <div>Course of Study</div>
-                            <li>{student.courseOfStudy}</li>
+                            <li>{studentProfile.department ? studentProfile.department : "-"}</li>
                             <div>Martric No</div>
-                            <li>{student.matriculationNo}</li>
+                            <li>{studentProfile.matricNumber ? studentProfile.matricNumber : "-"}</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
                             <div>Current Level</div>
-                            <li>{student.currentLevel}</li>
+                            <li>{studentProfile.curreentLevel ? studentProfile.curreentLevel : "-"}</li>
                             <div>Department</div>
-                            <li>{student.department}</li>
+                            <li>{studentProfile.department ? studentProfile.department : "-"}</li>
                         </ul>
                     </div>
                 </div>
-            ))}
         </div>
     )
 }

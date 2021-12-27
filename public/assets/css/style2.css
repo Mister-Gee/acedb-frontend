@@ -187,7 +187,7 @@
         width: 37px;
         padding: 5px 5px;
         margin-top: -5px;
-        background: #FB8C00;
+        background: #16BC5D;
         margin-right: 29px;
         border-radius: 50%;
         -webkit-border-radius: 50%;
@@ -221,16 +221,7 @@
         background: #16BC5D;
     }
     
-    .side-menu .logo-section {
-        padding: 20px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        background: #FDC600;
-        margin-bottom: 41px;
-        height: 64px;
-    }
+   
     
     .side-menu .logo-section img {
         width: 20%;
@@ -261,7 +252,7 @@
         list-style: none;
         font-family: Poppins;
         font-style: normal;
-        font-weight: normal;
+        font-weight: bold;
         font-size: 14px;
         line-height: 21px;
         color: #F2F2F2;
@@ -271,7 +262,7 @@
     .nav-links li a {
         font-family: Poppins;
         font-style: normal;
-        font-weight: normal;
+        font-weight: bold;
         font-size: 14px;
         line-height: 21px;
         color: #F2F2F2;
@@ -282,10 +273,7 @@
         text-decoration: none;
     }
     
-    .nav-links li a .iconify {
-        color: #FDC600;
-        font-size: 17px;
-    }
+   
     
     .dropdown-link {
         margin-right: 80px;
