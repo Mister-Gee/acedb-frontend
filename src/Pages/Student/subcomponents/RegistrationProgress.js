@@ -1,10 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Card } from "react-bootstrap"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import {getRegStatus} from '../../../services/biodataService';
 
 function RegistrationProgress() {
-    const percentage = 90;
+
+    const [progress, setProgress] = useState([])
+
+    useEffect(() => {
+        try{
+            const fetch = async () => {
+                const res = await getRegStatus()
+                setProgress(res.data)
+            }
+            fetch()
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    ,[])
     return (
         <Card style={{ marginBottom: "20px"  }} className="ProgressBarCard">
             <Card.Body className="ProgressBarWrapper">
@@ -18,14 +34,14 @@ function RegistrationProgress() {
                             pathColor: "#FDC600",
                             textColor: '#333333',
                             })} className="bar"
-                            value={percentage}
-                            text={`${percentage}%`} />
+                            value={progress.progressPercent}
+                            text={`${progress.progressPercent}%`} />
                     </div>
                     <div className="ProgressBarDelatils2">
                         <ul>
-                            {percentage >= 100 ? <li className="completed">Completed</li> : <li className="Uncompleted">Uncompleted</li>}
-                            <li className="Satisfied">5 Satisfied</li>
-                            <li className="requirements">Of 10 requirements</li>
+                            {progress.progressPercent === 100 ? <li className="completed">Completed</li> : <li className="Uncompleted">Uncompleted</li>}
+                            <li className="Satisfied">{progress.completedRegProcess} Satisfied</li>
+                            <li className="requirements">Of {progress.totalRegProcess} requirements</li>
                         </ul>
                     </div>
                 </div>

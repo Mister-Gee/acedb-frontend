@@ -1,11 +1,11 @@
 const Breadcrumb = ({title, subTitle}) => {
 
-    let monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    // let monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
 
-    const currentDate = new Date()
-    const date = currentDate.getDate().toString().padStart(2, "0")
-    const month = currentDate.getMonth()
-    const year = currentDate.getFullYear()
+    // const currentDate = new Date()
+    // const date = currentDate.getDate().toString().padStart(2, "0")
+    // const month = currentDate.getMonth()
+    // const year = currentDate.getFullYear()
 
     return (
         <div className="breadcrumbs">

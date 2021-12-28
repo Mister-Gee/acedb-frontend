@@ -17,6 +17,8 @@ const SideMenu = ({ open, CloseMenu }) => {
     const {lastName} = useState(store)
     const {phoneNumber} = useState(store)
     const {email} = useState(store)
+    const {userId} = useState(store)
+
 
 
     const logout = () => {
@@ -26,6 +28,7 @@ const SideMenu = ({ open, CloseMenu }) => {
         lastName.set("")
         phoneNumber.set("")
         email.set("")
+        userId.set("")
         alertType.set("success")
         alertMessage.set("Logout Successful")
         alertNotification.set(true)

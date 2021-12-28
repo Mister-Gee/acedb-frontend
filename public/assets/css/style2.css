@@ -1424,13 +1424,13 @@
         height: 18px;
     }
     
-    .NoPaidFees {
-        margin: 0 32px 0 0;
+    /* .NoPaidFees {
+        margin: 0 12px 0 0;
     }
     
     .NoUnpaidFees {
         margin: 0 15px 0 0;
-    }
+    } */
     
     .StudentFeesButton {
         padding: 5px 30px !important;

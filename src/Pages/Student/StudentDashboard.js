@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Col, Row } from 'react-bootstrap';
 import StudentInfo from './subcomponents/StudentInfo';
 import RegistrationProgress from './subcomponents/RegistrationProgress';
-import Fees from './subcomponents/Fees';
+import SchoolYear from './subcomponents/SchoolYear';
 import PublicAnnouncement from './subcomponents/PublicAnnouncement';
 import RegisteredCourses from './subcomponents/Table';
 import ContentLoader from '../components/ContentLoader';
@@ -15,18 +15,19 @@ const StudentDashboard = () => {
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        setIsLoading(true)
         try{
             const fetch = async () => {
+                setIsLoading(true)
                 const res = await userDetails()
                 setUser(res.data)
+                setIsLoading(false)
             }
             fetch()
         }
         catch(err){
             console.log(err)
+            setIsLoading(false)
         }
-        setIsLoading(false)
     }, [])
 
     return (
@@ -50,7 +51,7 @@ const StudentDashboard = () => {
                             <RegistrationProgress />
                         </Col>
                         <Col lg={4}>
-                            <Fees />
+                            <SchoolYear />
                         </Col>
                     </Row>
                     <Row>

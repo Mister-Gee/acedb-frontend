@@ -25,6 +25,8 @@ const Login = () => {
     const {lastName} = useState(store)
     const {phoneNumber} = useState(store)
     const {email} = useState(store)
+    const {userId} = useState(store)
+
 
 
     useEffect(() => {
@@ -69,6 +71,7 @@ const Login = () => {
             if(status === 200){
                 localStorage.setItem("token", data.token)
                 role.set(data.role)
+                userId.set(data.userID)
                 firstName.set(data.firstName)
                 lastName.set(data.lastName)
                 phoneNumber.set(data.phoneNumber)

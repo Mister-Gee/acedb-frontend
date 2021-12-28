@@ -25,6 +25,7 @@ const DashboardFrame = ({ children, title, subTitle }) => {
     const {phoneNumber} = useState(store)
     const {email} = useState(store)
     const {alertType} = useState(store)
+    const {userId} = useState(store)
     const {alertNotification} = useState(store)
     const {alertMessage} = useState(store)
 
@@ -37,6 +38,7 @@ const DashboardFrame = ({ children, title, subTitle }) => {
                     lastName.set(user.data.lastName)
                     phoneNumber.set(user.data.phoneNumber)
                     email.set(user.data.email)
+                    userId.set(user.data.id)
                 }
             }  
             fetch()

@@ -1,9 +1,29 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Card} from "react-bootstrap"
-import {Data} from "./Data"
+import {getStudentRegCourses} from "../../../services/courseServices";
+import {useState} from "@hookstate/core";
+import store from '../../../store/store';
 
 
 function RegisteredCourses() {
+    const [regCourses, setRegCourses] = React.useState([])
+
+    const {userId} = useState(store)
+
+    useEffect(() => {
+        try{
+            const fetch = async () => {
+                const res = await getStudentRegCourses(userId.get())
+                setRegCourses(res.data)
+                console.log(regCourses)
+            }
+            fetch()
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    ,[])
     return (
         <Card style={{ marginBottom: "20px" }} className="RegisteredCoursesCard">
             <Card.Body className="">
@@ -14,18 +34,18 @@ function RegisteredCourses() {
                             <thead className="thead-light">
                             <tr>
                                 <th scope="col" width="50">S/N</th>
-                                    <th scope="col" width="300">Course Listing</th>
-                                    <th scope="col" width="200">Lectural</th>
-                                    <th scope="col" width="150">Location Hall</th>
+                                    <th scope="col" width="300">Course</th>
+                                    <th scope="col" width="200">Unit</th>
+                                    <th scope="col" width="150">Semester</th>
                             </tr>
                             </thead>
                             <tbody>
-                                {Data.map((d) => (
-                                <tr key={d.sn}>
-                                        <td className="TableContentColor">{ d.sn}</td>
-                                        <td className="TableContentColor">{d.courseListing}</td>
-                                        <td>{d.lectural}</td>
-                                        <td>{d.locationHall}</td>
+                                {regCourses.map((data, index) => (
+                                <tr key={data.id}>
+                                        <td className="TableContentColor">{ index + 1}</td>
+                                        <td className="TableContentColor">{data.courseID}</td>
+                                        <td>{data.courseUnit}</td>
+                                        <td>{data.semesterId}</td>
                             </tr> 
                                 ))}
                         </tbody>
