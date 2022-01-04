@@ -41,6 +41,61 @@ export const dateConverter = (format) => {
     return `${date} ${monthArray[month]}, ${year}`
 }
 
+export const dateTimeConverter = (format) => {
+    if (!format) return "";
+
+    let monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    let result = new Date(format)
+    let year = result.getFullYear()
+    let month = result.getMonth()
+    let date
+
+    let rawDate = result.getDate().toString().padStart(2, "0")
+
+    let lastDateDigit = rawDate.charAt(1)
+    let firstDateDigit = rawDate.charAt(0)
+
+    if (lastDateDigit === "1") {
+        if (firstDateDigit === "1") {
+            date = `${rawDate}th`
+        } else if (firstDateDigit === "0") {
+            date = `${rawDate}st`
+        } else {
+            date = `${rawDate}st`
+        }
+    } else if (lastDateDigit === "2") {
+        if (firstDateDigit === "1") {
+            date = `${rawDate}th`
+        } else {
+            date = `${rawDate}nd`
+        }
+    } else if (lastDateDigit === "3") {
+        if (firstDateDigit === "1") {
+            date = `${rawDate}th`
+        } else {
+            date = `${rawDate}rd`
+        }
+    } else {
+        date = `${rawDate}th`
+    }
+
+    let hour = result.getHours()
+    let min = result.getMinutes()
+
+    return `${hour}:${min} ${date} ${monthArray[month]}, ${year}`
+}
+
+export const timeConverter = (format) => {
+    if (!format) return "";
+
+    let result = new Date(format)
+   
+    let hour = result.getHours()
+    let min = result.getMinutes()
+
+    return `${hour}:${min}`
+}
+
 export const getUserFromLocalStorage = (token) => {
     try {
         const decoded = jwt_decode(token);

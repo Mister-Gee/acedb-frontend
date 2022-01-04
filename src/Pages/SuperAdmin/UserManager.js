@@ -20,7 +20,7 @@ const UserManager = () => {
     const [showAddEdit, setAddEdit] = useState(false)
     const [showAddDelete, setAddDelete] = useState(false)
     const [content, setContent] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const [offset, setOffset] = useState(0)
     const [perPage, setPerPage] = useState(5)

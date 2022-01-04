@@ -20,3 +20,10 @@ export const getGender = () => {
 export const GetCommonData = () => {
     return http.get("/api/ieducare/common/get")
 }
+export const getAcademicYears = () => {
+    return http.get("/ControlledData/AcademicYear/All")
+}
+
+export const getSemesters = () => {
+    return http.get("/ControlledData/Semester/All")
+}

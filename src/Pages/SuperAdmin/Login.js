@@ -26,9 +26,8 @@ const Login = () => {
     const {phoneNumber} = useState(store)
     const {email} = useState(store)
     const {userId} = useState(store)
-
-
-
+    const {deptID} = useState(store)
+    
     useEffect(() => {
         try{
             const isLoggedIn = async () => {
@@ -76,6 +75,7 @@ const Login = () => {
                 lastName.set(data.lastName)
                 phoneNumber.set(data.phoneNumber)
                 email.set(data.email)
+                deptID.set(data.departmentID)
                 alertType.set("success")
                 alertMessage.set("Login Successful")
                 alertNotification.set(true)

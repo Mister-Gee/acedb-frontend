@@ -15,7 +15,6 @@ function RegisteredCourses() {
             const fetch = async () => {
                 const res = await getStudentRegCourses(userId.get())
                 setRegCourses(res.data)
-                console.log(regCourses)
             }
             fetch()
         }
@@ -24,6 +23,7 @@ function RegisteredCourses() {
         }
     }
     ,[])
+
     return (
         <Card style={{ marginBottom: "20px" }} className="RegisteredCoursesCard">
             <Card.Body className="">
@@ -34,20 +34,20 @@ function RegisteredCourses() {
                             <thead className="thead-light">
                             <tr>
                                 <th scope="col" width="50">S/N</th>
-                                    <th scope="col" width="300">Course</th>
-                                    <th scope="col" width="200">Unit</th>
-                                    <th scope="col" width="150">Semester</th>
+                                <th scope="col" width="300">Course</th>
+                                <th scope="col" width="200">Unit</th>
+                                <th scope="col" width="150">Semester</th>
                             </tr>
                             </thead>
                             <tbody>
                                 {regCourses.map((data, index) => (
                                 <tr key={data.id}>
                                         <td className="TableContentColor">{ index + 1}</td>
-                                        <td className="TableContentColor">{data.courseID}</td>
+                                        <td className="TableContentColor">{data.course}</td>
                                         <td>{data.courseUnit}</td>
-                                        <td>{data.semesterId}</td>
-                            </tr> 
-                                ))}
+                                        <td>{data.semester}</td>
+                                </tr> 
+                                    ))}
                         </tbody>
                     </table>
                     </div>

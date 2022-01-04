@@ -69,43 +69,37 @@ const SideMenu = ({ open, CloseMenu }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink  to="/finances" >
-                                <span className="iconify" data-icon="mdi:finance" data-inline="false"></span>
-                                Finance
+                            <NavLink  to="/courses" >
+                                <span className="iconify" data-icon="akar-icons:book" data-inline="false"></span>
+                                Courses
                            </NavLink>
                         </li>
                         <li>
-                            <NavLink  to="/academics">
-                                <span className="iconify" data-icon="mdi:google-classroom" data-inline="false"></span>
-                                Academics
-                            </NavLink>
+                            <NavLink  to="/attendance" >
+                                <span className="iconify" data-icon="mdi:notebook-check-outline" data-inline="false"></span>
+                                Attendance
+                           </NavLink>
                         </li>
                         <li>
-                            <Link  to="#">
+                            <Link  to="/timetable">
                                 <span className="iconify" data-icon="bx:bx-spreadsheet" data-inline="false"></span>
-                                Results
+                                Exam TimeTable
                             </Link>
                         </li>
-                        {/* <li>
+                        <li>
                             <Link  to="#">
                             <span className="iconify" data-icon="heroicons-outline:document-report" data-inline="false"></span>
-                                Reports
-                            </Link>
-                        </li> */}
-                        <li>
-                            <Link  to="#">
-                                <span className="iconify" data-icon="codicon:request-changes" data-inline="false"></span>
-                                Request
+                                Result
                             </Link>
                         </li>
                         <li>
                             <Link  to="#">
-                                <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> Notification
+                                <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> Annoucements
                             </Link>
                         </li>
                         <li>
                             <Link to="#">
-                                <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span>Support
+                                <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span>Complaints
                             </Link>
                         </li>
                         <li>

@@ -1709,6 +1709,37 @@
         .NoUnpaidFees {
             margin: 0 15px 0 0;
         } */
+
+        .regcBtn{
+            background-color: #219653 !important;
+            color: #FFFFFF !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+        }
+
+        .regcBtn:hover{
+            background-color: transparent !important;
+            color: #219653 !important;
+            border: 1px solid #219653;
+        }
+
+        .addBtn{
+            padding: 15px 20px !important;
+        }
+
+        .delBin{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .delBin .iconify{
+            font-size: 21px;
+            color: #d82929;
+            font-weight: bold;
+        }
         
         .StudentFeesButton {
             padding: 5px 30px !important;
@@ -2407,7 +2438,6 @@
         }
         
         .AcademicsModalAlert {
-            background: #F8D7DA;
             border-radius: 2px;
             padding: 5px 10px;
             font-family: Poppins;
@@ -2416,10 +2446,23 @@
             font-size: 12px;
             line-height: 18px;
             text-align: center;
-            color: #721C24;
             margin-bottom: 20px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+            -o-border-radius: 2px;
         }
         
+        .AcademicsModalAlertBg-danger{
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .AcademicsModalAlertBg-success{
+            background: #def8d7;
+            color: #1c7227;
+        }
+
         .CircleAlertIcon {
             font-size: 19px;
             margin-right: 10px;

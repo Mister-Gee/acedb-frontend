@@ -1,67 +1,35 @@
-import { useState, useEffect } from 'react'
-import { studentAcademicsData } from "./Data"
 
-function ModalTable() {
-
-    const [isSelected, setIsSelected] = useState([])
-
-    useEffect(() => {
-        setIsSelected(
-            studentAcademicsData.map((userData) => {
-                return {
-                    select: false,
-                    ProgramStudy: userData.ProgramStudy,
-                    id: userData.id,
-                    unit: userData.unit,
-                    eligibility: userData.eligibility,
-                    CourseType: userData.CourseType,
-                    Start: userData.Start,
-                    Completion: userData.Completion,
-                }
-            }))
-    }, [])
+function ModalTable({data, handleDelete}) {
 
     return (
         <table class="table table-bordered AcademicModalTable">
             <thead class="thead-light">
                 <tr>
-                    <th className="AcademicModalCheckBox">
-                        <input type="checkbox" onChange={(e) => {
-                            let checked = e.target.checked
-                            setIsSelected(isSelected.map((d) => {
-                                d.select = checked
-                                return d
-                            }))
-                        }}></input></th>
-                    <th scope="col">Program of Study</th>
-                    <th scope="col">Unit</th>
-                    <th scope="col">Eligibilty</th>
-                    <th scope="col">Course Type</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Expected Completion</th>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Course Code</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Course Description</th>
+                    <th scope="col">Lecturer</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">School</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {isSelected.map((userData) => (
+                {data.map((userData, index) => (
                     <tr key={userData.id}>
-                        <td className="AcademicModalCheckBox">
-                            <input className="AcademicModalCheckBoxBorder" onChange={(e) => {
-                                let checked = e.target.checked;
-                                setIsSelected(isSelected.map((d) => {
-                                    if (userData.id === d.id) {
-                                        d.select = checked;
-                                    }
-                                    return d
-                                }))
-                            }} type="checkbox" checked={userData.select}>
-                            </input>
+                        <td>{index + 1}</td>
+                        <td>{userData.courseCode}</td>
+                        <td>{userData.courseTitle}</td>
+                        <td>{userData.courseDescription}</td>
+                        <td>{userData.leadLecturer}</td>
+                        <td>{userData.department}</td>
+                        <td>{userData.school}</td>
+                        <td>
+                            <span className="delBin" onClick={() => handleDelete(userData.id)}>
+                                <span className="iconify" data-icon="ant-design:delete-filled"></span>
+                            </span>
                         </td>
-                        <td>{userData.ProgramStudy}</td>
-                        <td>{userData.unit}</td>
-                        <td>{userData.eligibility}</td>
-                        <td>{userData.CourseType}</td>
-                        <td>{userData.Start}</td>
-                        <td>{userData.Completion}</td>
                     </tr>
                 ))}
             </tbody>

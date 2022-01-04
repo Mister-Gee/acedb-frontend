@@ -10,7 +10,7 @@ import StudentLogin from '../Pages/Student/StudentLogin';
 import StudentDashboard from '../Pages/Student/StudentDashboard';
 import StudentProfile from '../Pages/Student/StudentProfile';
 import Academics from '../Pages/Student/Academics';
-import Finances from '../Pages/Student/Finances';
+import Courses from '../Pages/Student/Courses';
 import Results from '../Pages/Student/Results';
 import ForgotPassword from '../Pages/SuperAdmin/ForgotPassword';
 import ProtectedRoute from '../Routing/ProtectedRoute';
@@ -28,6 +28,8 @@ import StaffDesignation from '../Pages/Admin/StaffDesignation';
 import LectureManagement from '../Pages/Admin/LectureManagement';
 import ProgramLevels from '../Pages/Admin/ProgramLevels';
 import CourseGrade from '../Pages/Admin/CourseGrade';
+import Attendance from '../Pages/Student/Attendance';
+import Timetable from '../Pages/Student/Timetable';
 
 const Routes = () => {
     return (
@@ -50,6 +52,12 @@ const Routes = () => {
           <ProtectedRoute path="/institutions">
             <Institutions/>
           </ProtectedRoute>
+          <ProtectedRoute path="/attendance">
+            <Attendance />
+          </ProtectedRoute>
+          <ProtectedRoute path="/timetable">
+            <Timetable />
+          </ProtectedRoute>
           <ProtectedRoute path="/user-manager">
             <UserManager />
           </ProtectedRoute>
@@ -68,8 +76,8 @@ const Routes = () => {
           <Route path="/academics">
             <Academics/>
           </Route>
-          <Route path="/finances">
-            <Finances/>
+          <Route path="/courses">
+            <Courses/>
           </Route>
           <Route path="/results">
             <Results/>

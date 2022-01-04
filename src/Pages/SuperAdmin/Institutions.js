@@ -23,7 +23,7 @@ const Institutions = (props) => {
     const [perPage, setPerPage] = useState(5)
     const [pageCount, setPageCount] = useState(0)
     const [contentLength, setContentLength] = useState(0)
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [realIndex, setRealIndex] = useState(1)
 
 

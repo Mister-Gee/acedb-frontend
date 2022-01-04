@@ -34,8 +34,8 @@ function RegistrationProgress() {
                             pathColor: "#FDC600",
                             textColor: '#333333',
                             })} className="bar"
-                            value={progress.progressPercent}
-                            text={`${progress.progressPercent}%`} />
+                            value={progress.progressPercent ? progress.progressPercent : 0}
+                            text={`${progress.progressPercent ? progress.progressPercent : 0}%`} />
                     </div>
                     <div className="ProgressBarDelatils2">
                         <ul>

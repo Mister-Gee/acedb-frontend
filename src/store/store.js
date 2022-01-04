@@ -10,6 +10,7 @@ const store = createState({
     firstName: '',
     lastName: '',
     phoneNumber: '',
+    deptID: ''
 
 })
 

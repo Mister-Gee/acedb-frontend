@@ -1394,7 +1394,7 @@
     
     .StudentInfoBody .StudentInfoBodyTileAns {
         font-weight: normal;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 18px;
         color: #4F4F4F;
     }
@@ -2141,7 +2141,6 @@
     }
     
     .AcademicsModalAlert {
-        background: #F8D7DA;
         border-radius: 2px;
         padding: 5px 10px;
         font-family: Poppins;
@@ -2150,9 +2149,12 @@
         font-size: 12px;
         line-height: 18px;
         text-align: center;
-        color: #721C24;
         margin-bottom: 20px;
-    }
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+}
     
     .CircleAlertIcon {
         font-size: 19px;

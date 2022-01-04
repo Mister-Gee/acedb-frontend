@@ -28,6 +28,8 @@ const DashboardFrame = ({ children, title, subTitle }) => {
     const {userId} = useState(store)
     const {alertNotification} = useState(store)
     const {alertMessage} = useState(store)
+    const {deptID} = useState(store)
+
 
     useEffect(() => {
         try{
@@ -39,6 +41,7 @@ const DashboardFrame = ({ children, title, subTitle }) => {
                     phoneNumber.set(user.data.phoneNumber)
                     email.set(user.data.email)
                     userId.set(user.data.id)
+                    deptID.set(user.data.departmentID)
                 }
             }  
             fetch()

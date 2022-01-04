@@ -1,31 +1,9 @@
 import { Row, Col, Container } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import { Loading, SubmitBtn } from './LoginBtns';
-import { withStyles } from '@mui/styles';
+import StyledTextField from './StyledTextField';
 
-const StyledTextField = withStyles({
-    root: {
-      '& label.Mui-focused': {
-        color: '#16BC5D',
-      },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: '#16BC5D',
-      },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: '#333333',
-        },
-        '&:hover fieldset': {
-          borderColor: '#16BC5D',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: '#16BC5D',
-        },
-      },
-    },
-  })(TextField);
 
 const LoginForm = ({ initialValues, onSubmit, validationSchema, btnState }) => {
 
