@@ -30,6 +30,8 @@ import ProgramLevels from '../Pages/Admin/ProgramLevels';
 import CourseGrade from '../Pages/Admin/CourseGrade';
 import Attendance from '../Pages/Student/Attendance';
 import Timetable from '../Pages/Student/Timetable';
+import StudentExamRecords from '../Pages/Student/StudentExamRecords';
+import StudentAnnoucement from '../Pages/Student/StudentAnnoucement';
 
 const Routes = () => {
     return (
@@ -58,6 +60,9 @@ const Routes = () => {
           <ProtectedRoute path="/timetable">
             <Timetable />
           </ProtectedRoute>
+          <ProtectedRoute path="/exam-result">
+            <StudentExamRecords />
+          </ProtectedRoute>
           <ProtectedRoute path="/user-manager">
             <UserManager />
           </ProtectedRoute>
@@ -66,6 +71,9 @@ const Routes = () => {
           </ProtectedRoute>
           <ProtectedRoute path="/license-manager">
             <LicenseManager />
+          </ProtectedRoute>
+          <ProtectedRoute path="/student-annoucement">
+            <StudentAnnoucement />
           </ProtectedRoute>
           <Route path="/mydashboard">
             <StudentDashboard/>

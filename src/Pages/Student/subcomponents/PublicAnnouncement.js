@@ -13,7 +13,7 @@ function PublicAnnouncement() {
         try{
             const fetch = async () => {
                 const res = await getAllAnnoucements()
-                setAnnoucements(res.data)
+                setAnnoucements(res.data.splice(0, 5))
             }
             fetch()
         }
@@ -25,7 +25,7 @@ function PublicAnnouncement() {
 
     const onClick = () => {
         history.push({
-            pathname: "/annoucements"
+            pathname: "/student-annoucement"
         })
     }
 

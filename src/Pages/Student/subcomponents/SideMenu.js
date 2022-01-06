@@ -87,13 +87,13 @@ const SideMenu = ({ open, CloseMenu }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link  to="#">
+                            <Link  to="/exam-result">
                             <span className="iconify" data-icon="heroicons-outline:document-report" data-inline="false"></span>
                                 Result
                             </Link>
                         </li>
                         <li>
-                            <Link  to="#">
+                            <Link  to="/student-annoucement">
                                 <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> Annoucements
                             </Link>
                         </li>
