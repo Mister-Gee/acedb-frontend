@@ -117,19 +117,19 @@ const SideMenu = () => {
                             <span className="iconify" data-icon="clarity:directory-outline-badged" data-inline="false"></span> Lecture Management
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink exact to="/financials">
                                 <span className="iconify" data-icon="mdi:bank-outline" data-inline="false"></span> 
                                 Financials
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             <NavLink exact to="/results-management"> 
                             <span className="iconify" data-icon="foundation:results-demographics" data-inline="false"></span> 
                                 Results Management
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink exact to="/hostel-management"> 
                                 <span className="iconify" data-icon="whh:legacyfilemanager" data-inline="false"></span> 
                                 Hostel Management 
@@ -139,22 +139,22 @@ const SideMenu = () => {
                             <NavLink exact to="/transport-management">
                             <span className="iconify" data-icon="whh:legacyfilemanager" data-inline="false"></span> Transport Management
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
-                            <NavLink exact to="/results-management"> 
+                            <NavLink exact to="#"> 
                             <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> 
                             Announcement 
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink exact to="/hostel-management"> 
                                 <span className="iconify" data-icon="ic:outline-notifications-active" data-inline="false"></span> 
                                 Request 
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
-                            <NavLink exact to="/transport-management">
-                            <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span> Support
+                            <NavLink exact to="">
+                            <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span> Complaints
                             </NavLink>
                         </li>
                         <li>

@@ -8,7 +8,7 @@ import DeleteLevels from './subcomponent/DeleteLevels';
 import PaginationComponent from './subcomponent/PaginationComponent';
 import ContentLoader from '../components/ContentLoader';
 import {getProgramLevel} from '../../services/institutionAdminServices';
-import {getInstitutionId, search, tableIndex} from '../../utils/Functions';
+import {search, tableIndex} from '../../utils/Functions';
 
 const ProgramLevels = () => {
     const [addNew, setAddNew] = useState(false)
@@ -16,7 +16,6 @@ const ProgramLevels = () => {
     const [addDelete, setAddDelete] = useState(false)
     const [programLevelData, setProgramLevelData] = useState([])
     const [programLevelEditData, setProgramLevelEditData] = useState([])
-    const institutionId = getInstitutionId()
     
     const [slicedData, setSlicedData] = useState([])
     const [searchData, setSearchData] = useState([])
@@ -44,7 +43,7 @@ const ProgramLevels = () => {
     useEffect(() => {
         setIsLoading(true)
         const fetchData = async() => {
-            const res = await getProgramLevel(institutionId)
+            const res = await getProgramLevel()
             const data = res.data
             const slicedData = data.slice(offset * perPage, offset + perPage)
             setSlicedData(slicedData)
@@ -55,7 +54,7 @@ const ProgramLevels = () => {
             setIsLoading(false)
         } 
         fetchData()
-    }, [offset, perPage, contentLength, institutionId])
+    }, [offset, perPage, contentLength])
 
     const handlePageClick = (e) => {
         const selectedPage = e.selected;
@@ -64,9 +63,9 @@ const ProgramLevels = () => {
     }
 
     return (
-        <Dashboardframe title="Admin" subTitle="Program Levels">
+        <Dashboardframe title="MIS" subTitle="Program Levels">
             <Helmet>
-                <title>Program Levels | iEduCare</title>
+                <title>Program Levels | Adeyemi College Of Education</title>
             </Helmet>
             <NewLevels show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength}/>
             <EditLevels show={addEdit} onHide={() => setAddEdit(false)} contentLength={contentLength} setContentLength={setContentLength} data={programLevelEditData}/>
@@ -111,8 +110,7 @@ const ProgramLevels = () => {
                                         <thead>
                                             <tr>
                                             <th>S/N</th>
-                                            <th>Level Code</th>
-                                            <th>Description</th>
+                                            <th>Level</th>
                                             <th>Action</th>
                                             </tr>
                                         </thead>
@@ -120,8 +118,7 @@ const ProgramLevels = () => {
                                         {programLevelData.map((data, index) => (
                                                 <tr key={data.id}>
                                                     <td>{tableIndex(index, realIndex)}</td>
-                                                    <td>{data.levelCode}</td>
-                                                    <td>{data.description}</td>
+                                                    <td>{data.name}</td>
                                                     <td>
                                                     <span className="btns">
                                                         <span

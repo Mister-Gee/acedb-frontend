@@ -1,23 +1,19 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
-import TextField from '@material-ui/core/TextField';
 import * as Yup from 'yup';
 import {useState} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getInstitutionId, getWebUserId} from '../../../utils/Functions';
 import {createCourseGrade} from '../../../services/institutionAdminServices';
+import StyledTextField from '../../components/StyledTextField';
 
 const NewCourseGrade = (props) => {
     const[showAlert, setShowAlert] = useState(false) 
     const[alertType, setAlertType] = useState("")
     const[message, setMessage] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
-    const institutionId = getInstitutionId()
-    const userId = getWebUserId()
 
     
     const onSubmit = async(data) => {
-        console.log(data)
         setIsSubmit(true)
         try {
             const res = await createCourseGrade(data)
@@ -45,21 +41,17 @@ const NewCourseGrade = (props) => {
     }
 
     const initialValues = {
-        code: '',
-        remark: '',
-        gradeScore: 0,
-        minimumScore: 0,
-        maximumScore: 0,
-        institutionId: institutionId,
-        createdBy: userId
+        startingScore: 0,
+        endingScore: 0,
+        gradePoint: 0,
+        letterGrade: ""
     }
 
     const validationSchema = Yup.object({
-        code: Yup.string().required("Grade Code is Required"),
-        remark: Yup.string().required("Grade Remark is Required "),
-        gradeScore: Yup.number().required("Grade Score is Required "),
-        minimumScore: Yup.number().required("Grade Score is Required "),
-        maximumScore: Yup.number().required("Maximum Score is Required ")
+        startingScore: Yup.number().required("Minimum Score is Required"),
+        endingScore: Yup.number().required("Maximum Score is Required "),
+        gradePoint: Yup.number().required("Grade Point is Required "),
+        letterGrade: Yup.string().required("Grade is Required "),
     })
 
     const formik = useFormik({
@@ -89,20 +81,20 @@ const NewCourseGrade = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        name="code" 
-                                        id="code" 
-                                        label="Grade Code" 
+                                    <StyledTextField 
+                                        name="letterGrade" 
+                                        id="letterGrade" 
+                                        label="Grade" 
                                         margin="normal"
-                                        placeholder="Grade Code"
+                                        placeholder="Grade"
                                         InputLabelProps={{
                                         shrink: true,
                                         }}
                                         variant="outlined"
-                                        value={formik.values.code}
+                                        value={formik.values.letterGrade}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.code && Boolean(formik.errors.code)}
-                                        helperText={formik.touched.code && formik.errors.code}
+                                        error={formik.touched.letterGrade && Boolean(formik.errors.letterGrade)}
+                                        helperText={formik.touched.letterGrade && formik.errors.letterGrade}
                                     />
                                 </div>
                             </Col>
@@ -110,34 +102,13 @@ const NewCourseGrade = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        name="remark" 
-                                        id="remark" 
-                                        placeholder="Remark"
-                                        label="Remark" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.remark}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.remark && Boolean(formik.errors.remark)}
-                                        helperText={formik.touched.remark && formik.errors.remark}
-                                        />
-                                    </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col lg={12} md={12} sm={12}>
-                                    <div className="form-group" id="new-session-textfield">
-                                    <TextField 
+                                    <StyledTextField 
                                         type="number"
-                                        name="gradeScore" 
-                                        id="gradeScore" 
-                                        label="Grade Score" 
+                                        name="gradePoint" 
+                                        id="gradePoint" 
+                                        label="Grade Point" 
                                         margin="normal"
-                                        placeholder="Grade Score"
+                                        placeholder="Grade Point"
                                         InputLabelProps={{
                                         shrink: true,
                                         }}
@@ -145,10 +116,10 @@ const NewCourseGrade = (props) => {
                                         min: "0",
                                         }}
                                         variant="outlined"
-                                        value={formik.values.gradeScore}
+                                        value={formik.values.gradePoint}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.gradeScore && Boolean(formik.errors.gradeScore)}
-                                        helperText={formik.touched.gradeScore && formik.errors.gradeScore}
+                                        error={formik.touched.gradePoint && Boolean(formik.errors.gradePoint)}
+                                        helperText={formik.touched.gradePoint && formik.errors.gradePoint}
                                     />
                                 </div>
                             </Col>
@@ -156,10 +127,10 @@ const NewCourseGrade = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
+                                    <StyledTextField 
                                         type="number"
-                                        name="minimumScore" 
-                                        id="minimumScore" 
+                                        name="startingScore" 
+                                        id="startingScore" 
                                         placeholder="Minimum Score"
                                         label="Minimum Score" 
                                         margin="normal"
@@ -167,10 +138,10 @@ const NewCourseGrade = (props) => {
                                         shrink: true,
                                         }}
                                         variant="outlined"
-                                        value={formik.values.minimumScore}
+                                        value={formik.values.startingScore}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.minimumScore && Boolean(formik.errors.minimumScore)}
-                                        helperText={formik.touched.minimumScore && formik.errors.minimumScore}
+                                        error={formik.touched.startingScore && Boolean(formik.errors.startingScore)}
+                                        helperText={formik.touched.startingScore && formik.errors.startingScore}
                                         />
                                     </div>
                             </Col>
@@ -178,10 +149,10 @@ const NewCourseGrade = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
+                                    <StyledTextField 
                                         type="number"
-                                        name="maximumScore" 
-                                        id="maximumScore" 
+                                        name="endingScore" 
+                                        id="endingScore" 
                                         placeholder="Maximum Score"
                                         label="Maximum Score" 
                                         margin="normal"
@@ -189,10 +160,10 @@ const NewCourseGrade = (props) => {
                                         shrink: true,
                                         }}
                                         variant="outlined"
-                                        value={formik.values.maximumScore}
+                                        value={formik.values.endingScore}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.maximumScore && Boolean(formik.errors.maximumScore)}
-                                        helperText={formik.touched.maximumScore && formik.errors.maximumScore}
+                                        error={formik.touched.endingScore && Boolean(formik.errors.endingScore)}
+                                        helperText={formik.touched.endingScore && formik.errors.endingScore}
                                         />
                                     </div>
                             </Col>

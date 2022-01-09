@@ -65,9 +65,9 @@ const CourseGrade = () => {
     }
 
     return (
-        <Dashboardframe title="Admin" subTitle="Course Grades">
+        <Dashboardframe title="MIS" subTitle="Course Grades">
             <Helmet>
-                <title>Course Grades | iEduCare</title>
+                <title>Course Grades | Adeyemi College Of Education</title>
             </Helmet>
             <NewCourseGrade show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength}/>
             <EditCourseGrade show={addEdit} onHide={() => setAddEdit(false)} contentLength={contentLength} setContentLength={setContentLength} data={courseGradeEditData}/>
@@ -112,9 +112,8 @@ const CourseGrade = () => {
                                         <thead>
                                             <tr>
                                             <th>S/N</th>
-                                            <th>Grade Code</th>
-                                            <th>Remark</th>
-                                            <th>Grade Score</th>
+                                            <th>Grade</th>
+                                            <th>Grade Point</th>
                                             <th>Minimum Score</th>
                                             <th>Maximum Score</th>
                                             <th>Action</th>
@@ -124,11 +123,10 @@ const CourseGrade = () => {
                                         {courseGradeData.map((data, index) => (
                                                 <tr key={data.id}>
                                                     <td>{tableIndex(index, realIndex)}</td>
-                                                    <td>{data.code}</td>
-                                                    <td>{data.remark}</td>
-                                                    <td>{data.gradeScore}</td>
-                                                    <td>{data.minimumScore}</td>
-                                                    <td>{data.maximumScore}</td>
+                                                    <td>{data.letterGrade}</td>
+                                                    <td>{data.gradePoint}</td>
+                                                    <td>{data.startingScore}</td>
+                                                    <td>{data.endingScore}</td>
                                                     <td>
                                                     <span className="btns">
                                                         <span
@@ -171,7 +169,7 @@ const CourseGrade = () => {
                                 </div>
                             </Col>
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <Col>
                                 <div className="form-group" id="gradepoint-textfield">
                                     <TextField 
@@ -188,7 +186,7 @@ const CourseGrade = () => {
                                     <button className="save-mgp-btn mt-3">Save</button>
                                 </div>
                             </Col>  
-                        </Row>
+                        </Row> */}
                     </Container>
                 </div>
             </div>

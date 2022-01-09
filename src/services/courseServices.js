@@ -29,3 +29,35 @@ export const getStudentEligibleCourse = (DepartmentID) => {
 export const registerCourse = (data) => {
     return http.post("/CourseRegisteration/Register", data)
 }
+
+export const getCourse = () => {
+    return instance.get("/Course/All")
+}
+
+export const getCourseBySchool = (SchoolID) => {
+    return instance.get(`/Course/Get/School/${SchoolID}`)
+}
+
+export const getCourseByDept = (DepartmentID) => {
+    return instance.get(`/Course/Get/Department/${DepartmentID}`)
+}
+
+export const getCourseByLecturer = (LecturerID) => {
+    return instance.get(`/Course/Get/ByLecturer/${LecturerID}`)
+}
+
+export const getCourseByID = (ID) => {
+    return instance.get(`/Course/Get/${ID}`)
+}
+
+export const createCourse = (data) => {
+    return instance.post("/Course/Create", data)
+}
+
+export const editCourse = (Id, data) => {
+    return instance.put(`/Course/Edit/${Id}`, data)
+}
+
+export const deleteCourse = (Id) => {
+    return instance.delete(`/Course/Delete/${Id}`)
+}

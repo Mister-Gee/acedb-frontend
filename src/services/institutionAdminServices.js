@@ -104,34 +104,34 @@ export const deleteProgram = (Id) => {
     return instance.delete(`/ControlledData/Programme/Delete/${Id}`)
 }
 
-export const getProgramLevel = (institutionId) => {
-    return instance.get(`/api/ieducare/programlevel/get/${institutionId}`)
+export const getProgramLevel = () => {
+    return instance.get("/ControlledData/Level/All")
 }
 
 export const createProgramLevel = (data) => {
-    return instance.post("/api/ieducare/programlevel/post", data)
+    return instance.post("/ControlledData/Level/Create", data)
 }
 
-export const editProgramLevel = (programLevelId, levelCode, description, institutionId, createdBy) => {
-    return instance.put(`/api/ieducare/programlevel/edit/${programLevelId}?Id=${programLevelId}&LevelCode=${levelCode}&Description=${description}&InstitutionId=${institutionId}&CreatedBy=${createdBy}`)
+export const editProgramLevel = (Id, data) => {
+    return instance.put(`/ControlledData/Level/Edit/${Id}`, data)
 }
 
-export const deleteProgramLevel = (id) => {
-    return instance.delete(`/api/ieducare/programlevel/remove/${id}`)
+export const deleteProgramLevel = (Id) => {
+    return instance.delete(`/ControlledData/Level/Delete/${Id}`)
 }
 
-export const getCourseGrade = (institutionId) => {
-    return instance.get(`/api/ieducare/coursegrade/get/${institutionId}`)
+export const getCourseGrade = () => {
+    return instance.get("/GradingUnit/All")
 }
 
 export const createCourseGrade = (data) => {
-    return instance.post("/api/ieducare/coursegrade/post", data)
+    return instance.post("/GradingUnit/Create", data)
 }
 
-export const editCourseGrade = (courseGradeId, code, remark, gradeScore, minScore, maxScore, institutionId, createdBy) => {
-    return instance.put(`/api/ieducare/coursegrade/edit/${courseGradeId}?Id=${courseGradeId}&Code=${code}&Remark=${remark}&GradeScore=${gradeScore}&MinimumScore=${minScore}&MaximumScore=${maxScore}&InstitutionId=${institutionId}&CreatedBy=${createdBy}`)
+export const editCourseGrade = (Id, data) => {
+    return instance.put(`/GradingUnit/Edit/${Id}`, data)
 }
 
-export const deleteCourseGrade = (id) => {
-    return instance.delete(`/api/ieducare/coursegrade/remove/${id}`)
+export const deleteCourseGrade = (Id) => {
+    return instance.delete(`/GradingUnit/Delete/{Id}`)
 }

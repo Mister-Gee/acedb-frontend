@@ -1,19 +1,16 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
-import TextField from '@material-ui/core/TextField';
 import * as Yup from 'yup';
 import {useState} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getInstitutionId, getWebUserId} from '../../../utils/Functions';
 import {createProgramLevel} from '../../../services/institutionAdminServices';
+import StyledTextField from '../../components/StyledTextField';
 
 const NewLevel = (props) => {
     const[showAlert, setShowAlert] = useState(false) 
     const[alertType, setAlertType] = useState("")
     const[message, setMessage] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
-    const institutionId = getInstitutionId()
-    const userId = getWebUserId()
 
     
     const onSubmit = async(data) => {
@@ -44,15 +41,11 @@ const NewLevel = (props) => {
     }
 
     const initialValues = {
-        levelCode: 0,
-        description: '',
-        institutionId: institutionId,
-        createdBy: userId
+        name: '',
     }
 
     const validationSchema = Yup.object({
-        levelCode: Yup.number().required("Level Code is Required"),
-        description: Yup.string().required("Description is Required ")
+        name: Yup.string().required("Level is Required")
     })
 
     const formik = useFormik({
@@ -82,49 +75,22 @@ const NewLevel = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        type="number"
-                                        name="levelCode" 
-                                        id="levelCode" 
-                                        label="Level Code" 
+                                    <StyledTextField 
+                                        name="name" 
+                                        id="name" 
+                                        label="Level" 
                                         margin="normal"
-                                        placeholder="Level Code"
+                                        placeholder="Level"
                                         InputLabelProps={{
                                         shrink: true,
                                         }}
-                                        inputProps={{   
-                                        step: "100",
-                                        min: "0",
-                                        max: "800"
-                                        }}
                                         variant="outlined"
-                                        value={formik.values.levelCode}
+                                        value={formik.values.name}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.levelCode && Boolean(formik.errors.levelCode)}
-                                        helperText={formik.touched.levelCode && formik.errors.levelCode}
+                                        error={formik.touched.name && Boolean(formik.errors.name)}
+                                        helperText={formik.touched.name && formik.errors.name}
                                     />
                                 </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col lg={12} md={12} sm={12}>
-                                    <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        name="description" 
-                                        id="description" 
-                                        placeholder="Description"
-                                        label="Description" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.description}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.description && Boolean(formik.errors.description)}
-                                        helperText={formik.touched.description && formik.errors.description}
-                                        />
-                                    </div>
                             </Col>
                         </Row>
                     </Container>
