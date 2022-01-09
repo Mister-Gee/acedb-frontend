@@ -1,12 +1,11 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
-import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import * as Yup from 'yup';
 import {useState, useEffect} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getInstitutionId, getWebUserId} from '../../../utils/Functions';
-import {editDepartment, getSchool, getFaculty} from '../../../services/institutionAdminServices';
+import {editDepartment, getSchool} from '../../../services/institutionAdminServices';
+import StyledTextField from '../../components/StyledTextField';
 
 const EditDepartment = (props) => {
     const {data} = props
@@ -16,23 +15,20 @@ const EditDepartment = (props) => {
     const[message, setMessage] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
     const [school, setSchool] = useState([])
-    const [faculty, setFaculty] = useState([])
-    const institutionId = getInstitutionId()
-    const userId = getWebUserId()
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await getSchool(institutionId)
+            const res = await getSchool()
             const data = res.data
             setSchool(data)
         } 
         fetchData()
-    }, [institutionId])
-
-    const onSubmit = async(data) => {
+    }, [])
+    
+    const onSubmit = async(editData) => {
         setIsSubmit(true)
         try {
-            const res = await editDepartment(data.id, data.name, data.institutionId, data.schoolId, data.facultyId, data.headId)
+            const res = await editDepartment(data.id, editData)
             if (res.status === 200 || res.status === 204){
                 setIsSubmit(false)
                 setAlertType("success")
@@ -57,20 +53,13 @@ const EditDepartment = (props) => {
     }
 
     const initialValues = {
-        id: data.id,
         name: data.name,
-        institutionId: data.institutionId,
-        schoolId: data.schoolId,
-        facultyId: data.facultyId,
-        headId: data.headId,
-        createdBy: userId
+        schoolId: data.schoolId
     }
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Department Name is Required"),
-        schoolId: Yup.string().required("School Name is Required"),
-        facultyId: Yup.string().required("Faculty Name is required"),
-        // headId: Yup.string().required("HOD is required"),
+        schoolId: Yup.string().required("School is Required")
     })
 
     const formik = useFormik({
@@ -80,19 +69,10 @@ const EditDepartment = (props) => {
         validationSchema
     })
 
-    useEffect(() => {
-        const fetchData = async() => {
-            const res = await getFaculty(institutionId, formik.values.schoolId)
-            const data = res.data
-            setFaculty(data)
-        } 
-        fetchData()
-    }, [institutionId, formik.values.schoolId])
-
     return (
         <Modal {...props} 
             aria-labelledby="contained-modal-title-vcenter"
-            size="lg"
+            size="sm"
             centered
             className="add-new-modal"
         >
@@ -106,9 +86,9 @@ const EditDepartment = (props) => {
                         <Container>        
                         {showAlert && <PopupAlert alertType={alertType} setShowAlert={setShowAlert} message={message}/>}   
                         <Row>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="customSelect-input">
-                                    <TextField 
+                            <Col lg={12} md={12} sm={12}>
+                                    <div className="form-group" id="new-session-textfield">
+                                    <StyledTextField 
                                         name="name" 
                                         id="name" 
                                         label="Department Name" 
@@ -124,60 +104,13 @@ const EditDepartment = (props) => {
                                     />
                                 </div>
                             </Col>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="select-input">
-                                    <TextField 
-                                        select 
-                                        name="headId" 
-                                        id="headId"
-                                        label="H.O.D" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        // value={formik.values.headId}
-                                        // onChange={formik.handleChange}
-                                        // error={formik.touched.headId && Boolean(formik.errors.headId)}
-                                        // helperText={formik.touched.headId && formik.errors.headId}
-                                    >
-                                        <MenuItem value="">Select HOD</MenuItem>
-                                    </TextField>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="select-input">
-                                    <TextField 
-                                        select 
-                                        name="facultyId" 
-                                        id="facultyId" 
-                                        label="Faculty" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.facultyId}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.facultyId && Boolean(formik.errors.facultyId)}
-                                        helperText={formik.touched.facultyId && formik.errors.facultyId}
-                                    >
-                                        {faculty.map(data => (
-                                            <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem> 
-                                        ))} 
-                                    </TextField>
-                                    </div>
-                            </Col>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="select-input">
-                                    <TextField 
+                            <Col lg={12} md={12} sm={12}>
+                                    <div className="form-group" id="new-session-textfield">
+                                    <StyledTextField 
                                         select
                                         name="schoolId" 
                                         id="schoolId"
                                         label="School"
-                                        disabled={true} 
                                         margin="normal"
                                         InputLabelProps={{
                                         shrink: true,
@@ -191,7 +124,7 @@ const EditDepartment = (props) => {
                                         {school.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem> 
                                         ))}  
-                                    </TextField>
+                                    </StyledTextField>
                                 </div>
                             </Col>
                         </Row>

@@ -1,12 +1,11 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
-import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import * as Yup from 'yup';
 import {useState, useEffect} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getInstitutionId, getWebUserId} from '../../../utils/Functions';
-import {createDepartment, getSchool, getFaculty} from '../../../services/institutionAdminServices';
+import {createDepartment, getSchool} from '../../../services/institutionAdminServices';
+import StyledTextField from '../../components/StyledTextField';
 
 const NewDepartment = (props) => {
     const[showAlert, setShowAlert] = useState(false) 
@@ -14,18 +13,15 @@ const NewDepartment = (props) => {
     const[message, setMessage] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
     const [school, setSchool] = useState([])
-    const [faculty, setFaculty] = useState([])
-    const institutionId = getInstitutionId()
-    const userId = getWebUserId()
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await getSchool(institutionId)
+            const res = await getSchool()
             const data = res.data
             setSchool(data)
         } 
         fetchData()
-    }, [institutionId])
+    }, [])
 
     const onSubmit = async(data) => {
         setIsSubmit(true)
@@ -56,18 +52,12 @@ const NewDepartment = (props) => {
 
     const initialValues = {
         name: '',
-        institutionId: institutionId,
         schoolId: '',
-        facultyId: '',
-        // headId: '',
-        createdBy: userId
     }
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Department Name is Required"),
         schoolId: Yup.string().required("School Name is Required"),
-        facultyId: Yup.string().required("Faculty Name is required"),
-        // headId: Yup.string().required("HOD is required"),
     })
 
     const formik = useFormik({
@@ -77,14 +67,6 @@ const NewDepartment = (props) => {
         validationSchema
     })
 
-    useEffect(() => {
-        const fetchData = async() => {
-            const res = await getFaculty(institutionId, formik.values.schoolId)
-            const data = res.data
-            setFaculty(data)
-        } 
-        fetchData()
-    }, [institutionId, formik.values.schoolId])
 
     return (
         <Modal {...props} 
@@ -105,7 +87,7 @@ const NewDepartment = (props) => {
                         <Row>
                             <Col lg={6} md={6} sm={12}>
                                     <div className="form-group" id="customSelect-input">
-                                    <TextField 
+                                    <StyledTextField 
                                         name="name" 
                                         id="name" 
                                         label="Department Name" 
@@ -123,58 +105,11 @@ const NewDepartment = (props) => {
                             </Col>
                             <Col lg={6} md={6} sm={12}>
                                     <div className="form-group" id="select-input">
-                                    <TextField 
-                                        select 
-                                        name="headId" 
-                                        id="headId"
-                                        label="H.O.D" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        // value={formik.values.headId}
-                                        // onChange={formik.handleChange}
-                                        // error={formik.touched.headId && Boolean(formik.errors.headId)}
-                                        // helperText={formik.touched.headId && formik.errors.headId}
-                                    >
-                                        <MenuItem value="">Select HOD</MenuItem>
-                                    </TextField>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="select-input">
-                                    <TextField 
-                                        select 
-                                        name="facultyId" 
-                                        id="facultyId" 
-                                        label="Faculty" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.facultyId}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.facultyId && Boolean(formik.errors.facultyId)}
-                                        helperText={formik.touched.facultyId && formik.errors.facultyId}
-                                    >
-                                        {faculty.map(data => (
-                                            <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem> 
-                                        ))} 
-                                    </TextField>
-                                    </div>
-                            </Col>
-                            <Col lg={6} md={6} sm={12}>
-                                    <div className="form-group" id="select-input">
-                                    <TextField 
+                                    <StyledTextField 
                                         select
                                         name="schoolId" 
                                         id="schoolId"
                                         label="School"
-                                        disabled={true} 
                                         margin="normal"
                                         InputLabelProps={{
                                         shrink: true,
@@ -188,7 +123,7 @@ const NewDepartment = (props) => {
                                         {school.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem> 
                                         ))}  
-                                    </TextField>
+                                    </StyledTextField>
                                 </div>
                             </Col>
                         </Row>

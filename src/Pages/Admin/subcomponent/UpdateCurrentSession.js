@@ -1,19 +1,48 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {createSession} from '../../../services/institutionAdminServices';
+import {getSession, getSemester} from '../../../services/institutionAdminServices';
+import {updateSesssionSemester} from '../../../services/sessionServices';
 import StyledTextField from '../../components/StyledTextField';
+import { MenuItem } from '@material-ui/core';
 
 
-
-const NewSession = (props) => {
-
+const UpdateCurrentSession = (props) => {
     //Popup Alert state
     const[showAlert, setShowAlert] = useState(false) 
     const[alertType, setAlertType] = useState("")
     const[message, setMessage] = useState("")
+
+    const [semesterData, setSemesterData] = useState([])
+    const [sessionData, setSessionData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async() => {
+            try{
+                const res = await getSemester()
+                setSemesterData(res.data)
+            }
+            catch(err){
+                console.log(err.message)
+            }
+        }
+        fetchData()
+    }, [])
+
+    useEffect(() => {
+        const fetchData = async() => {
+            try{
+                const res = await getSession()
+                setSessionData(res.data)
+            }
+            catch(err){
+                console.log(err.message)
+            }
+        }
+        fetchData()
+    }, [])
 
     //Submission State
     const[isSubmit, setIsSubmit] = useState(false)
@@ -22,17 +51,16 @@ const NewSession = (props) => {
     const onSubmit = async(data) => {
         setIsSubmit(true)
         try{
-            const res = await createSession(data)
+            const res = await updateSesssionSemester(data)
             if (res.status === 200 || res.status === 204){
                 setAlertType("success")
-                setMessage("New Session Added Successfully")
+                setMessage("School Year Updated Successfully")
                 setShowAlert(true)
                 setIsSubmit(false)
-                props.setContentLength(props.contentLength + 1)
             }
             else{
                 setAlertType("danger")
-                setMessage("Fail to Create Session")
+                setMessage("Fail to Update School Year")
                 setShowAlert(true)
                 setIsSubmit(false)
             }
@@ -48,14 +76,14 @@ const NewSession = (props) => {
 
     //Form initial Value
     const initialValues = {
-        name: '',
-        year: ''
+        academicYearID: '',
+        semesterID: ''
     }
 
     //Form Validation Schema
     const validationSchema = Yup.object({
-        name: Yup.string().required("Session Name is Required"),
-        year: Yup.string().required("Year is Required ")
+        academicYearID: Yup.string().required("Session is Required"),
+        semesterID: Yup.string().required("Semester is Required ")
     })
 
     //Formik hook
@@ -66,7 +94,6 @@ const NewSession = (props) => {
         validationSchema
     })
 
-
     return (
         <Modal {...props} 
             aria-labelledby="contained-modal-title-vcenter"
@@ -76,7 +103,7 @@ const NewSession = (props) => {
         >
         <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-                Add New Session
+                Update Current Session And Semester
             </Modal.Title>
         </Modal.Header>
                 <form onSubmit={formik.handleSubmit} >
@@ -87,40 +114,50 @@ const NewSession = (props) => {
                             <Col lg={12} md={12} sm={12}>
                                 <div className="form-group" id="new-session-textfield">
                                     <StyledTextField 
-                                        name="name" 
-                                        id="name" 
-                                        label="Session Name" 
-                                        placeholder="Session Name"
+                                        select
+                                        name="academicYearID" 
+                                        id="academicYearID" 
+                                        label="Session" 
+                                        placeholder="Session"
                                         margin="normal"
                                         InputLabelProps={{
                                         shrink: true,
                                         }}
                                         variant="outlined"
-                                        value={formik.values.name}
+                                        value={formik.values.academicYearID}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.name && Boolean(formik.errors.name)}
-                                        helperText={formik.touched.name && formik.errors.name}
-                                    />
+                                        error={formik.touched.academicYearID && Boolean(formik.errors.academicYearID)}
+                                        helperText={formik.touched.academicYearID && formik.errors.academicYearID}
+                                    >
+                                        {sessionData.map(data => (
+                                            <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
+                                        ))}
+                                    </StyledTextField>
                                 </div>
                             </Col>
                             <Col lg={12} md={12} sm={12}>
                                 <div className="form-group" id="new-session-textfield">
                                     <StyledTextField 
-                                        name="year" 
+                                        select
+                                        name="semesterID" 
                                         type='date'
-                                        id="Year" 
-                                        label="Date" 
-                                        placeholder="Date"
+                                        id="semesterID" 
+                                        label="Semster" 
+                                        placeholder="Semster"
                                         margin="normal"
                                         InputLabelProps={{
                                         shrink: true,
                                         }}
                                         variant="outlined"
-                                        value={formik.values.year}
+                                        value={formik.values.semesterID}
                                         onChange={formik.handleChange}
-                                        error={formik.touched.year && Boolean(formik.errors.year)}
-                                        helperText={formik.touched.year && formik.errors.year}
-                                    />
+                                        error={formik.touched.semesterID && Boolean(formik.errors.semesterID)}
+                                        helperText={formik.touched.semesterID && formik.errors.semesterID}
+                                    >
+                                        {semesterData.map(data => (
+                                            <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
+                                        ))}
+                                    </StyledTextField>
                                 </div>
                             </Col>
                         </Row>  
@@ -135,4 +172,4 @@ const NewSession = (props) => {
     )
 }
 
-export default NewSession
+export default UpdateCurrentSession

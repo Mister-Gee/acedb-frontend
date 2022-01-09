@@ -1,30 +1,16 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import * as Yup from 'yup';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getInstitutionId, getWebUserId} from '../../../utils/Functions';
-import {createProgram, getDepartment} from '../../../services/institutionAdminServices';
+import {createProgram} from '../../../services/institutionAdminServices';
+import StyledTextField from '../../components/StyledTextField';
 
 const NewProgram = (props) => {
     const[showAlert, setShowAlert] = useState(false) 
     const[alertType, setAlertType] = useState("")
     const[message, setMessage] = useState("") 
     const [isSubmit, setIsSubmit] = useState(false)
-    const [department, setDepartment] = useState([])
-    const institutionId = getInstitutionId()
-    const userId = getWebUserId()
-
-    useEffect(() => {
-        const fetchData = async() => {
-            const res = await getDepartment(institutionId)
-            const data = res.data
-            setDepartment(data)
-        } 
-        fetchData()
-    }, [institutionId])
 
 
     
@@ -56,15 +42,11 @@ const NewProgram = (props) => {
     }
 
     const initialValues = {
-        name: '',
-        institutionId: institutionId,
-        departmentId: '',
-        createdBy: userId
+        name: ''
     }
 
     const validationSchema = Yup.object({
-        name: Yup.string().required("Program Name is Required"),
-        departmentId: Yup.string().required("Department is Required ")
+        name: Yup.string().required("Program Name is Required")
     })
 
     const formik = useFormik({
@@ -94,7 +76,7 @@ const NewProgram = (props) => {
                         <Row>
                             <Col lg={12} md={12} sm={12}>
                                     <div className="form-group" id="new-session-textfield">
-                                    <TextField 
+                                    <StyledTextField 
                                         name="name" 
                                         id="name" 
                                         label="Program Name" 
@@ -112,57 +94,6 @@ const NewProgram = (props) => {
                                 </div>
                             </Col>
                         </Row>
-                        <Row>
-                            
-                            <Col lg={12} md={12} sm={12}>
-                                    <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        select
-                                        name="departmentId" 
-                                        id="departmentId" 
-                                        placeholder="Department"
-                                        label="Department" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.departmentId}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.departmentId && Boolean(formik.errors.departmentId)}
-                                        helperText={formik.touched.departmentId && formik.errors.departmentId}
-                                        >
-                                        {department.map(data => (
-                                           <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem> 
-                                        ))}
-                                    </TextField>
-                                    </div>
-                            </Col>
-                        </Row>
-                        {/* <Row>
-                            <Col lg={12} md={12} sm={12}>
-                                    <div className="form-group" id="new-session-textfield">
-                                    <TextField 
-                                        select
-                                        name="school" 
-                                        id="school" 
-                                        placeholder="School"
-                                        label="School" 
-                                        margin="normal"
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                        variant="outlined"
-                                        value={formik.values.school}
-                                        onChange={formik.handleChange}
-                                        error={formik.touched.school && Boolean(formik.errors.school)}
-                                        helperText={formik.touched.school && formik.errors.school}
-                                    >
-                                        <MenuItem value="HODHOD">Computer Science</MenuItem>
-                                    </TextField>
-                                    </div>
-                            </Col>
-                        </Row> */}
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>

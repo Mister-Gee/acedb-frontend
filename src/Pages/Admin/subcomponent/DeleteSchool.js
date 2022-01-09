@@ -12,7 +12,7 @@ const DeleteSchool = (props) => {
     const[isSubmit, setIsSubmit] = useState(false)
 
     
-    const onSubmit = async(data) => {
+    const onSubmit = async() => {
         setIsSubmit(true)
         try{
             const res = await deleteSchool(data.id)

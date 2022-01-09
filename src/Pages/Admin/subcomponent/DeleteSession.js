@@ -21,7 +21,7 @@ const DeleteSession = (props) => {
                 setMessage("Session Deleted Successfully")
                 setShowAlert(true)
                 setIsSubmit(false)
-                props.setContenthLength(props.contentLength + 1)
+                props.setContentLength(props.contentLength - 1)
             }
             else{
                 setAlertType("danger")

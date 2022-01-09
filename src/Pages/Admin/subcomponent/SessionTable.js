@@ -1,7 +1,7 @@
 import {Table, Row, Col} from 'react-bootstrap';
 import PaginationComponent from './PaginationComponent';
 import {useState} from 'react';
-import {tableIndex, search} from '../../../utils/Functions';
+import {tableIndex, search, dateConverter} from '../../../utils/Functions';
 
 const SessionTable = ({offset, 
                         perPage, 
@@ -66,9 +66,7 @@ const SessionTable = ({offset,
                                 <tr>
                                 <th>S/N</th>
                                 <th>Session Name</th>
-                                <th>Description</th>
-                                <th>From</th>
-                                <th>To</th>
+                                <th>Date</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
@@ -77,9 +75,7 @@ const SessionTable = ({offset,
                                     <tr key={data.id}>
                                         <td>{tableIndex(index, realIndex)}</td>
                                         <td>{data.name}</td>
-                                        <td>{data.description}</td>
-                                        <td>{data.yearFrom}</td>
-                                        <td>{data.yearTo}</td>
+                                        <td>{dateConverter(data.year)}</td>
                                         <td>
                                         <span className="btns">
                                             <span

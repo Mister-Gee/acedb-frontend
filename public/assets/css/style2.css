@@ -845,7 +845,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
-        color: #16BC5D;
+        color: #FFFFFF;
         margin: 25px 0px 21px 7px;
         border-radius: 3px;
         -webkit-border-radius: 3px;
@@ -1028,7 +1028,7 @@
     }
     
     .pagination-section .page-nav .page-item.active .page-link {
-        background: #1619AB;
+        background: #16BC5D;
         border-radius: 4px;
         font-family: Poppins;
         font-style: normal;
@@ -1205,7 +1205,11 @@
         line-height: 18px;
         text-align: center;
         color: #000000;
-    }
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+}
     
     .link-select-section .link-select .add-btn:hover {
         background: #16BC5D;
@@ -1238,7 +1242,11 @@
         position: absolute;
         top: 23px;
         right: 300px;
-    }
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+}
     
     .selected-school-section .selected-btn:hover {
         color: #FFFFFF;

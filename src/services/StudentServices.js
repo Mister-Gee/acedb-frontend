@@ -11,3 +11,7 @@ export const getStudentLogin = (data) => {
 export const getStudentProfile = (data) => {
     return http.post(`/api/SUDENTPROFILEAPI/${data.id}`, data)
 }
+
+export const getStudentChart = () => {
+    return http.get("/Student/RegisteredStudent/LineChart")
+}

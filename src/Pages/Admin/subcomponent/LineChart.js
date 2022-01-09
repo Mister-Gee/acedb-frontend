@@ -1,18 +1,35 @@
 import {Line} from 'react-chartjs-2';
+import {getStudentChart} from '../../../services/StudentServices';
+import {useState, useEffect} from 'react';
 
 const LineChart = () => {
+    const [chartData, setChartData] = useState([])
+
+    useEffect(() => {
+        const fetch = async () => {
+            try{
+                const res = await getStudentChart()
+                setChartData(res.data)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+        fetch()
+    }, [])
+
     const data = {
-        labels: ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'],
+        labels: chartData.session,
         datasets: [{
-            label: "Male",
-            data: [93, 80, 36, 39, 50, 99, 82, 91, 22, 99, 58, 59, 21],
+            label: chartData.maleStudents.label,
+            data: chartData.maleStudents.registeredStudentPerSession,
             borderColor: ['#4FC3F7'],
             backgroundColor: ['rgb(79, 195, 247, 0.3)'],
             pointBackgroundColor: '#4FC3F7',
             pointBorderColor: '#4FC3F7'
         }, {
-            label: "Female",
-            data: [13, 30, 56, 19, 10, 89, 72, 11, 88, 99, 75, 99, 91],
+            label: chartData.femaleStudents.label,
+            data: chartData.femaleStudents.registeredStudentPerSession,
             borderColor: ['#2962FF'],
             backgroundColor: ['rgba(41, 98, 255, 0.3)'],
             pointBackgroundColor: '#2962FF',
@@ -34,8 +51,8 @@ const LineChart = () => {
                 {
                     ticks: {
                         min: 0,
-                        max: 100,
-                        stepSize: 20
+                        max: 10,
+                        stepSize: 1
                     }
                 }
             ]

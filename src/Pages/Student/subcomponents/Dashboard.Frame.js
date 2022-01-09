@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useEffect} from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SideMenu from "./SideMenu";
 import TopMenu from "../../components/TopMenu";

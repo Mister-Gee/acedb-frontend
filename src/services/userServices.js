@@ -9,6 +9,10 @@ export const loginUser = (data) => {
     return instance.post("/Account/login", data)
 }
 
+export const getUserCount = () => {
+    return instance.get("/Account/UserCount")
+}
+
 export const logoutUser = () => {
     return instance.post("/api/sme/authentication/logout")
 }

@@ -1,14 +1,15 @@
 import {NavLink, Link, useHistory} from 'react-router-dom';
-import {instance} from '../../../services/httpService';
 import {Up, Down} from './DropdownIcons';
-import {useState} from 'react';
+import React from 'react';
+import store from '../../../store/store';
+import { useState } from '@hookstate/core';
 
 const SideMenu = () => {
 
     const history = useHistory()
 
-    const [academicDropdownState, setAcademicDropdownState] = useState(false)
-    const [staffDropdownState, setStaffDropdownState] = useState(false)
+    const [academicDropdownState, setAcademicDropdownState] = React.useState(false)
+    const [staffDropdownState, setStaffDropdownState] = React.useState(false)
 
     const handleAcademicDropdown = () => {
         setAcademicDropdownState(!academicDropdownState)
@@ -18,25 +19,41 @@ const SideMenu = () => {
         setStaffDropdownState(!staffDropdownState)
     }
 
+    const {role} = useState(store)
+    const {alertType} = useState(store)
+    const {alertNotification} = useState(store)
+    const {alertMessage} = useState(store)
+    const {firstName} = useState(store)
+    const {lastName} = useState(store)
+    const {phoneNumber} = useState(store)
+    const {email} = useState(store)
+    const {userId} = useState(store)
+
     const logout = () => {
-        instance.post("/api/sme/authentication/logout")
-        .then(res => {
-            if(res.status === 200){
-                localStorage.clear()
-                history.push({
-                    pathname: "/"
-                })
-            }
-        })
-        .catch(err => console.log(err.message))
+        localStorage.removeItem("token")
+        role.set("")
+        firstName.set("")
+        lastName.set("")
+        phoneNumber.set("")
+        email.set("")
+        userId.set("")
+        alertType.set("success")
+        alertMessage.set("Logout Successful")
+        alertNotification.set(true)
+        setTimeout(() => {
+            alertNotification.set(false)
+            history.push({
+                pathname: "/"
+            })
+        }, 1000)
     }
 
     return (
         <div className="side-menu">
             <div className="side-menu-content">
                 <div className="logo-section">
-                    <img src="/assets/images/Turon_Logo.png" alt="logo" />
-                    <div className="logo-txt">iEduCare Tech</div>
+                    <img src="/assets/images/logo.png" alt="logo" />
+                    <div className='sidemenu-header-text'>ACE</div>
                 </div>
                 <div className="nav-links admin-links">
                     <ul>
@@ -46,12 +63,12 @@ const SideMenu = () => {
                                 Dashboard
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                            <NavLink exact to="/registration" >
                            <span className="iconify" data-icon="ic:sharp-app-registration" data-inline="false"></span>
                                 Registration 
                            </NavLink> 
-                        </li>
+                        </li> */}
                         <li>
                             <Link onClick={handleAcademicDropdown}> 
                             <span className="iconify" data-icon="majesticons:academic-cap-line" data-inline="false"></span> 
@@ -61,7 +78,7 @@ const SideMenu = () => {
                                     <ul className="dropdown-item-menu border-left">
                                         <li ><NavLink exact to="/session-management"> Session Management </NavLink></li>
                                         <li><NavLink exact to="/school-management"> School Management </NavLink></li>
-                                        <li><NavLink exact to="/faculty-management"> Faculty Management </NavLink></li>
+                                        {/* <li><NavLink exact to="/faculty-management"> Faculty Management </NavLink></li> */}
                                         <li><NavLink exact to="/dept-management"> Department Management </NavLink></li>
                                         <li><NavLink exact to="/program-management"> Program Management </NavLink></li>
                                         <li><NavLink exact to="/program-levels"> Program Levels </NavLink></li>

@@ -2,9 +2,9 @@ import {Table, Col, Row} from 'react-bootstrap';
 import PaginationComponent from './PaginationComponent';
 import {useEffect, useState} from 'react';
 import {getSemester} from '../../../services/institutionAdminServices';
-import {tableIndex, search, dateConverter} from '../../../utils/Functions';
+import {tableIndex, search} from '../../../utils/Functions';
 
-const SemesterTable = ({sessionId, sessionName, handleSemesterEdit,  handleSemesterDelete, setSemesterEditData}) => {
+const SemesterTable = ({handleSemesterEdit,  handleSemesterDelete, setSemesterEditData}) => {
 
     const [semesterData, setSemesterData] = useState([])
 
@@ -35,7 +35,7 @@ const SemesterTable = ({sessionId, sessionName, handleSemesterEdit,  handleSemes
     useEffect(() => {
         const fetchData = async() => {
             try{
-                const res = await getSemester(sessionId)
+                const res = await getSemester()
                 const data = res.data
                 const slicedData = data.slice(offset * perPage, offset + perPage)
                 setSlicedData(slicedData)
@@ -49,7 +49,7 @@ const SemesterTable = ({sessionId, sessionName, handleSemesterEdit,  handleSemes
             }
         }
         fetchData()
-    }, [offset, perPage, contentLength, sessionId])
+    }, [offset, perPage, contentLength])
 
 
     return (
@@ -82,11 +82,7 @@ const SemesterTable = ({sessionId, sessionName, handleSemesterEdit,  handleSemes
                             <thead>
                                 <tr>
                                 <th>S/N</th>
-                                <th>Session</th>
                                 <th>Semester Name</th>
-                                <th>Description</th>
-                                <th>Fron</th>
-                                <th>To</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
@@ -94,11 +90,7 @@ const SemesterTable = ({sessionId, sessionName, handleSemesterEdit,  handleSemes
                                 {semesterData.map((data, index) => (
                                     <tr key={data.id}>
                                         <td>{tableIndex(index, realIndex)}</td>
-                                        <td>{sessionName}</td>
                                         <td>{data.name}</td>
-                                        <td>{data.name}</td>
-                                        <td>{dateConverter(data.startDate)}</td>
-                                        <td>{dateConverter(data.endDate)}</td>
                                         <td>
                                         <span className="btns">
                                             <span

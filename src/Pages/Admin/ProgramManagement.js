@@ -8,7 +8,7 @@ import DeleteProgram from './subcomponent/DeleteProgram';
 import PaginationComponent from './subcomponent/PaginationComponent';
 import ContentLoader from '../components/ContentLoader';
 import {getProgram} from '../../services/institutionAdminServices';
-import {getInstitutionId, search, tableIndex} from '../../utils/Functions';
+import {search, tableIndex} from '../../utils/Functions';
 
 const ProgramManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -16,7 +16,6 @@ const ProgramManagement = () => {
     const [addDelete, setAddDelete] = useState(false)
     const [programData, setProgramData] = useState([])
     const [programEditData, setProgramEditData] = useState([])
-    const institutionId = getInstitutionId()
     
     const [slicedData, setSlicedData] = useState([])
     const [searchData, setSearchData] = useState([])
@@ -44,7 +43,7 @@ const ProgramManagement = () => {
     useEffect(() => {
         setIsLoading(true)
         const fetchData = async() => {
-            const res = await getProgram(institutionId)
+            const res = await getProgram()
             const data = res.data
             const slicedData = data.slice(offset * perPage, offset + perPage)
             setSlicedData(slicedData)
@@ -55,7 +54,7 @@ const ProgramManagement = () => {
             setIsLoading(false)
         } 
         fetchData()
-    }, [offset, perPage, contentLength, institutionId])
+    }, [offset, perPage, contentLength])
 
     const handlePageClick = (e) => {
         const selectedPage = e.selected;
@@ -64,9 +63,9 @@ const ProgramManagement = () => {
     }
 
     return (
-        <Dashboardframe title="Admin" subTitle="Program Management">
+        <Dashboardframe title="MIS" subTitle="Program Management">
             <Helmet>
-                <title>Program Management | iEduCare</title>
+                <title>Program Management | Adeyemi College Of Education</title>
             </Helmet>
             <NewProgram show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength}/>
             <EditProgram show={addEdit} onHide={() => setAddEdit(false)} contentLength={contentLength} setContentLength={setContentLength} data={programEditData}/>
@@ -112,9 +111,6 @@ const ProgramManagement = () => {
                                             <tr>
                                             <th>S/N</th>
                                             <th>Program Name</th>
-                                            <th>Department</th>
-                                            <th>Faculty</th>
-                                            <th>School</th>
                                             <th>Action</th>
                                             </tr>
                                         </thead>
@@ -123,9 +119,6 @@ const ProgramManagement = () => {
                                                 <tr key={data.id}>
                                                     <td>{tableIndex(index, realIndex)}</td>
                                                     <td>{data.name}</td>
-                                                    <td>{data.headId}</td>
-                                                    <td>{data.facultyId}</td>
-                                                    <td>{data.schoolId}</td>
                                                     <td>
                                                     <span className="btns">
                                                         <span

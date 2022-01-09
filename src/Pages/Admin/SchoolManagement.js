@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react';
 import PaginationComponent from './subcomponent/PaginationComponent';
 import ContentLoader from '../components/ContentLoader';
 import {getSchool} from '../../services/institutionAdminServices';
-import {getInstitutionId, search, tableIndex} from '../../utils/Functions';
+import {search} from '../../utils/Functions';
 
 const SchoolManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -16,7 +16,6 @@ const SchoolManagement = () => {
     const [addDelete, setAddDelete] = useState(false)
     const [schoolData, setSchoolData] = useState([])
     const [schoolEditData, setSchoolEditData] = useState([])
-    const institutionId = getInstitutionId()
     
     const [slicedData, setSlicedData] = useState([])
     const [searchData, setSearchData] = useState([])
@@ -35,7 +34,7 @@ const SchoolManagement = () => {
     useEffect(() => {
         setIsLoading(true)
         const fetchData = async() => {
-            const res = await getSchool(institutionId)
+            const res = await getSchool()
             const data = res.data
             const slicedData = data.slice(offset * perPage, offset + perPage)
             setSlicedData(slicedData)
@@ -46,7 +45,7 @@ const SchoolManagement = () => {
             setIsLoading(false)
         } 
         fetchData()
-    }, [offset, perPage, contentLength, institutionId])
+    }, [offset, perPage, contentLength])
 
     const handleSearch = (array, searchText) => {
         if (searchText === ''){
@@ -64,9 +63,9 @@ const SchoolManagement = () => {
     }
 
     return (
-        <Dashboardframe title="Admin" subTitle="School Management">
+        <Dashboardframe title="MIS" subTitle="School Management">
             <Helmet>
-                <title>School Management | iEduCare</title>
+                <title>School Management | Adeyemi College of Education</title>
             </Helmet>
             <NewSchool show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength}/>
             <EditSchool show={addEdit} onHide={() => setAddEdit(false)} data={schoolEditData} contentLength={contentLength} setContentLength={setContentLength}/>
@@ -112,17 +111,13 @@ const SchoolManagement = () => {
                                             <tr>
                                             <th>S/N</th>
                                             <th>School Name</th>
-                                            <th>School Head Name</th>
-                                            <th>Designation</th>
                                             <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {schoolData.map((data, index) => (
                                                 <tr key={data.id}>
-                                                    <td>{tableIndex(index, realIndex)}</td>
-                                                    <td>{data.name}</td>
-                                                    <td>{data.headId}</td>
+                                                    <td>{index + 1}</td>
                                                     <td>{data.name}</td>
                                                     <td>
                                                     <span className="btns">

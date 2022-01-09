@@ -859,7 +859,7 @@
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #16BC5D;
+            color: #FFFFFF;
             margin: 25px 0px 21px 7px;
             border-radius: 3px;
             -webkit-border-radius: 3px;
@@ -1210,7 +1210,7 @@
         }
         
         .pagination-section .page-nav .page-item.active .page-link {
-            background: #1619AB;
+            background: #16BC5D;
             border-radius: 4px;
             font-family: Poppins;
             font-style: normal;
@@ -3308,7 +3308,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #16BC5D;
+            color: #FFFFFF;
             border-radius: 25px;
             border: 1px solid #FDC600;
             height: 40px;
@@ -3470,7 +3470,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            color: #16BC5D;
+            color: #FFFFFF;
             margin-right: 23px;
         }
         

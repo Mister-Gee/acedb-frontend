@@ -1,23 +1,23 @@
 import { instance } from './httpService';
 
-export const getDepartment = (institutionId, schoolId, facultyId) => {
-    if (schoolId && facultyId) {
-        return instance.get(`/api/ieducare/institutiondepartment/get/${institutionId}?schoolId=${schoolId}&facultyId=${facultyId}`)
-    } else {
-        return instance.get(`/api/ieducare/institutiondepartment/get/${institutionId}`)
-    }
+export const getDepartment = () => {
+    return instance.get("/ControlledData/Department/All")
+}
+
+export const getDepartmentBySchool = (schoolID) => {
+    return instance.get(`/ControlledData/Department/${schoolID}`)
 }
 
 export const createDepartment = (data) => {
-    return instance.post("/api/ieducare/institutiondepartment/post", data)
+    return instance.post("/ControlledData/Department/Create", data)
 }
 
-export const editDepartment = (departmentId, name, institutionId, schoolId, facultyId, headId) => {
-    return instance.put(`/api/ieducare/institutiondepartment/edit/${departmentId}?Id=${departmentId}&Name=${name}&InstitutionId=${institutionId}&SchoolId=${schoolId}&FacultyId=${facultyId}&HeadId=${headId}`)
+export const editDepartment = (Id, data) => {
+    return instance.put(`/ControlledData/Department/Edit/${Id}`, data)
 }
 
-export const deleteDepartment = (departmentId) => {
-    return instance.delete(`/api/ieducare/institutiondepartment/remove/${departmentId}`)
+export const deleteDepartment = (Id) => {
+    return instance.delete(`/ControlledData/Department/Delete/${Id}`)
 }
 
 export const getFaculty = (institutionId, schoolId) => {
@@ -40,72 +40,68 @@ export const deleteFaculty = (facultyId) => {
     return instance.delete(`/api/ieducare/institutionfaculty/remove/${facultyId}`)
 }
 
-export const getSchool = (institutionId) => {
-    return instance.get(`/api/ieducare/institutionschool/get/${institutionId}`)
+export const getSchool = () => {
+    return instance.get("/ControlledData/School/All")
 }
 
 export const createSchool = (data) => {
-    return instance.post("/api/ieducare/institutionschool/post", data)
+    return instance.post("/ControlledData/School/Create", data)
 }
 
-export const editSchool = (schoolId, name, headId, institutionId) => {
-    return instance.put(`/api/ieducare/institutionschool/edit/${schoolId}?Id=${schoolId}&Name=${name}&HeadId=${headId}&InstitutionId=${institutionId}`)
+export const editSchool = (Id, data) => {
+    return instance.put(`/ControlledData/School/Edit/${Id}`, data)
 }
 
-export const deleteSchool = (schoolId) => {
-    return instance.delete(`/api/ieducare/institutionschool/remove/${schoolId}`)
+export const deleteSchool = (Id) => {
+    return instance.delete(`/ControlledData/School/Delete/${Id}`)
 }
 
-export const getSemester = (sessionId) => {
-    return instance.get(`/api/ieducare/institutionsemester/get/${sessionId}`)
+export const getSemester = () => {
+    return instance.get(`/ControlledData/Semester/All`)
 }
 
 export const createSemester = (data) => {
-    return instance.post("/api/ieducare/institutionsemester/post", data)
+    return instance.post("/ControlledData/Semester/Create", data)
 }
 
-export const editSemester = (semesterId, name, institutionId, sessionId, createdBy, startDate, endDate) => {
-    return instance.put(`/api/ieducare/institutionsemester/post/${semesterId}?Id=${semesterId}&Name=${name}&InstitutionId=${institutionId}&SessionId=${sessionId}&CreatedBy=${createdBy}&StartDate=${startDate}&EndDate=${endDate}`)
+export const editSemester = (Id, data) => {
+    return instance.put(`/ControlledData/Semester/Edit/${Id}`, data)
 }
 
-export const deleteSemester = (semesterId) => {
-    return instance.delete(`/api/ieducare/institutionsemester/remove/${semesterId}`)
+export const deleteSemester = (Id) => {
+    return instance.delete(`/ControlledData/Semester/Delete/${Id}`)
 }
 
-export const getSession = (institutionId) => {
-    return instance.get(`/api/ieducare/institutionsession/get/${institutionId}`)
+export const getSession = () => {
+    return instance.get("/ControlledData/AcademicYear/All")
 }
 
 export const createSession = (data) => {
-    return instance.post("/api/ieducare/institutionsession/post", data)
+    return instance.post("/ControlledData/AcademicYear/Create", data)
 }
 
-export const editSession = (sessionId, name, institutionId, description, createdBy, yearFrom, yearTo) => {
-    return instance.put(`/api/ieducare/institutionsession/edit/${sessionId}?Id=${sessionId}&Name=${name}&InstitutionId=${institutionId}&Description=${description}&CreatedBy=${createdBy}&YearFrom=${yearFrom}&YearTo=${yearTo}`)
+export const editSession = (Id, data) => {
+    return instance.put(`/ControlledData/AcademicYear/Edit/${Id}`, data)
 }
 
-export const deleteSession = (sessionId) => {
-    return instance.delete(`/api/ieducare/institutionsession/remove/${sessionId}`)
+export const deleteSession = (Id) => {
+    return instance.delete(`/ControlledData/AcademicYear/Delete/${Id}`)
 }
 
-export const getProgram = (institutionId, departmentId) => {
-    if (departmentId) {
-        return instance.get(`/api/ieducare/institutionprogram/get/${institutionId}?departmentId=${departmentId}`)
-    } else {
-        return instance.get(`/api/ieducare/institutionprogram/get/${institutionId}`)
-    }
+export const getProgram = () => {
+    return instance.get("/ControlledData/Programme/All")
 }
 
 export const createProgram = (data) => {
-    return instance.post("/api/ieducare/institutionprogram/post", data)
+    return instance.post("/ControlledData/Programme/Create", data)
 }
 
-export const editProgram = (programId, name, institutionId, departmentId, createdBy) => {
-    return instance.put(`/api/ieducare/institutionprogram/edit/${programId}?Id=${programId}&Name=${name}&InstitutionId=${institutionId}&DepartmentId=${departmentId}&CreatedBy=${createdBy}`)
+export const editProgram = (Id, data) => {
+    return instance.put(`/ControlledData/Programme/Edit/${Id}`, data)
 }
 
-export const deleteProgram = (id) => {
-    return instance.delete(`/api/ieducare/institutionprogram/remove/${id}`)
+export const deleteProgram = (Id) => {
+    return instance.delete(`/ControlledData/Programme/Delete/${Id}`)
 }
 
 export const getProgramLevel = (institutionId) => {

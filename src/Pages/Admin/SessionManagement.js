@@ -13,6 +13,7 @@ import {useState, useEffect} from 'react';
 import {getInstitutionId} from '../../utils/Functions';
 import ContentLoader from '../components/ContentLoader';
 import {getSession} from '../../services/institutionAdminServices';
+import UpdateCurrentSession from './subcomponent/UpdateCurrentSession';
 
 
 const SessionManagement = () => {
@@ -23,6 +24,8 @@ const SessionManagement = () => {
     const [addNewSemester, setAddNewSemester] = useState(false)
     const [addEditSemester, setAddEditSemester] = useState(false)
     const [addDeleteSemester, setAddDeleteSemester] = useState(false)
+    const [updateSchoolYear, setUpdateSchoolYear] = useState(false)
+
 
     // Session ID and Name State
     const [recentSessionId, setRecentSessionId] = useState("")
@@ -104,10 +107,10 @@ const SessionManagement = () => {
     }, [offset, perPage, contentLength, institutionId, setRecentSessionId, setRecentSessionName])
     
     return (
-        <Dashboardframe title="Admin" subTitle="Semester/Session">
+        <Dashboardframe title="MIS" subTitle="Semester/Session">
             {/* page title header */}
             <Helmet>
-                <title>Session/Semester | iEduCare</title>
+                <title>Session/Semester | Adeyemi College of Education</title>
             </Helmet>
             {/* Add New, Edit, Delete Session/Semester Modal Components */}
             <NewSession 
@@ -146,6 +149,10 @@ const SessionManagement = () => {
                 onHide={() => setAddDeleteSemester(false)} 
                 data={semesterEditData}
             />
+            <UpdateCurrentSession
+                show={updateSchoolYear} 
+                onHide={() => setUpdateSchoolYear(false)} 
+            />
             { isLoading ?
             <ContentLoader />
             :    
@@ -157,6 +164,7 @@ const SessionManagement = () => {
                             <Col>
                                 <button className="newSession-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New Session</button>
                                 <button className="newSemester-btn" onClick={handleAddNewSemester}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New Semester</button>
+                                <button className="newSemester-btn  ml-4" onClick={() => setUpdateSchoolYear(true)}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Update School Year</button>
                             </Col>
                         </Row>
                         {/* Tab Component for Session and Semester Table */}

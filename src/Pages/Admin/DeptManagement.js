@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react';
 import PaginationComponent from './subcomponent/PaginationComponent';
 import ContentLoader from '../components/ContentLoader';
 import {getDepartment} from '../../services/institutionAdminServices';
-import {getInstitutionId, search, tableIndex} from '../../utils/Functions';
+import {search} from '../../utils/Functions';
 
 const DeptManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -16,7 +16,6 @@ const DeptManagement = () => {
     const [addDelete, setAddDelete] = useState(false)
     const [departmentData, setDepartmentData] = useState([])
     const [departmentEditData, setDepartmentEditData] = useState([])
-    const institutionId = getInstitutionId()
     
     const [slicedData, setSlicedData] = useState([])
     const [searchData, setSearchData] = useState([])
@@ -44,7 +43,7 @@ const DeptManagement = () => {
     useEffect(() => {
         setIsLoading(true)
         const fetchData = async() => {
-            const res = await getDepartment(institutionId)
+            const res = await getDepartment()
             const data = res.data
             const slicedData = data.slice(offset * perPage, offset + perPage)
             setSlicedData(slicedData)
@@ -55,7 +54,7 @@ const DeptManagement = () => {
             setIsLoading(false)
         } 
         fetchData()
-    }, [offset, perPage, contentLength, institutionId])
+    }, [offset, perPage, contentLength])
 
     const handlePageClick = (e) => {
         const selectedPage = e.selected;
@@ -64,9 +63,9 @@ const DeptManagement = () => {
     }
 
     return (
-        <Dashboardframe title="Admin" subTitle="Department Management">
+        <Dashboardframe title="MIS" subTitle="Department Management">
             <Helmet>
-                <title>Department Management | iEduCare</title>
+                <title>Department Management | Adeyemi College Of Education</title>
             </Helmet>
             <NewDept show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength}/>
             <EditDepartment show={addEdit} onHide={() => setAddEdit(false)} contentLength={contentLength} setContentLength={setContentLength} data={departmentEditData}/>
@@ -112,8 +111,6 @@ const DeptManagement = () => {
                                             <tr>
                                             <th>S/N</th>
                                             <th>Department Name</th>
-                                            <th>H.O.D</th>
-                                            <th>Faculty</th>
                                             <th>School</th>
                                             <th>Action</th>
                                             </tr>
@@ -121,11 +118,9 @@ const DeptManagement = () => {
                                         <tbody>
                                         {departmentData.map((data, index) => (
                                                 <tr key={data.id}>
-                                                    <td>{tableIndex(index, realIndex)}</td>
+                                                    <td>{index + 1}</td>
                                                     <td>{data.name}</td>
-                                                    <td>{data.headId}</td>
-                                                    <td>{data.facultyId}</td>
-                                                    <td>{data.schoolId}</td>
+                                                    <td>{data.school}</td>
                                                     <td>
                                                     <span className="btns">
                                                         <span
