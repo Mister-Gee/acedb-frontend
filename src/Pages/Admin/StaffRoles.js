@@ -14,7 +14,7 @@ const StaffRoles = () => {
     return (
         <Dashboardframe title="Admin" subTitle="Staff Roles">
             <Helmet>
-                <title>Staff Roles | iEduCare</title>
+                <title>Staff Roles | Adekunle College Of Education</title>
             </Helmet>
             <div className="content-page">
                 <div className="session-wrapper">

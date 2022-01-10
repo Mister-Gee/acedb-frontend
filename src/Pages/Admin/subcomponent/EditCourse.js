@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { getStaffByDept } from '../../../services/staffServices';
-import { createCourse } from '../../../services/courseServices';
+import { editCourse } from '../../../services/courseServices';
 
 const ITEM_HEIGHT = 58;
 const ITEM_PADDING_TOP = 8;
@@ -38,7 +38,8 @@ const MenuProps = {
     };
   }
 
-const NewCourse = (props) => {
+const EditCourse = (props) => {
+    const {data} = props
     const theme = useTheme();
     const[showAlert, setShowAlert] = useState(false) 
     const[alertType, setAlertType] = useState("")
@@ -69,30 +70,35 @@ const NewCourse = (props) => {
         const { target: { value }, } = event;
 
         setEligibleDepartments( typeof value === 'string' ? value.split(',') : value,  );
-      };
+    };
 
     useEffect(() => {
-        const fetchData = async() => {
-            const res = await getSchool()
-            const data = res.data
-            if(Array.isArray(data)){
-                setSchool(data)
-            }
-            else{
-                setSchool([])
-            }
-        } 
-        fetchData()
+        try{
+            const fetchData = async() => {
+                const res = await getSchool()
+                const data = res.data
+                if(Array.isArray(data)){
+                    setSchool(data)
+                }
+                else{
+                    setSchool([])
+                }
+            } 
+            fetchData()
+        }
+        catch(err){
+            console.log(err)
+        }
     }, [])
 
-    const onSubmit = async(data) => {
+    const onSubmit = async(editData) => {
         setIsSubmit(true)
         try {
             data.isGeneral = checked[0]
             data.isDepartmental = checked[1]
             data.isOptional = isOptional
             data.eligibleDepartments = eligibleDepartments
-            const res = await createCourse(data)
+            const res = await editCourse(data.id, editData)
             if (res.status === 200 || res.status === 204){
                 setIsSubmit(false)
                 setAlertType("success")
@@ -117,15 +123,15 @@ const NewCourse = (props) => {
     }
 
     const initialValues = {
-        courseTitle: '',
-        courseCode: '',
-        courseDescription: '',
-        courseUnit: 0,
-        leadLecturerID: '',
-        assistantLecturerID: '',
-        schoolID: '',
-        departmentID: '',
-        otherCourseLecturer: ''
+        courseTitle: data.courseTitle,
+        courseCode: data.courseCode,
+        courseDescription: data.courseDescription,
+        courseUnit: data.courseUnit,
+        leadLecturerID: data.leadLecturerID,
+        assistantLecturerID: data.assistantLecturerID,
+        schoolID: data.schoolID,
+        departmentID: data.departmentID,
+        otherCourseLecturer: data.otherCourseLecturerID
     }
 
     const validationSchema = Yup.object({
@@ -141,53 +147,79 @@ const NewCourse = (props) => {
     })
 
     const formik = useFormik({
-        // enableReinitialize: true,
+        enableReinitialize: true,
         initialValues,
         onSubmit,
         validationSchema
     })
 
     useEffect(() => {
-        const fetchData = async() => {
-            const res = await getDepartmentBySchool(formik.values.schoolID)
-            const data = res.data
-            if(Array.isArray(data)){
-                setSchoolDept(data)
-            }
-            else{
-                setSchoolDept([])
-            }
-        } 
-        fetchData()
+        try{
+            if(formik.values.schoolID){
+                const fetchData = async() => {
+                    const res = await getDepartmentBySchool(formik.values.schoolID)
+                    const data = res.data
+                    if(Array.isArray(data)){
+                        setSchoolDept(data)
+                    }
+                    else{
+                        setSchoolDept([])
+                    }
+                }
+                fetchData()
+            } 
+        }
+        catch(err){
+            console.log(err)
+        }
     }, [formik.values.schoolID])
 
     useEffect(() => {
-        const fetchData = async() => {
-            const res = await getStaffByDept(formik.values.departmentID)
-            const data = res.data
-            if(Array.isArray(data)){
-                setLecturers(data)
+        try{
+            if(formik.values.departmentID){
+                const fetchData = async() => {
+                    const res = await getStaffByDept(formik.values.departmentID)
+                    const data = res.data
+                    if(Array.isArray(data)){
+                        setLecturers(data)
+                    }
+                    else{
+                        setLecturers([])
+                    }
+                } 
+                fetchData()
             }
-            else{
-                setLecturers([])
-            }
-        } 
-        fetchData()
+        }
+        catch(err){
+            console.log(err)
+        }
     }, [formik.values.departmentID])
 
     useEffect(() => {
-        const fetchData = async() => {
-            const res = await getDepartment()
-            const data = res.data
-            if(Array.isArray(data)){
-                setDept(data)
-            }
-            else{
-                setDept([])
-            }
-        } 
-        fetchData()
+        try{
+            const fetchData = async() => {
+                const res = await getDepartment()
+                const data = res.data
+                if(Array.isArray(data)){
+                    setDept(data)
+                    setEligibleDepartments(JSON.parse(data.eligibleDepartments))
+                }
+                else{
+                    setDept([])
+                }
+            } 
+            fetchData()
+        }
+        catch(err){
+            console.log(err)
+        }
     }, [])
+
+    // useEffect(() => {
+    //     if(dept.length > 0){
+    //         setEligibleDepartments(JSON.parse(data.eligibleDepartments))
+    //     }
+    // }, [dept.length, data.eligibleDepartments])
 
     return (
         <Modal {...props} 
@@ -198,7 +230,7 @@ const NewCourse = (props) => {
         >
         <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-                Add New Course
+                Edit Course
             </Modal.Title>
         </Modal.Header>
                 <form onSubmit={formik.handleSubmit} >
@@ -489,4 +521,4 @@ const NewCourse = (props) => {
     )
 }
 
-export default NewCourse
+export default EditCourse

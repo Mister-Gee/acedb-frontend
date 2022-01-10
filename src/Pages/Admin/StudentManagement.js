@@ -16,7 +16,7 @@ const StudentManagement = () => {
     return (
         <Dashboardframe title="Admin" subTitle="Student Directory">
             <Helmet>
-                <title>Student Directory | iEduCare</title>
+                <title>Student Management | Adekunle College Of Education</title>
             </Helmet>
             <NewStudent  
                  show={addNew} 

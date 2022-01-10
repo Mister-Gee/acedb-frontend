@@ -1153,6 +1153,19 @@
             width: 360px;
             height: 37px;
         }
+
+        #multi-select-input>div>div {
+            width: 730px;
+            height: 40px;
+        }
+
+        #checkboxes{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
         
         #customSelect-input>div>div {
             width: 360px;

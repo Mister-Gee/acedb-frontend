@@ -15,7 +15,7 @@ const StaffManagement = () => {
     return (
         <Dashboardframe title="Admin" subTitle="Staff Management">
             <Helmet>
-                <title>Staff Management | iEduCare</title>
+                <title>Staff Management | Adekunle College Of Education</title>
             </Helmet>
             <div className="content-page">
                 <NewStaff  

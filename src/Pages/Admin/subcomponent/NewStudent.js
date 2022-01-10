@@ -68,22 +68,22 @@ const NewStudent = (props) => {
 
     //Fetch Title
 
-    useEffect(() => {
-        const fetchData = async() => {
-            try{
-                const res = await GetCommonData()
-                setTitle(res.data.titles)
-                setGender(res.data.genders)
-                setMaritalStatus(res.data.maritalStatus)
-                setReligion(res.data.religions)
-                setCountry(res.data.countries)
-            }
-            catch(err){
-                console.log(err.message)
-            }
-        }
-        fetchData()
-    })
+    // useEffect(() => {
+    //     const fetchData = async() => {
+    //         try{
+    //             const res = await GetCommonData()
+    //             setTitle(res.data.titles)
+    //             setGender(res.data.genders)
+    //             setMaritalStatus(res.data.maritalStatus)
+    //             setReligion(res.data.religions)
+    //             setCountry(res.data.countries)
+    //         }
+    //         catch(err){
+    //             console.log(err.message)
+    //         }
+    //     }
+    //     fetchData()
+    // })
     
     //Submit New Semester Function
     const onSubmit = async(data) => {
@@ -121,7 +121,7 @@ const NewStudent = (props) => {
         otherName: '',
         genderId: '',
         maritalStatusId: '',
-        institutionId: institutionId,
+        // institutionId: institutionId,
         email: '',
         phoneNumber: '',
         emergencyContact: '',
@@ -132,7 +132,7 @@ const NewStudent = (props) => {
         genotype: '',
         weight: '',
         height: '',
-        createdBy: userId,
+        // createdBy: userId,
         countryId: '',
         stateId: '',
         lgaId: '',
@@ -195,18 +195,18 @@ const NewStudent = (props) => {
         fetchData()
     }, [formik.values.countyId])
 
-    useEffect(() => {
-        const fetchData = async() => {
-            try{
-                const res = await getLGA(formik.values.stateId)
-                setLga(res.data)
-            }
-            catch(err){
-                console.log(err.message)
-            }
-        }
-        fetchData()
-    }, [formik.values.stateId])
+    // useEffect(() => {
+    //     const fetchData = async() => {
+    //         try{
+    //             const res = await getLGA(formik.values.stateId)
+    //             setLga(res.data)
+    //         }
+    //         catch(err){
+    //             console.log(err.message)
+    //         }
+    //     }
+    //     fetchData()
+    // }, [formik.values.stateId])
 
     useEffect(() => {
         const fetchData = async() => {
@@ -299,9 +299,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.titleId && Boolean(formik.errors.titleId)}
                                         helperText={formik.touched.titleId && formik.errors.titleId}
                                     >
-                                        {title.map(data => (
+                                        {/* {title.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -397,9 +397,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.genderId && Boolean(formik.errors.genderId)}
                                         helperText={formik.touched.genderId && formik.errors.genderId}
                                     >
-                                        {gender.map(data => (
+                                        {/* {gender.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -422,9 +422,9 @@ const NewStudent = (props) => {
                                     error={formik.touched.maritalStatusId && Boolean(formik.errors.maritalStatusId)}
                                     helperText={formik.touched.maritalStatusId && formik.errors.maritalStatusId}
                                 >
-                                    {maritalStatus.map(data => (
+                                    {/* {maritalStatus.map(data => (
                                         <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                    ))}
+                                    ))} */}
                                 </TextField>
                             </Col>
                             <Col lg={3}>
@@ -551,9 +551,9 @@ const NewStudent = (props) => {
                                     error={formik.touched.religion && Boolean(formik.errors.religion)}
                                     helperText={formik.touched.religion && formik.errors.religion}
                                 >
-                                    {religion.map(data => (
+                                    {/* {religion.map(data => (
                                         <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                    ))}
+                                    ))} */}
                                 </TextField>
                             </Col>
                             <Col lg={3}>
@@ -694,9 +694,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.countryId && Boolean(formik.errors.countryId)}
                                         helperText={formik.touched.countryId && formik.errors.countryId}
                                     >
-                                        {country.map(data => (
+                                        {/* {country.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -719,9 +719,9 @@ const NewStudent = (props) => {
                                     error={formik.touched.stateId && Boolean(formik.errors.stateId)}
                                     helperText={formik.touched.stateId && formik.errors.stateId}
                                 >
-                                    {state.map(data => (
+                                    {/* {state.map(data => (
                                         <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                    ))}
+                                    ))} */}
                                 </TextField>
                             </Col>
                             <Col lg={3}>
@@ -744,9 +744,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.lga && Boolean(formik.errors.lga)}
                                         helperText={formik.touched.lga && formik.errors.lga}
                                     >
-                                        {lga.map(data => (
+                                        {/* {lga.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -818,9 +818,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.schoolId && Boolean(formik.errors.schoolId)}
                                         helperText={formik.touched.schoolId && formik.errors.schoolId}
                                     >
-                                        {school.map(data => (
+                                        {/* {school.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -843,9 +843,9 @@ const NewStudent = (props) => {
                                     error={formik.touched.facultyId && Boolean(formik.errors.facultyId)}
                                     helperText={formik.touched.facultyId && formik.errors.facultyId}
                                 >
-                                    {faculty.map(data => (
+                                    {/* {faculty.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                    ))}
+                                    ))} */}
                                 </TextField>
                             </Col>
                             <Col lg={3}>
@@ -868,9 +868,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.departmentId && Boolean(formik.errors.departmentId)}
                                         helperText={formik.touched.departmentId && formik.errors.departmentId}
                                     >
-                                        {department.map(data => (
+                                        {/* {department.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>
@@ -894,9 +894,9 @@ const NewStudent = (props) => {
                                         error={formik.touched.program && Boolean(formik.errors.program)}
                                         helperText={formik.touched.program && formik.errors.program}
                                     >
-                                        {program.map(data => (
+                                        {/* {program.map(data => (
                                             <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                                        ))}
+                                        ))} */}
                                     </TextField>
                                 </div>
                             </Col>

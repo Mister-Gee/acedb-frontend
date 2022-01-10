@@ -55,7 +55,7 @@ const SideMenu = () => {
                     <img src="/assets/images/logo.png" alt="logo" />
                     <div className='sidemenu-header-text'>ACE</div>
                 </div>
-                <div className="nav-links admin-links">
+                <div className="nav-links">
                     <ul>
                         <li>
                             <NavLink exact to="/dashboard" > 
@@ -78,7 +78,7 @@ const SideMenu = () => {
                                     <ul className="dropdown-item-menu border-left">
                                         <li ><NavLink exact to="/session-management"> Session Management </NavLink></li>
                                         <li><NavLink exact to="/school-management"> School Management </NavLink></li>
-                                        {/* <li><NavLink exact to="/faculty-management"> Faculty Management </NavLink></li> */}
+                                        {/* <li><NavLink exact to="/role-management"> Role Management </NavLink></li> */}
                                         <li><NavLink exact to="/dept-management"> Department Management </NavLink></li>
                                         <li><NavLink exact to="/program-management"> Program Management </NavLink></li>
                                         <li><NavLink exact to="/program-levels"> Program Levels </NavLink></li>

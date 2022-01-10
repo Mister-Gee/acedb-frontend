@@ -7,7 +7,8 @@ import { getCourse } from '../../services/courseServices';
 import {search, tableIndex} from '../../utils/Functions';
 import ContentLoader from '../components/ContentLoader';
 import DeleteCourse from './subcomponent/DeleteCourse';
-
+import NewCourse from './subcomponent/NewCourse';
+import EditCourse from './subcomponent/EditCourse';
 
 const CourseManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -66,11 +67,13 @@ const CourseManagement = () => {
             <Helmet>
                 <title>Course Management | Adeyemi College of Education</title>
             </Helmet>
+            <NewCourse  show={addNew} onHide={() => setAddNew(false)} contentLength={contentLength} setContentLength={setContentLength} />
+            <EditCourse show={addEdit} onHide={() => setAddEdit(false)} contentLength={contentLength} setContentLength={setContentLength} data={CourseEditData}/>
+            <DeleteCourse show={addDelete} onHide={() => setAddDelete(false)} contentLength={contentLength} setContentLength={setContentLength} data={CourseEditData}/>
             {isLoading ?
             <ContentLoader />
             :
             <div className="content-page">
-                <DeleteCourse show={addDelete} onHide={() => setAddDelete(false)} contentLength={contentLength} setContentLength={setContentLength} data={CourseEditData}/>
                 <div className="session-wrapper">
                     <Container>
                         <div className="session-title">Course Management</div>

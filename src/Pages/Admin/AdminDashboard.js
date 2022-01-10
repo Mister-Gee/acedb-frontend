@@ -8,11 +8,27 @@ import RecentStudentComponent from './subcomponent/RecentStudentComponent';
 import {getUserCount} from '../../services/userServices';
 import React, {useState, useEffect} from 'react';
 import ContentLoader from '../components/ContentLoader';
+import {getStudentChart} from '../../services/StudentServices';
+
 
 
 const AdminDashboard = () => {
     const [userCount, setUserCount] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [chartData, setChartData] = useState([])
+
+    useEffect(() => {
+        const fetch = async () => {
+            try{
+                const res = await getStudentChart()
+                setChartData(res.data)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+        fetch()
+    }, [])
 
     useEffect(() => {
         const fetch = async () => {
@@ -28,7 +44,7 @@ const AdminDashboard = () => {
         fetch()
     }, [])
     return (
-        <Dashboardframe title="Staff" subTitle="Dashboard">
+        <Dashboardframe title="MIS" subTitle="Dashboard">
             {/* page title header */}
             <Helmet>
                 <title>Dashboard | Adeyemi College Of Education</title>
@@ -91,7 +107,9 @@ const AdminDashboard = () => {
                                     </div>
                                 </Card.Title>
                                 <Card.Text>
-                                    <LineChart />
+                                    <LineChart 
+                                        chartData={chartData}
+                                    />
                                 </Card.Text>
                             </Card.Body>
                             </Card>

@@ -14,7 +14,7 @@ const LectureManagement = () => {
     return (
         <Dashboardframe title="Admin" subTitle="Lecture Management">
             <Helmet>
-                <title>Lecture Management | iEduCare</title>
+                <title>Lecture Management | Adekunle College Of Education</title>
             </Helmet>
             <div className="content-page">
                 <div className="session-wrapper">
