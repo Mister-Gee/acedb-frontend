@@ -10,7 +10,6 @@ import DeleteSemester from './subcomponent/DeleteSemester';
 import SemesterTable from './subcomponent/SemesterTable';
 import SessionTable from './subcomponent/SessionTable';
 import {useState, useEffect} from 'react';
-import {getInstitutionId} from '../../utils/Functions';
 import ContentLoader from '../components/ContentLoader';
 import {getSession} from '../../services/institutionAdminServices';
 import UpdateCurrentSession from './subcomponent/UpdateCurrentSession';
@@ -39,7 +38,6 @@ const SessionManagement = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     //Get Institution ID from Local Storage
-    const institutionId = getInstitutionId()
 
     //Sliced Data and Search data state for search bar
     const [slicedData, setSlicedData] = useState([])
@@ -84,7 +82,7 @@ const SessionManagement = () => {
         setIsLoading(true)
         const fetchData = async() => {
             try{
-                const res = await getSession(institutionId)
+                const res = await getSession()
                 const data = res.data
                 const slicedData = data.slice(offset * perPage, offset + perPage)
                 const reversedData = data.reverse()
@@ -104,7 +102,7 @@ const SessionManagement = () => {
             }
         }
         fetchData()
-    }, [offset, perPage, contentLength, institutionId, setRecentSessionId, setRecentSessionName])
+    }, [offset, perPage, contentLength, setRecentSessionId, setRecentSessionName])
     
     return (
         <Dashboardframe title="MIS" subTitle="Semester/Session">

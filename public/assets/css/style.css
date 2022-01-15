@@ -1321,7 +1321,7 @@
             background: transparent;
         }
         
-        .add-new-modal .modal-footer .submit-btn {
+        .add-new-modal .modal-footer .submit-btn, .biodata-btn {
             background: #16BC5D;
             border: 1px solid #16BC5D;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -1340,17 +1340,18 @@
             -o-border-radius: 40px;
         }
         
-        .add-new-modal .modal-footer .submit-btn .iconify {
+        .add-new-modal .modal-footer .submit-btn .iconify, .biodata-btn .iconify {
             color: #FDC600;
         }
         
-        .add-new-modal .modal-footer .submit-btn:hover {
+        .add-new-modal .modal-footer .submit-btn:hover, .biodata-btn:hover {
             background: transparent;
             border: 1px solid #16BC5D;
             color: #16BC5D;
         }
         
-        .add-new-modal .modal-footer .submit-btn:hover .iconify {
+        
+        .add-new-modal .modal-footer .submit-btn:hover .iconify, .biodata-btn:hover .iconify {
             color: #c49a03;
         }
         

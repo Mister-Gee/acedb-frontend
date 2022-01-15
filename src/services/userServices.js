@@ -13,6 +13,10 @@ export const getUserCount = () => {
     return instance.get("/Account/UserCount")
 }
 
+export const createUser = (data) => {
+    return instance.post("/Account/Register", data)
+}
+
 export const logoutUser = () => {
     return instance.post("/api/sme/authentication/logout")
 }

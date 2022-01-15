@@ -15,7 +15,7 @@ export const getCountry = () => {
 }
 
 export const getGender = () => {
-    return http.get("/api/ieducare/common/get")
+    return http.get("/ControlledData/Gender/All")
 }
 export const GetCommonData = () => {
     return http.get("/api/ieducare/common/get")
@@ -27,3 +27,16 @@ export const getAcademicYears = () => {
 export const getSemesters = () => {
     return http.get("/ControlledData/Semester/All")
 }
+
+export const getMaritalStatus = () => {
+    return http.get("/ControlledData/MaritalStatus/All")
+}
+
+export const getReligion = () => {
+    return http.get("/ControlledData/Religion/All")
+}
+
+export const getStudentCategory = () => {
+    return http.get("/ControlledData/StudentCategory/All")
+}
+
