@@ -5,14 +5,14 @@ const LineChart = ({chartData}) => {
     const data = {
         labels: chartData ? chartData.session : [],
         datasets: [{
-            label: chartData ? chartData.maleStudents.label : "",
+            label: "Male",
             data: chartData ? chartData.maleStudents.registeredStudentPerSession : [],
             borderColor: ['#4FC3F7'],
             backgroundColor: ['rgb(79, 195, 247, 0.3)'],
             pointBackgroundColor: '#4FC3F7',
             pointBorderColor: '#4FC3F7'
         }, {
-            label: chartData ? chartData.femaleStudents.label : "",
+            label: "Female",
             data: chartData ? chartData.femaleStudents.registeredStudentPerSession : [],
             borderColor: ['#2962FF'],
             backgroundColor: ['rgba(41, 98, 255, 0.3)'],

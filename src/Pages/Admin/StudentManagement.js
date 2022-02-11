@@ -8,10 +8,14 @@ import FullyRegisterStudent from './subcomponent/FullyRegisterStudent';
 import { getPartiallyRegisteredStudent, getFullyRegisteredStudent } from '../../services/StudentServices';
 import ContentLoader from '../components/ContentLoader';
 import UpdateStudentBiodata from './subcomponent/UpdateStudentBiodata';
+import ChangeUserStatus from './subcomponent/ChangeUserStatus';
+import UploadUsers from './subcomponent/UploadUsers';
 
 
 const StudentManagement = () => {
     const [addNew, setAddNew] = useState(false)
+    const [addNewUsers, setAddNewUsers] = useState(false)
+    const [addOldUsers, setAddOldUsers] = useState(false)
     const [addEdit, setAddEdit] = useState(false)
     const [deactivate, setDeactivate] = useState(false)
 
@@ -20,6 +24,14 @@ const StudentManagement = () => {
 
     const handleAddNew = () => {
         setAddNew(true)
+    }
+
+    const handleAddNewUsers = () => {
+        setAddNewUsers(true)
+    }
+
+    const handleAddOldUsers = () => {
+        setAddOldUsers(true)
     }
 
     const handleAddDeactivate = () => {
@@ -57,9 +69,9 @@ const StudentManagement = () => {
 
    
     useEffect(() => {
-        setIsLoading(true)
         try{
             const fetch = async () => {
+                setIsLoading(true)
                 const res = await getPartiallyRegisteredStudent()
                 const data = res.data
                 const slicedData = data.slice(offsetPS * perPagePS, offsetPS + perPagePS)
@@ -74,8 +86,8 @@ const StudentManagement = () => {
         }
         catch(err){
             console.log(err)
+            setIsLoading(false)
         }
-        setIsLoading(false)
     },[contentLengthPS, offsetPS, perPagePS])
 
     useEffect(() => {
@@ -111,9 +123,32 @@ const StudentManagement = () => {
                  headerTitle="Student"
                  formType={false}
             />
+            <UploadUsers 
+                show={addNewUsers} 
+                onHide={() => setAddNewUsers(false)}
+                contentLengt={contentLengthPS}
+                setContentLength={setContentLengthPS}
+                headerTitle="New Students"
+                type="new-student"
+            />
+            <UploadUsers 
+                show={addOldUsers} 
+                onHide={() => setAddOldUsers(false)}
+                contentLengt={contentLengthPS}
+                setContentLength={setContentLengthPS}
+                headerTitle="Returning Students"
+                type="old-student"
+            />
             <UpdateStudentBiodata 
                 show={addEdit} 
                 onHide={() => setAddEdit(false)}
+                data={editData}
+                contentLengt={contentLengthPS}
+                setContentLength={setContentLengthPS}
+            />
+            <ChangeUserStatus 
+                show={deactivate}
+                onHide={() => setDeactivate(false)}
                 data={editData}
                 contentLengt={contentLengthPS}
                 setContentLength={setContentLengthPS}
@@ -128,8 +163,8 @@ const StudentManagement = () => {
                         <Row className="mt-4">
                             <Col lg={12}>
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New</button>
-                                <button className="importExport-btn"> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Users</button>
-                                {/* <button className="importExport-btn"> <span className="iconify" data-icon="uil:export" data-inline="false"></span>  Export Users</button> */}
+                                <button className="importExport-btn" onClick={handleAddNewUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import New Students</button>
+                                <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Students</button>
                             </Col>
                         </Row>
                         <Tabs defaultActiveKey="partiallyRegistered" id="uncontrolled-tab-example" className="mt-4 session-tab">

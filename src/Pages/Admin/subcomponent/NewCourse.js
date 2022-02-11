@@ -106,6 +106,7 @@ const NewCourse = (props) => {
                 setMessage("Failed to Create Course")
                 setShowAlert(true)
             }
+            setIsSubmit(false)
         }
         catch(err){
             console.log(err.message)
@@ -113,6 +114,7 @@ const NewCourse = (props) => {
             setAlertType("danger")
             setMessage(err.message)
             setShowAlert(true)
+            setIsSubmit(false)
         }
     }
 

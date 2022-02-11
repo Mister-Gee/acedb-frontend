@@ -3,14 +3,14 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useState, useEffect} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getSchool, getDepartmentBySchool, getProgram, getProgramLevel} from '../../../services/institutionAdminServices';
-import { getMaritalStatus, getReligion, getGender, getStudentCategory } from '../../../services/commonServices';
+import {getSchool, getDepartmentBySchool} from '../../../services/institutionAdminServices';
+import { getMaritalStatus, getReligion, getGender} from '../../../services/commonServices';
 import { MenuItem, makeStyles } from '@material-ui/core';
 import StyledTextField from '../../components/StyledTextField';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { dateToInputDate } from '../../../utils/Functions';
-import { updateStudentBiodata } from '../../../services/biodataService';
+import { updateStaffBiodata } from '../../../services/biodataService';
 
 const useStyles = makeStyles({
     field: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     }
 })
 
-const BiodataForm = ({data}) => {
+const BiodataFormStaff = ({data}) => {
     const classes = useStyles()
 
     // Popup Alert State
@@ -36,9 +36,6 @@ const BiodataForm = ({data}) => {
     //School data State
     const [school, setSchool] = useState([])
     const [department, setDepartment] = useState([])
-    const [program, setProgram] = useState([])
-    const [programLevel, setProgramLevel] = useState([])
-    const [studentCategory, setStudentCategory] = useState([])
 
 
     //Submit State
@@ -49,16 +46,16 @@ const BiodataForm = ({data}) => {
         try{
             editData.isIndigenous = isIndigenous
             editData.isDisabled = isDisabled
-            const res = await updateStudentBiodata(data.id, editData)
+            const res = await updateStaffBiodata(data.id, editData)
             if (res.status === 200 || res.status === 204){
                 setAlertType("success")
-                setMessage("Student Biodata Updated")
+                setMessage("Staff Biodata Updated")
                 setShowAlert(true)
                 setIsSubmit(false)
             }
             else{
                 setAlertType("danger")
-                setMessage("Fail to Update Student Biodata")
+                setMessage("Fail to Update Staff Biodata")
                 setShowAlert(true)
                 setIsSubmit(false)
             }
@@ -95,14 +92,9 @@ const BiodataForm = ({data}) => {
         facebookID: data.facebookID ? data.facebookID : '',
         instagramID: data.instagramID ? data.instagramID : '',
         linkedInID: data.linkedInID ? data.linkedInID : '',
-        jambRegNumber: data.jambRegNumber ? data.jambRegNumber : '',
-        matricNumber: data.matricNumber ? data.matricNumber : '',
-        admissionDate: data.admissionDate ? dateToInputDate(data.admissionDate) : '',
-        modeOfAdmission: data.modeOfAdmission ? data.modeOfAdmission : '',
-        studentCategoryID: data.studentCategoryID ? data.studentCategoryID : '',
-        programmeID: data.programmeID ? data.programmeID : '',
-        entryLevelID: data.entryLevelID ? data.entryLevelID : '',
-        currentLevelID: data.currentLevelID ? data.currentLevelID : ''
+        staffID: data.staffID ? data.staffID : '',
+        employmentDate: data.employmentDate ? dateToInputDate(data.employmentDate) : '',
+        ippisNo: data.ippisNo ? data.ippisNo : ''
     }
 
     //Form Validation Schema
@@ -128,14 +120,9 @@ const BiodataForm = ({data}) => {
         facebookID: Yup.string(),
         instagramID: Yup.string(),
         linkedInID: Yup.string(),
-        jambRegNumber: Yup.string().required("Jamb Registeration Number is required"),
-        matricNumber: Yup.string().required("Matric Number is required"),
-        admissionDate: Yup.string().required("Admission Date is required"),
-        modeOfAdmission: Yup.string().required("Mode of Admission is required"),
-        studentCategoryID: Yup.string().required("Student Category is required"),
-        programmeID: Yup.string().required("Program is required"),
-        entryLevelID: Yup.string().required("Entry Level is required"),
-        currentLevelID: Yup.string().required("Current Level is required"),
+        staffID: Yup.string().required("Staff ID is required"),
+        employmentDate: Yup.string().required("Employment Date is required"),
+        ippisNo: Yup.string().required("IPPIS Number is required")
     })
 
     //Formik Hook
@@ -224,45 +211,6 @@ const BiodataForm = ({data}) => {
             try{
                 const res = await getGender()
                 setGender(res.data)
-            }
-            catch(err){
-                console.log(err.message)
-            }
-        }
-        fetchData()
-    }, [])
-
-    useEffect(() => {
-        const fetchData = async() => {
-            try{
-                const res = await getProgram()
-                setProgram(res.data)
-            }
-            catch(err){
-                console.log(err.message)
-            }
-        }
-        fetchData()
-    }, [])
-
-    useEffect(() => {
-        const fetchData = async() => {
-            try{
-                const res = await getStudentCategory()
-                setStudentCategory(res.data)
-            }
-            catch(err){
-                console.log(err.message)
-            }
-        }
-        fetchData()
-    }, [])
-
-    useEffect(() => {
-        const fetchData = async() => {
-            try{
-                const res = await getProgramLevel()
-                setProgramLevel(res.data)
             }
             catch(err){
                 console.log(err.message)
@@ -505,7 +453,7 @@ const BiodataForm = ({data}) => {
                             checked={isDisabled}
                             onChange={handleDisabledCheck}
                         />
-                    } label="Is Student Disabled?" />
+                    } label="Is Staff Disabled?" />
                     
                 </Col>
                 {isDisabled &&
@@ -565,7 +513,7 @@ const BiodataForm = ({data}) => {
                             checked={isIndigenous}
                             onChange={handleIndigenousCheck}
                         />
-                    } label="Is Student Indigenous?" />
+                    } label="Is Staff Indigenous?" />
                 </Col>
                 <Col lg={3}>
                     <StyledTextField 
@@ -814,10 +762,10 @@ const BiodataForm = ({data}) => {
                 <Col lg={3}>
                     <StyledTextField 
                         className={classes.Input}
-                        name="jambRegNumber" 
-                        id="jambRegNumber" 
-                        label="Jamb Reg Number" 
-                        placeholder="Jamb Registeration Number"
+                        name="staffID" 
+                        id="staffID" 
+                        label="Staff ID" 
+                        placeholder="Staff ID"
                         margin="normal"
                         fullWidth
                         InputLabelProps={{
@@ -829,44 +777,20 @@ const BiodataForm = ({data}) => {
                             }
                         }}
                         variant="outlined"
-                        value={formik.values.jambRegNumber}
+                        value={formik.values.staffID}
                         onChange={formik.handleChange}
-                        error={formik.touched.jambRegNumber && Boolean(formik.errors.jambRegNumber)}
-                        helperText={formik.touched.jambRegNumber && formik.errors.jambRegNumber}
-                    />
-                </Col>
-                <Col lg={3}>
-                    <StyledTextField 
-                        className={classes.Input}
-                        name="matricNumber" 
-                        id="matricNumber" 
-                        label="Matric Number" 
-                        placeholder="Matric Number"
-                        margin="normal"
-                        fullWidth
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                        inputProps={{
-                            style: {
-                                height: 40
-                            }
-                        }}
-                        variant="outlined"
-                        value={formik.values.matricNumber}
-                        onChange={formik.handleChange}
-                        error={formik.touched.matricNumber && Boolean(formik.errors.matricNumber)}
-                        helperText={formik.touched.matricNumber && formik.errors.matricNumber}
+                        error={formik.touched.staffID && Boolean(formik.errors.staffID)}
+                        helperText={formik.touched.staffID && formik.errors.staffID}
                     />
                 </Col>
                 <Col lg={3}>
                     <StyledTextField 
                         type="date"
                         className={classes.Input}
-                        name="admissionDate" 
-                        id="admissionDate" 
-                        label="Admission Date" 
-                        placeholder="Admission Date"
+                        name="employmentDate" 
+                        id="employmentDate" 
+                        label="Employment Date" 
+                        placeholder="Employment Date"
                         margin="normal"
                         fullWidth
                         InputLabelProps={{
@@ -878,19 +802,19 @@ const BiodataForm = ({data}) => {
                             }
                         }}
                         variant="outlined"
-                        value={formik.values.admissionDate}
+                        value={formik.values.employmentDate}
                         onChange={formik.handleChange}
-                        error={formik.touched.admissionDate && Boolean(formik.errors.admissionDate)}
-                        helperText={formik.touched.admissionDate && formik.errors.admissionDate}
+                        error={formik.touched.employmentDate && Boolean(formik.errors.employmentDate)}
+                        helperText={formik.touched.employmentDate && formik.errors.employmentDate}
                     />
                 </Col>
                 <Col lg={3}>
                     <StyledTextField 
                         className={classes.Input}
-                        name="modeOfAdmission" 
-                        id="modeOfAdmission" 
-                        label="Mode of Admission" 
-                        placeholder="Mode of Admission"
+                        name="ippisNo" 
+                        id="ippisNo" 
+                        label="IPPIS Number" 
+                        placeholder="IPPIS Number"
                         margin="normal"
                         fullWidth
                         InputLabelProps={{
@@ -902,111 +826,11 @@ const BiodataForm = ({data}) => {
                             }
                         }}
                         variant="outlined"
-                        value={formik.values.modeOfAdmission}
+                        value={formik.values.ippisNo}
                         onChange={formik.handleChange}
-                        error={formik.touched.modeOfAdmission && Boolean(formik.errors.modeOfAdmission)}
-                        helperText={formik.touched.modeOfAdmission && formik.errors.modeOfAdmission}
+                        error={formik.touched.ippisNo && Boolean(formik.errors.ippisNo)}
+                        helperText={formik.touched.ippisNo && formik.errors.ippisNo}
                     />
-                </Col>
-                <Col lg={3}>
-                    <StyledTextField 
-                        select
-                        name="studentCategoryID" 
-                        id="studentCategoryID" 
-                        label="Student Category" 
-                        placeholder="Student Category"
-                        margin="normal"
-                        fullWidth
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                        size='small'
-                        variant="outlined"
-                        value={formik.values.studentCategoryID}
-                        onChange={formik.handleChange}
-                        error={formik.touched.studentCategoryID && Boolean(formik.errors.studentCategoryID)}
-                        helperText={formik.touched.studentCategoryID && formik.errors.studentCategoryID}
-                    >
-                        <MenuItem>Select Student Category</MenuItem>
-                        {studentCategory.map(data => (
-                                <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                            ))}
-                    </StyledTextField>
-                </Col>
-                <Col lg={3}>
-                    <StyledTextField 
-                        select
-                        name="programmeID" 
-                        id="programmeID" 
-                        label="Programme" 
-                        placeholder="Programme"
-                        margin="normal"
-                        fullWidth
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                        size='small'
-                        variant="outlined"
-                        value={formik.values.programmeID}
-                        onChange={formik.handleChange}
-                        error={formik.touched.programmeID && Boolean(formik.errors.programmeID)}
-                        helperText={formik.touched.programmeID && formik.errors.programmeID}
-                    >
-                        <MenuItem>Select Programme</MenuItem>
-                        {program.map(data => (
-                                <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                            ))}
-                    </StyledTextField> 
-                </Col>
-                <Col lg={3}>
-                    <StyledTextField 
-                        select
-                        name="entryLevelID" 
-                        id="entryLevelID" 
-                        label="Entry Level" 
-                        placeholder="Entry Level"
-                        margin="normal"
-                        fullWidth
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                        size='small'
-                        variant="outlined"
-                        value={formik.values.entryLevelID}
-                        onChange={formik.handleChange}
-                        error={formik.touched.entryLevelID && Boolean(formik.errors.entryLevelID)}
-                        helperText={formik.touched.entryLevelID && formik.errors.entryLevelID}
-                    >
-                        <MenuItem>Select Entry Level</MenuItem>
-                        {programLevel.map(data => (
-                                <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                            ))}
-                    </StyledTextField> 
-                    </Col>
-                    <Col lg={3}>
-                    <StyledTextField 
-                        select
-                        name="currentLevelID" 
-                        id="currentLevelID" 
-                        label="Current Level" 
-                        placeholder="Current Level"
-                        margin="normal"
-                        fullWidth
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                        size='small'
-                        variant="outlined"
-                        value={formik.values.currentLevelID}
-                        onChange={formik.handleChange}
-                        error={formik.touched.currentLevelID && Boolean(formik.errors.currentLevelID)}
-                        helperText={formik.touched.currentLevelID && formik.errors.currentLevelID}
-                    >
-                        <MenuItem>Select Current Level</MenuItem>
-                        {programLevel.map(data => (
-                                <MenuItem key={data.id} value={data.id}>{data.name}</MenuItem>
-                            ))}
-                    </StyledTextField> 
                 </Col>
             </Row>  
             <Row className='mt-3'>
@@ -1019,4 +843,4 @@ const BiodataForm = ({data}) => {
     )
 }
 
-export default BiodataForm
+export default BiodataFormStaff

@@ -13,5 +13,13 @@ export const getStaffByDept = (DepartmentID) => {
 }
 
 export const getStaffByID = (ID) => {
-    return http.get(`​/Staff/Get/ID/${ID}`)
+    return http.get(`/Staff/Get/ID/${ID}`)
+}
+
+export const getPartiallyRegisteredStaff = () => {
+    return http.get("/Staff/Partial/Get/All")
+}
+
+export const getFullyRegisteredStaff = () => {
+    return http.get("/Staff/Get/All")
 }

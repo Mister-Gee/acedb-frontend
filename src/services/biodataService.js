@@ -10,6 +10,10 @@ export const updateStudentBiodata = (Id, data) => {
     return http.put(`/Biodata/Student/Update/${Id}`, data)
 }
 
+export const updateStaffBiodata = (Id, data) => {
+    return http.put(`/Biodata/Staff/Update/${Id}`, data)
+}
+
 export const imageUpload = (userID, data) => {
     return http.put(`/Biodata/Image/Upload/${userID}`, data)
 }

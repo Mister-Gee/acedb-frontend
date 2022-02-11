@@ -32,6 +32,8 @@ import Attendance from '../Pages/Student/Attendance';
 import Timetable from '../Pages/Student/Timetable';
 import StudentExamRecords from '../Pages/Student/StudentExamRecords';
 import StudentAnnoucement from '../Pages/Student/StudentAnnoucement';
+import StudentCourseManagement from '../Pages/Admin/StudentCourseManagement';
+import StudentClassAttendance from '../Pages/Admin/StudentClassAttendance';
 
 const Routes = () => {
     return (
@@ -125,6 +127,12 @@ const Routes = () => {
           </Route>
           <Route path="/lecture-management">
             <LectureManagement />
+          </Route>
+          <Route path="/student-course-management/:courseId">
+            <StudentCourseManagement />
+          </Route>
+          <Route path="/student-class-attendance/:courseId/:deptId">
+            <StudentClassAttendance />
           </Route>
           <Route path="/program-levels">
             <ProgramLevels />

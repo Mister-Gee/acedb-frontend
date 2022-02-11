@@ -3,15 +3,15 @@ import PaginationComponent from './PaginationComponent';
 import {useState} from 'react';
 import {tableIndex, search} from '../../../utils/Functions';
 
-const PartiallyRegisterStudent = ({offset, 
+const PartiallyRegisterStaff = ({offset, 
     perPage, 
     setPerPage, 
     setOffset, 
-    setPartialStudentData, 
+    setPartialStaffData, 
     slicedData, 
     searchData, 
-    partialStudentData, 
-    setPartialStudentEditData,
+    partialStaffData, 
+    setPartialStaffEditData,
     handleAddEdit,
     handleAddDeactivate,
     contentLength,
@@ -27,10 +27,10 @@ const PartiallyRegisterStudent = ({offset,
     
     const handleSearch = (array, searchText) => {
         if (searchText === ''){
-            setPartialStudentData(slicedData)
+            setPartialStaffData(slicedData)
         }
         else{
-            setPartialStudentData(search(array, searchText, 'email'))
+            setPartialStaffData(search(array, searchText, 'email'))
         } 
     }
     return (
@@ -70,7 +70,7 @@ const PartiallyRegisterStudent = ({offset,
                                 </tr>
                             </thead>
                             <tbody>
-                                {partialStudentData.map((data, index) => (
+                                {partialStaffData.map((data, index) => (
                                     <tr key={data.id}>
                                         <td>{tableIndex(index, realIndex)}</td>
                                         <td>{data.fullName}</td>
@@ -80,7 +80,7 @@ const PartiallyRegisterStudent = ({offset,
                                         <span className="btns">
                                             <span
                                                 onClick={() => {
-                                                    setPartialStudentEditData(data)
+                                                    setPartialStaffEditData(data)
                                                     handleAddEdit()
                                                 }}
                                             >
@@ -88,7 +88,7 @@ const PartiallyRegisterStudent = ({offset,
                                             </span>
                                             <span
                                                 onClick={() => {
-                                                    setPartialStudentEditData(data)
+                                                    setPartialStaffEditData(data)
                                                     handleAddDeactivate()
                                                 }}
                                             > 
@@ -122,4 +122,4 @@ const PartiallyRegisterStudent = ({offset,
     )
 }
 
-export default PartiallyRegisterStudent
+export default PartiallyRegisterStaff

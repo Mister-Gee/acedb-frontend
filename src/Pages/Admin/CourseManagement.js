@@ -36,7 +36,7 @@ const CourseManagement = () => {
             setCourseData(slicedData)
         }
         else{
-            setCourseData(search(array, searchText, 'name'))
+            setCourseData(search(array, searchText, 'courseCode'))
         } 
     }
 
@@ -100,7 +100,7 @@ const CourseManagement = () => {
                                     </div>
                                     <div className="search">
                                         <label htmlFor="search" className="search-label">Filter: </label>
-                                        <input type="search" className="search-box" id="search" onChange={(event) => handleSearch(searchData, event.target.value)}/>
+                                        <input type="search" className="search-box" id="search" placeholder='Course Code' onChange={(event) => handleSearch(searchData, event.target.value)}/>
                                     </div>
                                 </div>
                             </Col>

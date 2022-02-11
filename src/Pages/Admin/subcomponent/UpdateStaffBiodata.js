@@ -1,8 +1,8 @@
 import {Modal, Tabs, Tab} from 'react-bootstrap';
-import BiodataForm from './BiodataForm';
+import BiodataFormStaff from './BiodataFormStaff';
 import UserImageForm from './UserImageForm';
 
-const UpdateStudentBiodata = (props) => {
+const UpdateStaffBiodata = (props) => {
 
     return (
         <Modal {...props} 
@@ -17,13 +17,13 @@ const UpdateStudentBiodata = (props) => {
             </Modal.Title>
         </Modal.Header>
         <Modal.Body className="">
-            <Tabs defaultActiveKey="studentBiodata" id="uncontrolled-tab-example" className="mt-4 session-tab">
-                <Tab eventKey="studentBiodata" title="Update Student Biodata">  
-                    <BiodataForm 
+            <Tabs defaultActiveKey="staffBiodata" id="uncontrolled-tab-example" className="mt-4 session-tab">
+                <Tab eventKey="staffBiodata" title="Update Staff Biodata">  
+                    <BiodataFormStaff 
                         data={props.data}
                     />
                 </Tab>
-                <Tab eventKey="studentImage" title="Upload Student Image">  
+                <Tab eventKey="staffImage" title="Upload Staff Image">  
                     <UserImageForm 
                         data={props.data}
                     />
@@ -37,4 +37,4 @@ const UpdateStudentBiodata = (props) => {
     )
 }
 
-export default UpdateStudentBiodata
+export default UpdateStaffBiodata

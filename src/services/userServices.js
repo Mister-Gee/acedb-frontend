@@ -11,6 +11,10 @@ export const loginUser = (data) => {
 
 export const getUserCount = () => {
     return instance.get("/Account/UserCount")
+} 
+
+export const updateUserStatus = (data) => {
+    return instance.put("/Account/User/UpdateStatus/ByID", data)
 }
 
 export const createUser = (data) => {

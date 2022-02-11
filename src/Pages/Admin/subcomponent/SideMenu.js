@@ -104,8 +104,8 @@ const SideMenu = () => {
                                 {staffDropdownState ? 
                                     <ul className="dropdown-item-menu border-left">
                                         <li><NavLink exact to="/all-staff"> All Staff </NavLink></li>
-                                        {/* <li><NavLink exact to="/roles"> Roles </NavLink></li> */}
-                                        <li><NavLink exact to="/designation"> Designation </NavLink></li>
+                                        <li><NavLink exact to="/roles"> Roles </NavLink></li>
+                                        {/* <li><NavLink exact to="/designation"> Designation </NavLink></li> */}
                                     </ul>
                                     :
                                     ""
@@ -117,44 +117,33 @@ const SideMenu = () => {
                             <span className="iconify" data-icon="clarity:directory-outline-badged" data-inline="false"></span> Lecture Management
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink exact to="/financials">
-                                <span className="iconify" data-icon="mdi:bank-outline" data-inline="false"></span> 
-                                Financials
-                            </NavLink>
-                        </li> */}
                         <li>
-                            <NavLink exact to="/results-management"> 
-                            <span className="iconify" data-icon="foundation:results-demographics" data-inline="false"></span> 
-                                Results Management
-                            </NavLink>
-                        </li>
-                        {/* <li>
-                            <NavLink exact to="/hostel-management"> 
-                                <span className="iconify" data-icon="whh:legacyfilemanager" data-inline="false"></span> 
-                                Hostel Management 
+                            <NavLink exact to="/exam-management">
+                                <span className="iconify" data-icon="healthicons:i-exam-qualification" data-inline="false"></span> 
+                                Exam Management
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink exact to="/transport-management">
-                            <span className="iconify" data-icon="whh:legacyfilemanager" data-inline="false"></span> Transport Management
+                            <NavLink exact to="/flag-management"> 
+                            <span className="iconify" data-icon="ci:flag-fill" data-inline="false"></span> 
+                                Flag Management
                             </NavLink>
-                        </li> */}
+                        </li>
+                        <li>
+                            <NavLink exact to="/health-management"> 
+                                <span className="iconify" data-icon="ic:baseline-health-and-safety" data-inline="false"></span> 
+                                Health Management 
+                            </NavLink>
+                        </li>
                         <li>
                             <NavLink exact to="#"> 
                             <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> 
                             Announcement 
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink exact to="/hostel-management"> 
-                                <span className="iconify" data-icon="ic:outline-notifications-active" data-inline="false"></span> 
-                                Request 
-                            </NavLink>
-                        </li> */}
                         <li>
                             <NavLink exact to="">
-                            <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span> Complaints
+                                <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span> Complaints
                             </NavLink>
                         </li>
                         <li>

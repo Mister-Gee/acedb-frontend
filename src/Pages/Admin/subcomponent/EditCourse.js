@@ -112,6 +112,7 @@ const EditCourse = (props) => {
                 setMessage("Failed to Create Course")
                 setShowAlert(true)
             }
+            setIsSubmit(false)
         }
         catch(err){
             console.log(err.message)
@@ -119,6 +120,7 @@ const EditCourse = (props) => {
             setAlertType("danger")
             setMessage(err.message)
             setShowAlert(true)
+            setIsSubmit(false)
         }
     }
 

@@ -1,17 +1,17 @@
 import {Table, Row, Col} from 'react-bootstrap';
 import PaginationComponent from './PaginationComponent';
 import {useState} from 'react';
-import {tableIndex, search} from '../../../utils/Functions';
+import {tableIndex, search, dateConverter} from '../../../utils/Functions';
 
-const PartiallyRegisterStudent = ({offset, 
+const FullyRegisterStaff = ({offset, 
     perPage, 
     setPerPage, 
     setOffset, 
-    setPartialStudentData, 
+    setFullStaffData, 
     slicedData, 
     searchData, 
-    partialStudentData, 
-    setPartialStudentEditData,
+    fullStaffData, 
+    setFullStaffEditData,
     handleAddEdit,
     handleAddDeactivate,
     contentLength,
@@ -27,10 +27,10 @@ const PartiallyRegisterStudent = ({offset,
     
     const handleSearch = (array, searchText) => {
         if (searchText === ''){
-            setPartialStudentData(slicedData)
+            setFullStaffData(slicedData)
         }
         else{
-            setPartialStudentData(search(array, searchText, 'email'))
+            setFullStaffData(search(array, searchText, 'email'))
         } 
     }
     return (
@@ -64,23 +64,35 @@ const PartiallyRegisterStudent = ({offset,
                                 <tr>
                                 <th>S/N</th>
                                 <th>Full Name</th>
+                                <th>Staff ID</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
+                                <th>Department</th>
+                                <th>School</th>
+                                <th>Gender</th>
+                                <th>Employment Date</th>
+                                <th>Date of Birth</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {partialStudentData.map((data, index) => (
+                                {fullStaffData.map((data, index) => (
                                     <tr key={data.id}>
                                         <td>{tableIndex(index, realIndex)}</td>
-                                        <td>{data.fullName}</td>
+                                        <td>{data.firstName} {data.lastName}</td>
+                                        <td>{data.staffID}</td>
                                         <td>{data.email}</td>
                                         <td>{data.phoneNumber}</td>
+                                        <td>{data.department}</td>
+                                        <td>{data.school}</td>
+                                        <td>{data.gender}</td>
+                                        <td>{dateConverter(data.employmentDate)}</td>
+                                        <td>{dateConverter(data.dateOfBirth)}</td>
                                         <td>
                                         <span className="btns">
                                             <span
                                                 onClick={() => {
-                                                    setPartialStudentEditData(data)
+                                                    setFullStaffEditData(data)
                                                     handleAddEdit()
                                                 }}
                                             >
@@ -88,10 +100,10 @@ const PartiallyRegisterStudent = ({offset,
                                             </span>
                                             <span
                                                 onClick={() => {
-                                                    setPartialStudentEditData(data)
+                                                    setFullStaffEditData(data)
                                                     handleAddDeactivate()
                                                 }}
-                                            > 
+                                            >
                                                 <span className="iconify del-icon" data-icon="fluent:delete-dismiss-24-regular" data-inline="false"></span>
                                             </span>
                                         </span>
@@ -122,4 +134,4 @@ const PartiallyRegisterStudent = ({offset,
     )
 }
 
-export default PartiallyRegisterStudent
+export default FullyRegisterStaff
