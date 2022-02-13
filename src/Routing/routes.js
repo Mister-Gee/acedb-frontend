@@ -34,6 +34,8 @@ import StudentExamRecords from '../Pages/Student/StudentExamRecords';
 import StudentAnnoucement from '../Pages/Student/StudentAnnoucement';
 import StudentCourseManagement from '../Pages/Admin/StudentCourseManagement';
 import StudentClassAttendance from '../Pages/Admin/StudentClassAttendance';
+import ExamManagement from '../Pages/Admin/ExamManagement';
+import ExamAttendance from '../Pages/Admin/ExamAttendance';
 
 const Routes = () => {
     return (
@@ -133,6 +135,12 @@ const Routes = () => {
           </Route>
           <Route path="/student-class-attendance/:courseId/:deptId">
             <StudentClassAttendance />
+          </Route>
+          <Route path="/exam-management">
+            <ExamManagement />
+          </Route>
+          <Route path="/exam-attendance">
+            <ExamAttendance />
           </Route>
           <Route path="/program-levels">
             <ProgramLevels />

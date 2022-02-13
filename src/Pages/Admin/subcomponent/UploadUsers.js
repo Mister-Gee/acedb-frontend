@@ -67,14 +67,14 @@ const UploadUsers = (props) => {
                     if (res.status === 200 || res.status === 204){
                         setIsSubmit(false)
                         setAlertType("success")
-                        setMessage(res.data.message)
+                        setMessage("Student Upload Successful")
                         setShowAlert(true)
                         props.setContentLength(props.contentLength + 1)
                     }
                     else{
                         setIsSubmit(false)
                         setAlertType("danger")
-                        setMessage(res.data.message)
+                        setMessage("An Error Occured")
                         setShowAlert(true)
                     }
             }

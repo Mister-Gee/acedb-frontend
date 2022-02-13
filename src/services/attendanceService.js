@@ -20,3 +20,7 @@ export const createClassAttendance = (data) => {
 export const getStudentExamAttendance = () => {
     return http.get("/ExamAttendance/Record/Student")
 }
+
+export const getSupervisorCourses = () => {
+    return http.get("/ExamAttendance/LoggedInSupervisor/Courses/Get")
+}

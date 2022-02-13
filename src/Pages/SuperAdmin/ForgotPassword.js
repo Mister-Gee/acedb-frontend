@@ -20,7 +20,7 @@ const ForgotPassword = () => {
                         </div>
 
                     </div>
-                    <div className="login-footer">Copyright © 2021.  All Rights Reserved - Powered by Turon Technologies Limited </div>
+                    <div className="login-footer">Copyright © 2021.  All Rights Reserved - Powered by Adeyemi College of Education </div>
                 </div>
             </div>
         </>

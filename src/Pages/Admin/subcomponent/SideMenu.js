@@ -124,6 +124,12 @@ const SideMenu = () => {
                             </NavLink>
                         </li>
                         <li>
+                            <NavLink exact to="/exam-attendance">
+                                <span className="iconify" data-icon="healthicons:i-note-action " data-inline="false"></span> 
+                                Exam Attendance
+                            </NavLink>
+                        </li>
+                        <li>
                             <NavLink exact to="/flag-management"> 
                             <span className="iconify" data-icon="ci:flag-fill" data-inline="false"></span> 
                                 Flag Management
