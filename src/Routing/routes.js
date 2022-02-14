@@ -38,6 +38,7 @@ import ExamManagement from '../Pages/Admin/ExamManagement';
 import ExamAttendance from '../Pages/Admin/ExamAttendance';
 import CourseExamAttendance from '../Pages/Admin/CourseExamAttendance';
 import FlagManagement from '../Pages/Admin/FlagManagement';
+import HealthManagement from '../Pages/Admin/HealthManagement';
 
 const Routes = () => {
     return (
@@ -149,6 +150,9 @@ const Routes = () => {
           </Route>
           <Route path="/flag-management">
             <FlagManagement />
+          </Route>
+          <Route path="/health-management">
+            <HealthManagement />
           </Route>
           <Route path="/program-levels">
             <ProgramLevels />
