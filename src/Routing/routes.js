@@ -36,6 +36,8 @@ import StudentCourseManagement from '../Pages/Admin/StudentCourseManagement';
 import StudentClassAttendance from '../Pages/Admin/StudentClassAttendance';
 import ExamManagement from '../Pages/Admin/ExamManagement';
 import ExamAttendance from '../Pages/Admin/ExamAttendance';
+import CourseExamAttendance from '../Pages/Admin/CourseExamAttendance';
+import FlagManagement from '../Pages/Admin/FlagManagement';
 
 const Routes = () => {
     return (
@@ -141,6 +143,12 @@ const Routes = () => {
           </Route>
           <Route path="/exam-attendance">
             <ExamAttendance />
+          </Route>
+          <Route path="/course-exam-attendance/:courseId">
+            <CourseExamAttendance />
+          </Route>
+          <Route path="/flag-management">
+            <FlagManagement />
           </Route>
           <Route path="/program-levels">
             <ProgramLevels />

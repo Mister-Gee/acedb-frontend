@@ -54,6 +54,10 @@ export const getRegStudentCourseByDept = (CourseID) => {
     return instance.get(`/CourseRegisteration/Student/Department/Registered/All/${CourseID}`)
 }
 
+export const getAllRegStudentCourseByDept = (CourseID) => {
+    return instance.get(`/CourseRegisteration/Student/Registered/All/${CourseID}`)
+}
+
 export const getCourseByID = (ID) => {
     return instance.get(`/Course/Get/${ID}`)
 }

@@ -24,3 +24,15 @@ export const getStudentExamAttendance = () => {
 export const getSupervisorCourses = () => {
     return http.get("/ExamAttendance/LoggedInSupervisor/Courses/Get")
 }
+
+export const getExamCoursesAttendance = (CourseID) => {
+    return http.get(`/ExamAttendance/CurrentSession/Get/${CourseID}`)
+}
+
+export const examStartAttendance = (data) => {
+    return http.post("/ExamAttendance/Start", data)
+}
+
+export const examEndAttendance = (AttendanceID, data) => {
+    return http.put(`/ExamAttendance/End/${AttendanceID}`, data)
+}

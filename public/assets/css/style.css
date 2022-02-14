@@ -3424,9 +3424,29 @@
             -ms-border-radius: 25px;
             -o-border-radius: 25px;
         }
+
+        .attBtn {
+            width: 200px !important;
+        }
         
         .addnew-btn:hover {
             font-weight: bold;
+        }
+
+        .check{
+            color: #16BC5D;
+            font-size: 20px;
+        }
+
+        .cancel{
+            color: red;
+            font-size: 20px;
+        }
+
+        .custom-link{
+            cursor: pointer;
+            color: #16BC5D;
+            text-decoration: underline;
         }
         
         .session-wrapper .dropdown-search {
