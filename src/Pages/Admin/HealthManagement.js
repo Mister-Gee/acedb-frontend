@@ -167,8 +167,8 @@ const HealthManagement = () => {
                                 <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Students</button>
                             </Col>
                         </Row>
-                        <Tabs defaultActiveKey="partiallyRegistered" id="uncontrolled-tab-example" className="mt-4 session-tab">
-                                <Tab eventKey="partiallyRegistered" title="Partially Registered Student">
+                        <Tabs defaultActiveKey="student" id="uncontrolled-tab-example" className="mt-4 session-tab">
+                                <Tab eventKey="student" title="Student Health Record">
                                     <PartiallyRegisterStudent 
                                         offset={offsetPS} 
                                         perPage={perPagePS} 
@@ -185,7 +185,7 @@ const HealthManagement = () => {
                                         pageCount={pageCountPS}
                                     />
                                 </Tab>
-                                <Tab eventKey="fullyregistered" title="Fully Registered Student">
+                                <Tab eventKey="staff" title="Staff Health Record">
                                     <FullyRegisterStudent 
                                       offset={offsetFS} 
                                         perPage={perPageFS} 
