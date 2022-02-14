@@ -111,9 +111,9 @@ const HealthManagement = () => {
     },[contentLengthFS, offsetFS, perPageFS])
 
     return (
-        <Dashboardframe title="Admin" subTitle="Student Management">
+        <Dashboardframe title="Health Center" subTitle="Health Management">
             <Helmet>
-                <title>Student Management | Adekunle College Of Education</title>
+                <title>Health Management | Adekunle College Of Education</title>
             </Helmet>
             <NewUser  
                  show={addNew} 
@@ -159,7 +159,7 @@ const HealthManagement = () => {
             <div className="content-page">
                 <div className="session-wrapper">
                     <Container>
-                        <div className="session-title">Student Management</div>
+                        <div className="session-title">Health Management</div>
                         <Row className="mt-4">
                             <Col lg={12}>
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New</button>
