@@ -48,6 +48,7 @@ const SideMenu = () => {
         }, 1000)
     }
 
+
     return (
         <div className="side-menu">
             <div className="side-menu-content">
@@ -57,19 +58,15 @@ const SideMenu = () => {
                 </div>
                 <div className="nav-links">
                     <ul>
-                        <li>
-                            <NavLink exact to="/dashboard" > 
-                            <span className="iconify" data-icon="zmdi:view-dashboard" data-inline="false"></span>
-                                Dashboard
-                            </NavLink>
-                        </li>
-                        {/* <li>
-                           <NavLink exact to="/registration" >
-                           <span className="iconify" data-icon="ic:sharp-app-registration" data-inline="false"></span>
-                                Registration 
-                           </NavLink> 
-                        </li> */}
-                        <li>
+                        {role.get().includes("MIS") &&
+                            <>
+                            <li>
+                                <NavLink exact to="/dashboard" > 
+                                <span className="iconify" data-icon="zmdi:view-dashboard" data-inline="false"></span>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li>
                             <Link onClick={handleAcademicDropdown}> 
                             <span className="iconify" data-icon="majesticons:academic-cap-line" data-inline="false"></span> 
                                 Academics {academicDropdownState ? <Down /> : <Up />}
@@ -91,6 +88,10 @@ const SideMenu = () => {
 
                             </Link>
                         </li>
+                        </>
+                        }
+                        {role.get().includes("MIS") || role.get().includes("Cafe") ?
+                        <>
                         <li>
                             <NavLink exact to="/student-management"> 
                             <span className="iconify" data-icon="la:user-graduate" data-inline="false"></span> 
@@ -104,19 +105,28 @@ const SideMenu = () => {
                                 {staffDropdownState ? 
                                     <ul className="dropdown-item-menu border-left">
                                         <li><NavLink exact to="/all-staff"> All Staff </NavLink></li>
+                                        {role.get().includes("MIS") &&
                                         <li><NavLink exact to="/roles"> Roles </NavLink></li>
-                                        {/* <li><NavLink exact to="/designation"> Designation </NavLink></li> */}
+                                        }
                                     </ul>
                                     :
                                     ""
                                 }
                             </Link>
                         </li>
+                        </>
+                        :
+                        ""
+                        }
+                        {role.get().includes("Lecturer") &&
                         <li>
                             <NavLink exact to="/lecture-management">
                             <span className="iconify" data-icon="clarity:directory-outline-badged" data-inline="false"></span> Lecture Management
                             </NavLink>
                         </li>
+                        }
+                        {role.get().includes("Exam&Records") &&
+                        <>
                         <li>
                             <NavLink exact to="/exam-management">
                                 <span className="iconify" data-icon="healthicons:i-exam-qualification" data-inline="false"></span> 
@@ -129,19 +139,27 @@ const SideMenu = () => {
                                 Exam Attendance
                             </NavLink>
                         </li>
+                        </>
+                        }
+                        {role.get().includes("Security") || role.get().includes("MIS") ?
                         <li>
                             <NavLink exact to="/flag-management"> 
                             <span className="iconify" data-icon="ci:flag-fill" data-inline="false"></span> 
                                 Flag Management
                             </NavLink>
                         </li>
+                        :
+                        ""
+                        }
+                        {role.get().includes("Health") &&
                         <li>
                             <NavLink exact to="/health-management"> 
                                 <span className="iconify" data-icon="ic:baseline-health-and-safety" data-inline="false"></span> 
                                 Health Management 
                             </NavLink>
                         </li>
-                        <li>
+                        }
+                        {/* <li>
                             <NavLink exact to="#"> 
                             <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"></span> 
                             Announcement 
@@ -151,7 +169,7 @@ const SideMenu = () => {
                             <NavLink exact to="">
                                 <span className="iconify" data-icon="ic:baseline-support-agent" data-inline="false"></span> Complaints
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             <NavLink exact to="/logout" onClick={logout}>
                                 <span className="iconify" data-icon="ls:logout" data-inline="false"></span> 

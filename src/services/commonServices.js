@@ -40,3 +40,10 @@ export const getStudentCategory = () => {
     return http.get("/ControlledData/StudentCategory/All")
 }
 
+export const getBloodGroup = () => {
+    return http.get("/ControlledData/BloodGroup/All")
+}
+
+export const getGenotype = () => {
+    return http.get("/ControlledData/Genotype/All")
+}

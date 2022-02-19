@@ -39,6 +39,8 @@ import ExamAttendance from '../Pages/Admin/ExamAttendance';
 import CourseExamAttendance from '../Pages/Admin/CourseExamAttendance';
 import FlagManagement from '../Pages/Admin/FlagManagement';
 import HealthManagement from '../Pages/Admin/HealthManagement';
+import MedicalProfile from '../Pages/Admin/MedicalProfile';
+import MedicalHistory from '../Pages/Admin/MedicalHistory';
 
 const Routes = () => {
     return (
@@ -153,6 +155,12 @@ const Routes = () => {
           </Route>
           <Route path="/health-management">
             <HealthManagement />
+          </Route>
+          <Route path="/medical-profile/:Id">
+            <MedicalProfile />
+          </Route>
+          <Route path="/medical-history/:userId">
+            <MedicalHistory />
           </Route>
           <Route path="/program-levels">
             <ProgramLevels />

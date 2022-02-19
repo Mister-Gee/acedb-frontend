@@ -135,3 +135,19 @@ export const editCourseGrade = (Id, data) => {
 export const deleteCourseGrade = (Id) => {
     return instance.delete(`/GradingUnit/Delete/{Id}`)
 }
+
+export const getAllMedicalConditions = () => {
+    return instance.get("/ControlledData/MedicalCondition/All")
+}
+
+export const createMedicalConditions = (data) => {
+    return instance.post("/ControlledData/MedicalCondition/Create", data)
+}
+  
+export const editMedicalConditions = (Id, data) => {
+    return instance.put(`/ControlledData/MedicalCondition/Edit/${Id}`, data)
+}
+
+export const deleteMedicalConditions = (Id) => {
+    return instance.delete(`/ControlledData/MedicalCondition/Delete/${Id}`)
+}

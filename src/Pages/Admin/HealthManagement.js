@@ -1,41 +1,43 @@
 import Dashboardframe from './subcomponent/Dashboardframe';
 import {Helmet} from 'react-helmet';
-import NewUser from './subcomponent/NewUser';
 import {Container, Row, Col, Tabs, Tab} from 'react-bootstrap';
 import {useEffect, useState} from 'react';
-import PartiallyRegisterStudent from './subcomponent/PartiallyRegisterStudent';
-import FullyRegisterStudent from './subcomponent/FullyRegisterStudent';
-import { getPartiallyRegisteredStudent, getFullyRegisteredStudent } from '../../services/StudentServices';
+import { getStudentHealthRecord, getStaffHealthRecord } from '../../services/healthService';
 import ContentLoader from '../components/ContentLoader';
-import UpdateStudentBiodata from './subcomponent/UpdateStudentBiodata';
-import ChangeUserStatus from './subcomponent/ChangeUserStatus';
-import UploadUsers from './subcomponent/UploadUsers';
+import StudentHealthRecord from './subcomponent/StudentHealthRecord';
+import StaffHealthRecord from './subcomponent/StaffHealthRecord';
+import NewMedCon from './subcomponent/NewMedCon';
+import NewMedRecord from './subcomponent/NewMedRecord';
+import EditMedRecord from './subcomponent/EditMedRecord';
+import DeleteMedRecord from './subcomponent/DeleteMedRecord';
 
 
 const HealthManagement = () => {
     const [addNew, setAddNew] = useState(false)
-    const [addNewUsers, setAddNewUsers] = useState(false)
-    const [addOldUsers, setAddOldUsers] = useState(false)
+    const [addMedCon, setAddMedCon] = useState(false)
     const [addEdit, setAddEdit] = useState(false)
-    const [deactivate, setDeactivate] = useState(false)
+    const [addDelete, setAddDelete] = useState(false)
 
-    const [contentLengthPS, setContentLengthPS] = useState(0)
-    const [contentLengthFS, setContentLengthFS] = useState(0)
+    const [contentLength, setContentLength] = useState(0)
+    const [editMedData, setEditMedData] = useState({})
 
     const handleAddNew = () => {
         setAddNew(true)
     }
 
-    const handleAddNewUsers = () => {
-        setAddNewUsers(true)
+    const handleEdit = (data) => {
+        setEditMedData(data)
+        setAddEdit(true)
     }
 
-    const handleAddOldUsers = () => {
-        setAddOldUsers(true)
+    const handleMedCon = () => {
+        setAddMedCon(true)
     }
 
-    const handleAddDeactivate = () => {
-        setDeactivate(true)
+
+    const handleAddDelete = (data) => {
+        setEditMedData(data)
+        setAddDelete(true)
     }
 
     //Page Loading State
@@ -58,9 +60,9 @@ const HealthManagement = () => {
     const [pageCountFS, setPageCountFS] = useState(0)
 
     //Displayed Session State
-    const [partialStudentData, setPartialStudentData] = useState([])
+    const [studentHealthRecordData, setStudentHealthRecord] = useState([])
     const [fullStudentData, setFullStudentData] = useState([])
-    const [editData, setEditData] = useState([])
+
 
     //Functions to open Add, Edit & Delete Session/Semester Modal 
     const handleAddEdit = () => {
@@ -72,13 +74,12 @@ const HealthManagement = () => {
         try{
             const fetch = async () => {
                 setIsLoading(true)
-                const res = await getPartiallyRegisteredStudent()
+                const res = await getStudentHealthRecord()
                 const data = res.data
                 const slicedData = data.slice(offsetPS * perPagePS, offsetPS + perPagePS)
                 setSlicedPSData(slicedData)
-                setPartialStudentData(slicedData)
+                setStudentHealthRecord(slicedData)
                 setSearchPSData(data)
-                setContentLengthPS(data.length)
                 setPageCountPS(Math.ceil(data.length / perPagePS))
                 setIsLoading(false)
             }
@@ -88,18 +89,17 @@ const HealthManagement = () => {
             console.log(err)
             setIsLoading(false)
         }
-    },[contentLengthPS, offsetPS, perPagePS])
+    },[contentLength, offsetPS, perPagePS])
 
     useEffect(() => {
         try{
             const fetch = async () => {
-                const res = await getFullyRegisteredStudent()
+                const res = await getStaffHealthRecord()
                 const data = res.data
                 const slicedData = data.slice(offsetFS * perPageFS, offsetFS + perPageFS)
                 setSlicedFSData(slicedData)
                 setFullStudentData(slicedData)
                 setSearchFSData(data)
-                setContentLengthFS(data.length)
                 setPageCountFS(Math.ceil(data.length / perPageFS))
                 setIsLoading(false)
             }
@@ -108,50 +108,36 @@ const HealthManagement = () => {
         catch(err){
             console.log(err)
         }
-    },[contentLengthFS, offsetFS, perPageFS])
+    },[contentLength, offsetFS, perPageFS])
 
     return (
         <Dashboardframe title="Health Center" subTitle="Health Management">
             <Helmet>
                 <title>Health Management | Adekunle College Of Education</title>
             </Helmet>
-            <NewUser  
-                 show={addNew} 
-                 onHide={() => setAddNew(false)}
-                 contentLengt={contentLengthPS}
-                 setContentLength={setContentLengthPS}
-                 headerTitle="Student"
-                 formType={false}
+            <NewMedRecord 
+                show={addNew}
+                onHide={() => setAddNew(false)}
+                contentLength={contentLength}
+                setContentLength={setContentLength}
             />
-            <UploadUsers 
-                show={addNewUsers} 
-                onHide={() => setAddNewUsers(false)}
-                contentLengt={contentLengthPS}
-                setContentLength={setContentLengthPS}
-                headerTitle="New Students"
-                type="new-student"
+            <NewMedCon 
+                show={addMedCon}
+                onHide={() => setAddMedCon(false)}
             />
-            <UploadUsers 
-                show={addOldUsers} 
-                onHide={() => setAddOldUsers(false)}
-                contentLengt={contentLengthPS}
-                setContentLength={setContentLengthPS}
-                headerTitle="Returning Students"
-                type="old-student"
-            />
-            <UpdateStudentBiodata 
-                show={addEdit} 
+            <EditMedRecord 
+                show={addEdit}
                 onHide={() => setAddEdit(false)}
-                data={editData}
-                contentLengt={contentLengthPS}
-                setContentLength={setContentLengthPS}
+                contentLength={contentLength}
+                setContentLength={setContentLength}
+                medRecData={editMedData}
             />
-            <ChangeUserStatus 
-                show={deactivate}
-                onHide={() => setDeactivate(false)}
-                data={editData}
-                contentLengt={contentLengthPS}
-                setContentLength={setContentLengthPS}
+            <DeleteMedRecord 
+                show={addDelete}
+                onHide={() => setAddDelete(false)}
+                contentLength={contentLength}
+                setContentLength={setContentLength}
+                medRecData={editMedData}
             />
             {isLoading ?
             <ContentLoader />
@@ -162,44 +148,43 @@ const HealthManagement = () => {
                         <div className="session-title">Health Management</div>
                         <Row className="mt-4">
                             <Col lg={12}>
-                                <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New</button>
-                                <button className="importExport-btn" onClick={handleAddNewUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import New Students</button>
-                                <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Students</button>
-                            </Col>
+                                <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Add Record</button>
+                                <button className="importExport-btn" onClick={handleMedCon}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Add Medical Condition</button>
+                             </Col>
                         </Row>
                         <Tabs defaultActiveKey="student" id="uncontrolled-tab-example" className="mt-4 session-tab">
                                 <Tab eventKey="student" title="Student Health Record">
-                                    <PartiallyRegisterStudent 
+                                    <StudentHealthRecord 
                                         offset={offsetPS} 
                                         perPage={perPagePS} 
                                         setPerPage={setPerPagePS} 
                                         setOffset={setOffsetPS} 
-                                        setPartialStudentData={setPartialStudentData}
+                                        setStudentHealthRecord={setStudentHealthRecord}
                                         slicedData={slicedPSData}
                                         searchData={searchPSData}
-                                        partialStudentData={partialStudentData}
-                                        setPartialStudentEditData={setEditData}
+                                        studentHealthRecordData={studentHealthRecordData}
                                         handleAddEdit={handleAddEdit}
-                                        handleAddDeactivate={handleAddDeactivate}
-                                        contentLength={contentLengthPS}
+                                        contentLength={contentLength}
                                         pageCount={pageCountPS}
+                                        handleEdit={handleEdit}
+                                        handleDelete={handleAddDelete}
                                     />
-                                </Tab>
+                                </Tab> 
                                 <Tab eventKey="staff" title="Staff Health Record">
-                                    <FullyRegisterStudent 
+                                    <StaffHealthRecord 
                                       offset={offsetFS} 
                                         perPage={perPageFS} 
                                         setPerPage={setPerPageFS} 
                                         setOffset={setOffsetFS} 
-                                        setFullStudentData={setFullStudentData}
+                                        setStaffHealthRecord={setFullStudentData}
                                         slicedData={slicedFSData}
                                         searchData={searchFSData}
-                                        fullStudentData={fullStudentData}
-                                        setFullStudentEditData={setEditData}
+                                        staffHealthRecordData={fullStudentData}
                                         handleAddEdit={handleAddEdit}
-                                        handleAddDeactivate={handleAddDeactivate}
-                                        contentLength={contentLengthFS}
-                                        pageCount={pageCountFS}         
+                                        contentLength={contentLength}
+                                        pageCount={pageCountFS}  
+                                        handleEdit={handleEdit}
+                                        handleDelete={handleAddDelete}
                                     />
                                 </Tab>
                             </Tabs>  

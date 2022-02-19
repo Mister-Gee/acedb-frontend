@@ -1248,6 +1248,10 @@
             width: 360px;
             height: 37px;
         }
+
+        #customText-area>div>div{
+            width: 740px;
+        }
         
         #customSelect-input>div>label {
             font-size: 13px;

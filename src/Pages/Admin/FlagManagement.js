@@ -8,6 +8,8 @@ import ContentLoader from '../components/ContentLoader';
 import {getAllFlags} from '../../services/flagServices';
 import {search, dateConverter} from '../../utils/Functions';
 import NewFlagLevel from './subcomponent/NewFlagLevel';
+import { useState as useStateHook } from '@hookstate/core';
+import store from '../../store/store';
 
 const FlagManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -24,6 +26,8 @@ const FlagManagement = () => {
     const [contentLength, setContentLength] = useState(0)
     const [isLoading, setIsLoading] = useState(0)
     const [realIndex, setRealIndex] = useState(1)
+
+    const {role} = useStateHook(store)
 
     const handleAddNew = () => {
         setAddNew(true)
@@ -80,8 +84,12 @@ const FlagManagement = () => {
                         <div className="session-title">Flag Management</div>
                         <Row className="mt-4">
                             <Col lg={12}>
+                                {role.get().includes("Security") &&
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Flag Student</button>
+                                }
+                                {role.get().includes("MIS") &&
                                 <button className="addnew-btn ml-2" onClick={handleAddFlags}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Add Flag level</button>
+                                }
                             </Col>
                         </Row>
                         <Row>

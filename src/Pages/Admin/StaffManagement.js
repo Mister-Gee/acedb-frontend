@@ -10,6 +10,8 @@ import ContentLoader from '../components/ContentLoader';
 import UpdateStaffBiodata from './subcomponent/UpdateStaffBiodata';
 import ChangeUserStatus from './subcomponent/ChangeUserStatus';
 import UploadUsers from './subcomponent/UploadUsers';
+import { useState as useStateHook } from '@hookstate/core';
+import store from '../../store/store';
 
 
 const StaffManagement = () => {
@@ -21,6 +23,8 @@ const StaffManagement = () => {
 
     const [contentLengthPS, setContentLengthPS] = useState(0)
     const [contentLengthFS, setContentLengthFS] = useState(0)
+
+    const {role} = useStateHook(store)
 
     const handleAddNew = () => {
         setAddNew(true)
@@ -163,8 +167,12 @@ const StaffManagement = () => {
                         <Row className="mt-4">
                             <Col lg={12}>
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New</button>
-                                <button className="importExport-btn" onClick={handleAddNewUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import New Staffs</button>
-                                <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Staffs</button>
+                                {role.get().includes("MIS") &&
+                                <>
+                                    <button className="importExport-btn" onClick={handleAddNewUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import New Students</button>
+                                    <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Students</button>
+                                </>
+                                }
                             </Col>
                         </Row>
                         <Tabs defaultActiveKey="partiallyRegistered" id="uncontrolled-tab-example" className="mt-4 session-tab">
