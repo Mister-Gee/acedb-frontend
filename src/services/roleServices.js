@@ -6,6 +6,11 @@ export const getRoles = () => {
     return http.get("/Role/Get")
 }
 
+export const getRolesByUser = (userName) => {
+    let newUserName = userName.replace("@", "%40")
+    return http.post(`/Role/roles/${newUserName}`)
+}
+
 export const getStaffRoles = () => {
     return http.get("/Role/Staff")
 }

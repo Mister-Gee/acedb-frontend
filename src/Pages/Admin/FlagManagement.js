@@ -10,6 +10,7 @@ import {search, dateConverter} from '../../utils/Functions';
 import NewFlagLevel from './subcomponent/NewFlagLevel';
 import { useState as useStateHook } from '@hookstate/core';
 import store from '../../store/store';
+import { predefinedUserRole } from '../../utils/enums';
 
 const FlagManagement = () => {
     const [addNew, setAddNew] = useState(false)
@@ -84,10 +85,10 @@ const FlagManagement = () => {
                         <div className="session-title">Flag Management</div>
                         <Row className="mt-4">
                             <Col lg={12}>
-                                {role.get().includes("Security") &&
+                                {role.get().includes(predefinedUserRole.security) &&
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Flag Student</button>
                                 }
-                                {role.get().includes("MIS") &&
+                                {role.get().includes(predefinedUserRole.mis) &&
                                 <button className="addnew-btn ml-2" onClick={handleAddFlags}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>Add Flag level</button>
                                 }
                             </Col>

@@ -4,6 +4,7 @@ import SideMenu from "./SideMenu";
 import TopMenu from "../../components/TopMenu";
 import Footer from "../../components/Footer";
 import { userDetails } from "../../../services/userServices";
+import { getRolesByUser } from "../../../services/roleServices";
 import store from "../../../store/store";
 import { useState } from "@hookstate/core";
 import { PopupAlert } from "../../components/Alert";
@@ -29,7 +30,7 @@ const DashboardFrame = ({ children, title, subTitle }) => {
     const {alertNotification} = useState(store)
     const {alertMessage} = useState(store)
     const {deptID} = useState(store)
-
+    const {role} = useState(store)
 
     useEffect(() => {
         try{
@@ -42,6 +43,9 @@ const DashboardFrame = ({ children, title, subTitle }) => {
                     email.set(user.data.email)
                     userId.set(user.data.id)
                     deptID.set(user.data.departmentID)
+
+                    const roleObj = await getRolesByUser(user.data.email)
+                    role.set(roleObj.data.result.toString())
                 }
             }  
             fetch()

@@ -12,6 +12,7 @@ import ChangeUserStatus from './subcomponent/ChangeUserStatus';
 import UploadUsers from './subcomponent/UploadUsers';
 import { useState as useStateHook } from '@hookstate/core';
 import store from '../../store/store';
+import { predefinedUserRole } from '../../utils/enums';
 
 
 const StaffManagement = () => {
@@ -167,7 +168,7 @@ const StaffManagement = () => {
                         <Row className="mt-4">
                             <Col lg={12}>
                                 <button className="addnew-btn" onClick={handleAddNew}> <span className="iconify" data-icon="fluent:add-16-filled" data-inline="false"></span>  Add New</button>
-                                {role.get().includes("MIS") &&
+                                {role.get().includes(predefinedUserRole.mis) &&
                                 <>
                                     <button className="importExport-btn" onClick={handleAddNewUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import New Students</button>
                                     <button className="importExport-btn" onClick={handleAddOldUsers}> <span className="iconify" data-icon="uil:import" data-inline="false"></span>  Import Returning Students</button>

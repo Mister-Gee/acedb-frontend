@@ -79,7 +79,7 @@ const Login = () => {
                 alertType.set("success")
                 alertMessage.set("Login Successful")
                 alertNotification.set(true)
-                if (data.role === predefinedUserRole.student){
+                if (data.role === predefinedUserRole.student || data.role.includes(predefinedUserRole.student)){
                     setTimeout(() => {
                         setBtnState(false)
                         alertNotification.set(false)
@@ -89,13 +89,60 @@ const Login = () => {
                     }, 1000)
                 }
                 else {
-                    setTimeout(() => {
-                        setBtnState(false)
-                        alertNotification.set(false)
-                        history.push({
-                            pathname: "/dashboard"
-                        })
-                    }, 1000)
+                    if(data.role.includes(predefinedUserRole.mis)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/dashboard"
+                            })
+                        }, 1000)
+                    }
+                    else if(data.role.includes(predefinedUserRole.cafe)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/student-management"
+                            })
+                        }, 1000)
+                    }
+                    else if(data.role.includes(predefinedUserRole.er)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/exam-management"
+                            })
+                        }, 1000)
+                    }
+                    else if(data.role.includes(predefinedUserRole.health)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/health-management"
+                            })
+                        }, 1000)
+                    }
+                    else if(data.role.includes(predefinedUserRole.lecturer)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/lecture-management"
+                            })
+                        }, 1000)
+                    }
+                    else if(data.role.includes(predefinedUserRole.security)){
+                        setTimeout(() => {
+                            setBtnState(false)
+                            alertNotification.set(false)
+                            history.push({
+                                pathname: "/flag-management"
+                            })
+                        }, 1000)
+                    }
                 }
                 
             }

@@ -3,6 +3,7 @@ import {Up, Down} from './DropdownIcons';
 import React from 'react';
 import store from '../../../store/store';
 import { useState } from '@hookstate/core';
+import { predefinedUserRole } from '../../../utils/enums';
 
 const SideMenu = () => {
 
@@ -29,6 +30,8 @@ const SideMenu = () => {
     const {email} = useState(store)
     const {userId} = useState(store)
 
+    console.log(role.get())
+
     const logout = () => {
         localStorage.removeItem("token")
         role.set("")
@@ -48,7 +51,6 @@ const SideMenu = () => {
         }, 1000)
     }
 
-
     return (
         <div className="side-menu">
             <div className="side-menu-content">
@@ -58,7 +60,7 @@ const SideMenu = () => {
                 </div>
                 <div className="nav-links">
                     <ul>
-                        {role.get().includes("MIS") &&
+                        {role.get().includes(predefinedUserRole.mis) &&
                             <>
                             <li>
                                 <NavLink exact to="/dashboard" > 
@@ -90,7 +92,7 @@ const SideMenu = () => {
                         </li>
                         </>
                         }
-                        {role.get().includes("MIS") || role.get().includes("Cafe") ?
+                        {role.get().includes(predefinedUserRole.mis) || role.get().includes(predefinedUserRole.cafe) ?
                         <>
                         <li>
                             <NavLink exact to="/student-management"> 
@@ -105,7 +107,7 @@ const SideMenu = () => {
                                 {staffDropdownState ? 
                                     <ul className="dropdown-item-menu border-left">
                                         <li><NavLink exact to="/all-staff"> All Staff </NavLink></li>
-                                        {role.get().includes("MIS") &&
+                                        {role.get().includes(predefinedUserRole.mis) &&
                                         <li><NavLink exact to="/roles"> Roles </NavLink></li>
                                         }
                                     </ul>
@@ -118,14 +120,14 @@ const SideMenu = () => {
                         :
                         ""
                         }
-                        {role.get().includes("Lecturer") &&
+                        {role.get().includes(predefinedUserRole.lecturer) &&
                         <li>
                             <NavLink exact to="/lecture-management">
                             <span className="iconify" data-icon="clarity:directory-outline-badged" data-inline="false"></span> Lecture Management
                             </NavLink>
                         </li>
                         }
-                        {role.get().includes("Exam&Records") &&
+                        {role.get().includes(predefinedUserRole.er) &&
                         <>
                         <li>
                             <NavLink exact to="/exam-management">
@@ -141,7 +143,7 @@ const SideMenu = () => {
                         </li>
                         </>
                         }
-                        {role.get().includes("Security") || role.get().includes("MIS") ?
+                        {role.get().includes(predefinedUserRole.security) || role.get().includes(predefinedUserRole.mis) ?
                         <li>
                             <NavLink exact to="/flag-management"> 
                             <span className="iconify" data-icon="ci:flag-fill" data-inline="false"></span> 
@@ -151,7 +153,7 @@ const SideMenu = () => {
                         :
                         ""
                         }
-                        {role.get().includes("Health") &&
+                        {role.get().includes(predefinedUserRole.health) &&
                         <li>
                             <NavLink exact to="/health-management"> 
                                 <span className="iconify" data-icon="ic:baseline-health-and-safety" data-inline="false"></span> 

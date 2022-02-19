@@ -4,6 +4,7 @@ export const predefinedUserRole = {
     health: "Health",
     student: "Student",
     security: "Security",
-    er: "Exams&Records",
+    er: "Exam&Records",
     cafe: "Cafe",
+    lecturer: "Lecturer"
 }
