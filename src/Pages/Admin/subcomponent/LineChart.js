@@ -8,7 +8,7 @@ const LineChart = ({chartData}) => {
             label: "Male",
             data: chartData ? chartData.maleStudents.registeredStudentPerSession : [],
             borderColor: ['#4FC3F7'],
-            backgroundColor: ['rgb(79, 195, 247, 0.3)'],
+            backgroundColor: ['rgba(79, 195, 247, 0.3)'],
             pointBackgroundColor: '#4FC3F7',
             pointBorderColor: '#4FC3F7'
         }, {
@@ -27,7 +27,7 @@ const LineChart = ({chartData}) => {
             display: false
         },
         legend: {
-            display: false,
+            display: true,
             
         },
         scales: {
@@ -35,8 +35,8 @@ const LineChart = ({chartData}) => {
                 {
                     ticks: {
                         min: 0,
-                        max: 10,
-                        stepSize: 1
+                        max: 500,
+                        stepSize: 100
                     }
                 }
             ]

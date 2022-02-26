@@ -37,7 +37,7 @@ const LoginForm = ({ initialValues, onSubmit, validationSchema, btnState }) => {
                                     onChange={formik.handleChange}
                                     error={formik.touched.userId && Boolean(formik.errors.userId)}
                                     helperText={formik.touched.userId && formik.errors.userId}
-                                    className="login-input"
+                                    // className="login-input"
                                 />
                             </Col>
                         </Row>

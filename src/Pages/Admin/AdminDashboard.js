@@ -15,7 +15,7 @@ import {getStudentChart} from '../../services/StudentServices';
 const AdminDashboard = () => {
     const [userCount, setUserCount] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [chartData, setChartData] = useState([])
+    const [chartData, setChartData] = useState({})
 
     useEffect(() => {
         const fetch = async () => {
@@ -126,10 +126,10 @@ const AdminDashboard = () => {
                                         autoHeightMin={275}
                                         autoHeightMax={275}
                                     >
+                                        {/* <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/>
                                         <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/>
                                         <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/>
-                                        <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/>
-                                        <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/>
+                                        <RecentStudentComponent name="Emmanuel Pauline" dateTime="Apr 03, 2021 1:43PM"/> */}
 
                                     </Scrollbars>
                                     <div className="view-all">

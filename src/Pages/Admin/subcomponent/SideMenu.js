@@ -30,8 +30,6 @@ const SideMenu = () => {
     const {email} = useState(store)
     const {userId} = useState(store)
 
-    console.log(role.get())
-
     const logout = () => {
         localStorage.removeItem("token")
         role.set("")
