@@ -83,10 +83,9 @@ const ExamEndAttendance = (props) => {
             setIsSubmit(false)
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }

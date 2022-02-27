@@ -26,7 +26,7 @@ const Timetable = () => {
     }, [])
 
     return (
-        <DashboardFrame title="Student" subTitle="Exam TimeTable">
+        <DashboardFrame title="Student Portal" subTitle="Exam TimeTable">
             <Helmet>
                 <title>Timetable | Adeyemi College Of Education</title>
             </Helmet> 

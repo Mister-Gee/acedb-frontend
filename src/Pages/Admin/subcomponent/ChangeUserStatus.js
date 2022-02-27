@@ -15,9 +15,7 @@ const ChangeUserStatus = (props) => {
     const onSubmit = async(data) => {
         setIsSubmit(true)
         try{
-            console.log(data)
             const res = await updateUserStatus(data)
-            console.log(res)
             if (res.status === 200 || res.status === 204){
                 setAlertType("success")
                 setMessage("User Deactivated")
@@ -33,9 +31,8 @@ const ChangeUserStatus = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setAlertType("danger")
-            setMessage("Network Error")
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }

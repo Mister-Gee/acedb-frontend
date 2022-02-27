@@ -1,7 +1,7 @@
 import {Modal, Container, Row, Col, Button} from 'react-bootstrap';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {PopupAlert} from '../../components/Alert';
 import {editProgram} from '../../../services/institutionAdminServices';
 import StyledTextField from '../../components/StyledTextField';
@@ -33,10 +33,9 @@ const EditProgram = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
         }
     }

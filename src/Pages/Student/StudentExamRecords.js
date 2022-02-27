@@ -4,7 +4,6 @@ import {Table} from 'react-bootstrap';
 import {useState, useEffect} from 'react';
 import { getStudentCurrentExamRecords} from '../../services/examRecordService';
 import ContentLoader from '../components/ContentLoader';
-import { dateConverter } from '../../utils/Functions';
 
 
 const StudentExamRecords = () => {
@@ -26,7 +25,7 @@ const StudentExamRecords = () => {
     }, [])
 
     return (
-        <DashboardFrame title="Student" subTitle="Result">
+        <DashboardFrame title="Student Portal" subTitle="Result">
             <Helmet>
                 <title>Result | Adeyemi College Of Education</title>
             </Helmet> 

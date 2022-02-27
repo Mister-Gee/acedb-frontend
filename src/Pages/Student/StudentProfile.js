@@ -5,7 +5,7 @@ import StudentProfileData from './subcomponents/BiodataForm/StudentProfileData';
 function StudentProfile() {
 
     return (
-        <DashboardFrame title="Student Profile" subTitle="Dashboard">
+        <DashboardFrame title="Student Portal" subTitle="Profile">
             <Helmet>
                 <title>Student Profile | Adeyemi College of Education</title>
             </Helmet>

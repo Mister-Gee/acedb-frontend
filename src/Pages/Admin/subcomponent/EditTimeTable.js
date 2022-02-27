@@ -7,7 +7,6 @@ import {PopupAlert} from '../../components/Alert';
 import {getDepartment} from '../../../services/institutionAdminServices';
 import StyledTextField from '../../components/StyledTextField';
 import { getStaffByDept } from '../../../services/staffServices';
-import { getCourse } from '../../../services/courseServices';
 import { editTimetable } from '../../../services/examTimetableService';
 import {dateToInputDate} from '../../../utils/Functions';
 
@@ -21,7 +20,6 @@ const EditTimeTable = (props) => {
     const [dept, setDept] = useState([])
     const [selectedDept, setSelectedDept] = useState("")
     const [supervisor, setSupervisor] = useState([])
-    const [courses, setCourses] = useState([])
 
 
     const onSubmit = async(data) => {
@@ -44,10 +42,9 @@ const EditTimeTable = (props) => {
             setIsSubmit(false)
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }
@@ -77,20 +74,6 @@ const EditTimeTable = (props) => {
         onSubmit,
         validationSchema
     })
-
-    useEffect(() => {
-        const fetchData = async() => {
-            const res = await getCourse()
-            const data = res.data
-            if(Array.isArray(data)){
-                setCourses(data)
-            }
-            else{
-                setCourses([])
-            }
-        } 
-        fetchData()
-    }, [])
 
     useEffect(() => {
         const fetchData = async() => {

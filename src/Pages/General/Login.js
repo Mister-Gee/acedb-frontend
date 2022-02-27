@@ -156,13 +156,13 @@ const Login = () => {
         catch(err) {
             setBtnState(false)
             alertType.set("danger")
-            alertMessage.set("Invalid Email or Password")
+            alertMessage.set(err.response.data.message)
             alertNotification.set(true)
         }
     }
 
     const validationSchema = Yup.object({
-        userId: Yup.string().email("Invalid Email Format").required("Student Email is required"),
+        userId: Yup.string().email("Invalid Email Format").required("Email is required"),
         password: Yup.string().required("Password is required")
     })
 

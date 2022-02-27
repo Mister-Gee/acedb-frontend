@@ -1,6 +1,5 @@
 import DashboardFrame from './subcomponents/Dashboard.Frame';
 import {Helmet} from 'react-helmet';
-import {Table} from 'react-bootstrap';
 import {useState, useEffect} from 'react';
 import { getStudentCurrentExamRecords} from '../../services/examRecordService';
 import ContentLoader from '../components/ContentLoader';
@@ -26,7 +25,7 @@ const StudentAnnoucement = () => {
     }, [])
 
     return (
-        <DashboardFrame title="Student" subTitle="Annoucement">
+        <DashboardFrame title="Student Portal" subTitle="Annoucement">
             <Helmet>
                 <title>Annoucement | Adeyemi College Of Education</title>
             </Helmet> 

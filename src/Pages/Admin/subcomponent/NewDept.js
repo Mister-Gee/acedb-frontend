@@ -42,10 +42,9 @@ const NewDepartment = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
         }
     }

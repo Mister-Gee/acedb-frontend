@@ -32,9 +32,8 @@ const DeleteSchool = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setAlertType("danger")
-            setMessage("Network Error")
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }

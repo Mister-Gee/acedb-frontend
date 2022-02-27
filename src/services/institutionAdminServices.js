@@ -20,26 +20,6 @@ export const deleteDepartment = (Id) => {
     return instance.delete(`/ControlledData/Department/Delete/${Id}`)
 }
 
-export const getFaculty = (institutionId, schoolId) => {
-    if (schoolId) {
-        return instance.get(`/api/ieducare/institutionfaculty/get/${institutionId}?schoolId=${schoolId}`)
-    } else {
-        return instance.get(`/api/ieducare/institutionfaculty/get/${institutionId}`)
-    }
-}
-
-export const createFaculty = (data) => {
-    return instance.post("/api/ieducare/institutionfaculty/post", data)
-}
-
-export const editFaculty = (facultyId, name, schoolId, headId, institutionId, createdBy) => {
-    return instance.put(`/api/ieducare/institutionfaculty/edit/${facultyId}?Name=${name}&SchoolId=${schoolId}&HeadId=${headId}&InstitutionId=${institutionId}&CreatedBy=${createdBy}`)
-}
-
-export const deleteFaculty = (facultyId) => {
-    return instance.delete(`/api/ieducare/institutionfaculty/remove/${facultyId}`)
-}
-
 export const getSchool = () => {
     return instance.get("/ControlledData/School/All")
 }

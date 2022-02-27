@@ -7,9 +7,9 @@ import EduTable from './subcomponents/AcademicsSub.js/EduTable';
 
 function Academics() {
     return (
-        <DashboardFrame title="Academics Page" subTitle="Dashboard">
+        <DashboardFrame title="Student Portal" subTitle="Academics">
             <Helmet>
-                <title>Academics | iEduCare</title>
+                <title>Academics | Adeyemi College of Education</title>
             </Helmet>
             <div className="content-page">
                 <Container>

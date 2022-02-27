@@ -1,29 +1,33 @@
 import { Helmet } from 'react-helmet';
-import ForgotPasswordForm from '../components/ForgotPasswordForm';
+import ResetPasswordForm from '../components/ResetPasswordForm';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import {forgetPassword} from '../../services/userServices';
+import {resetPassword} from '../../services/userServices';
 import {PopupAlert} from '../components/Alert';
+import { useParams } from 'react-router-dom';
 
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
     const[btnState, setBtnState] = useState(false)
     const[alertType, setAlertType] = useState("")
     const[alertMsg, setAlertMsg] = useState("")
     const[alertNotification, setAlertNotification] = useState(false)
 
-
+    const {code} = useParams()
 
     const initialValues = {
-        username: ''
+        email: '',
+        password: '',
+        confirmPassword: '',
+        code: code
     }
 
     const onSubmit = async (val) => {
+        console.log(val)
         setBtnState(true)
         try{
-            const res = await forgetPassword(val.username)
+            const res = await resetPassword(val)
             const status = res.status
-            console.log(res)
             if(status === 200){
                 setAlertType("success")
                 setAlertMsg("Successful, Kindly Check your mail for Password Reset Link")
@@ -45,13 +49,15 @@ const ForgotPassword = () => {
     }
 
     const validationSchema = Yup.object({
-        username: Yup.string().email("Invalid Email Format").required("Email is required")
+        email: Yup.string().email("Invalid Email Format").required("Email is required"),
+        password: Yup.string().required("Password is Required"),
+        confirmPassword: Yup.string().required("Confirm Password is Required")
     })
 
     return (
         <>
             <Helmet>
-                <title>Forgot Password | Adeyemi College of Education</title>
+                <title>Reset Password | Adeyemi College of Education</title>
             </Helmet>
             <div className="content-page">
                 <div className="login-section">
@@ -60,10 +66,10 @@ const ForgotPassword = () => {
                         {alertNotification && <PopupAlert alertType={alertType} setShowAlert={setAlertNotification} message={alertMsg} />}
 
                             <div>
-                                <div className="header-forgotten-password" style={{ marginBottom: "20px" }}>Forgot Password</div>
+                                <div className="header-forgotten-password" style={{ marginBottom: "20px" }}>Reset Password</div>
                             </div>
                             <div style={{ display: "flex", justifyContent: "center" }}>
-                                <ForgotPasswordForm initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} btnState={btnState} />
+                                <ResetPasswordForm initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} btnState={btnState} />
                             </div>
                         </div>
 
@@ -75,4 +81,4 @@ const ForgotPassword = () => {
     )
 }
 
-export default ForgotPassword
+export default ResetPassword

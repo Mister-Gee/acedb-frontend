@@ -38,7 +38,7 @@ const UserImageForm = ({data}) => {
                 }
             }
             catch(err){
-                setMessage("Upload Failed")
+                setMessage(err.response.data.message)
                 setAlertType("danger")
                 setShowAlert(true)
             }

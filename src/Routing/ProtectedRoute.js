@@ -1,9 +1,8 @@
-import {Route, useLocation, Redirect} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 
 
 const ProtectedRoute = ({children, ...rest}) => {
     let auth = localStorage.getItem("token")
-    const locations = useLocation()
 
     return (
         <Route

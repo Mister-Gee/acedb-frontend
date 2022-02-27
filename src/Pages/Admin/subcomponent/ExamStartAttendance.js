@@ -5,7 +5,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import { Select } from '@material-ui/core';
 import { useTheme } from '@mui/material/styles';
-import * as Yup from 'yup';
 import {useState, useEffect} from 'react';
 import {PopupAlert} from '../../components/Alert';
 import StyledFormControl from '../../components/StyledFormControl';
@@ -85,10 +84,9 @@ const ExamStartAttendance = (props) => {
             setIsSubmit(false)
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }

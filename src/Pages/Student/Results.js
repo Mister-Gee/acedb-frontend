@@ -9,7 +9,7 @@ const Results = () => {
     return (
             <DashboardFrame title="Student Portal" subTitle="Results">
                 <Helmet>
-                    <title>Results | iEduCare</title>
+                    <title>Results | Adeyemi College of Education</title>
                 </Helmet>
                 <div className="content-page">
                     <div className="result-wrapper">

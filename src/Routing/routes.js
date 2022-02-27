@@ -2,7 +2,7 @@ import {Switch, Route} from 'react-router-dom';
 import Login from '../Pages/General/Login';
 import StudentDashboard from '../Pages/Student/StudentDashboard';
 import StudentProfile from '../Pages/Student/StudentProfile';
-import Academics from '../Pages/Student/Academics';
+// import Academics from '../Pages/Student/Academics';
 import Courses from '../Pages/Student/Courses';
 import Results from '../Pages/Student/Results';
 import ForgotPassword from '../Pages/General/ForgotPassword';
@@ -32,6 +32,7 @@ import FlagManagement from '../Pages/Admin/FlagManagement';
 import HealthManagement from '../Pages/Admin/HealthManagement';
 import MedicalProfile from '../Pages/Admin/MedicalProfile';
 import MedicalHistory from '../Pages/Admin/MedicalHistory';
+import ResetPassword from '../Pages/General/ResetPassword';
 
 const Routes = () => {
     return (
@@ -41,6 +42,9 @@ const Routes = () => {
           </Route>
           <Route path="/forgot-password">
             <ForgotPassword />
+          </Route>
+          <Route path="/reset-password/:code">
+            <ResetPassword />
           </Route>
           <ProtectedRoute path="/attendance">
             <Attendance />

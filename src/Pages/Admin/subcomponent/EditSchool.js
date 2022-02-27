@@ -3,7 +3,6 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useState} from 'react';
 import {PopupAlert} from '../../components/Alert';
-import {getWebUserId} from '../../../utils/Functions';
 import {editSchool} from '../../../services/institutionAdminServices';
 import StyledTextField from '../../components/StyledTextField';
 
@@ -36,10 +35,9 @@ const EditSchool = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setIsSubmit(false)
             setAlertType("danger")
-            setMessage(err.message)
+            setMessage(err.response.data.message)
             setShowAlert(true)
         }
         

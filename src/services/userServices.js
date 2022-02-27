@@ -21,6 +21,11 @@ export const createUser = (data) => {
     return instance.post("/Account/Register", data)
 }
 
-export const logoutUser = () => {
-    return instance.post("/api/sme/authentication/logout")
+export const forgetPassword = (userName) => {
+    let newUserName = userName.replace("@", "%40")
+    return instance.post(`/Account/ForgetPassword/${newUserName}`)
+}
+
+export const resetPassword = (data) => {
+    return instance.post("/Account/ResetPassword", data)
 }

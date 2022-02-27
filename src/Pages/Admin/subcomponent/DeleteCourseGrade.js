@@ -16,7 +16,6 @@ const DeleteCourseGrade = (props) => {
         setIsSubmit(true)
         try{
             const res = await deleteCourseGrade(data.id)
-            console.log(res)
             if (res.status === 200 || res.status === 204){
                 setAlertType("success")
                 setMessage("CourseGrade Deleted Successfully")
@@ -32,9 +31,8 @@ const DeleteCourseGrade = (props) => {
             }
         }
         catch(err){
-            console.log(err.message)
             setAlertType("danger")
-            setMessage("Network Error")
+            setMessage(err.response.data.message)
             setShowAlert(true)
             setIsSubmit(false)
         }

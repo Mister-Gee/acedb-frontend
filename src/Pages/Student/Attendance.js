@@ -42,7 +42,7 @@ const Attendance = () => {
 
 
     return (
-        <DashboardFrame title="Student" subTitle="Attendance">
+        <DashboardFrame title="Student Portal" subTitle="Attendance">
             <Helmet>
                 <title>Attendance | Adeyemi College Of Education</title>
             </Helmet> 
